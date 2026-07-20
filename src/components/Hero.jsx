@@ -48,7 +48,7 @@ export default function Hero({ onExploreClick }) {
       >
         <div className="absolute inset-0 bg-black/15 z-10" />
         <img
-          src="/hero_model.png"
+          src="/background.png"
           alt="AURA high-fashion collection showcase"
           className="h-full w-full object-cover object-center"
         />

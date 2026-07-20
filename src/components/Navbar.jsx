@@ -29,9 +29,9 @@ export default function Navbar() {
 
   const navLinks = [
     { label: "All Items", id: "all" },
-    { label: "Tailored Classics", id: "tailoring" },
-    { label: "Knitwear & Lounge", id: "lounge" },
-    { label: "Summer Editorial", id: "summer" }
+    { label: "Oversized", id: "oversized" },
+    { label: "Polos", id: "polos" },
+    { label: "Regulars", id: "regulars" }
   ];
 
   const handleNavClick = (id) => {

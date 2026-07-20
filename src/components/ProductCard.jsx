@@ -11,7 +11,6 @@ export default function ProductCard({
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [image1Loaded, setImage1Loaded] = useState(false);
-  const [image2Loaded, setImage2Loaded] = useState(false);
 
   const calculateDiscount = (price, oldPrice) => {
     if (!oldPrice) return null;
@@ -30,7 +29,7 @@ export default function ProductCard({
       {/* Image Gallery Panel */}
       <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-[#f5efe4]">
         {/* Shimmer skeleton */}
-        {(!image1Loaded || (isHovered && !image2Loaded)) && (
+        {!image1Loaded && (
           <div className="absolute inset-0 z-20 shimmer-bg" />
         )}
 
@@ -39,24 +38,9 @@ export default function ProductCard({
           src={product.images[0]}
           alt={product.name}
           onLoad={() => setImage1Loaded(true)}
-          className={`absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 ${
-            isHovered && product.images[1] ? "opacity-0" : "opacity-100"
-          }`}
+          className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105 opacity-100"
           loading="lazy"
         />
-
-        {/* Back Image (Hover Swap) */}
-        {product.images[1] && (
-          <img
-            src={product.images[1]}
-            alt={`${product.name} alternate view`}
-            onLoad={() => setImage2Loaded(true)}
-            className={`absolute inset-0 h-full w-full object-cover object-center transition-all duration-700 ease-out group-hover:scale-105 ${
-              isHovered ? "opacity-100 scale-105" : "opacity-0"
-            }`}
-            loading="lazy"
-          />
-        )}
 
         {/* Badges */}
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">

@@ -27,8 +27,8 @@ export default function Newsletter() {
         {/* Left side: Image */}
         <div className="relative h-64 md:h-auto min-h-[320px] md:min-h-[460px]">
           <img
-            src="/Brown Suit.jpg"
-            alt="Brown suit"
+            src="/box image.jpg"
+            alt="AURA boxes showcase"
             className="absolute inset-0 h-full w-full object-cover object-center animate-fade-in"
           />
           {/* Subtle overlay to blend the image with the card color theme */}

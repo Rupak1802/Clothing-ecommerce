@@ -44,26 +44,26 @@ export default function Footer({ setActiveFilter }) {
               </li>
               <li>
                 <button
-                  onClick={() => setActiveFilter("tailoring")}
+                  onClick={() => setActiveFilter("oversized")}
                   className="hover:text-white transition-colors"
                 >
-                  Minimalist Tailoring
+                  Oversized
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => setActiveFilter("lounge")}
+                  onClick={() => setActiveFilter("polos")}
                   className="hover:text-white transition-colors"
                 >
-                  Knitwear & Loungewear
+                  Polos
                 </button>
               </li>
               <li>
                 <button
-                  onClick={() => setActiveFilter("summer")}
+                  onClick={() => setActiveFilter("regulars")}
                   className="hover:text-white transition-colors"
                 >
-                  Summer Linen Capsule
+                  Regulars
                 </button>
               </li>
             </ul>

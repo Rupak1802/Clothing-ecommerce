@@ -1,13 +1,13 @@
 export const PRODUCTS = [
   {
     id: "prod-1",
-    name: "AURA Trench Coat",
+    name: "Drop Shoulder T-shirt",
     price: 220,
     oldPrice: 310,
     category: "Outerwear",
-    collection: "tailoring",
+    collection: "oversized",
     badge: "SALE",
-    images: ["/trench_front.png", "/trench_back.png"],
+    images: ["/oversized - 1.jpg", "/trench_back.png"],
     description: "A fluid, double-breasted trench coat crafted from premium structured linen and organic cotton blend. Designed with clean minimal lapels, a waist-defining belt, and oversized storm flaps. An editorial staple for transition season layering.",
     colors: [
       { name: "Oatmeal", hex: "#DCD7C9" },
@@ -21,13 +21,13 @@ export const PRODUCTS = [
   },
   {
     id: "prod-2",
-    name: "Charcoal Knit Sweater",
+    name: "Polo T-shirt",
     price: 145,
     oldPrice: null,
     category: "Knitwear",
-    collection: "lounge",
+    collection: "polos",
     badge: "NEW DROP",
-    images: ["/knit_front.png", "/knit_back.png"],
+    images: ["/polo -1.jpg", "/knit_back.png"],
     description: "Oversized chunky knit sweater knitted in organic wool and alpaca blend. Features relaxed drop shoulders, a mock neck collar, and ribbed trim details. Soft on skin and heavy enough to retain a sculptural silhouette.",
     colors: [
       { name: "Charcoal", hex: "#3A3B3C" },
@@ -41,13 +41,13 @@ export const PRODUCTS = [
   },
   {
     id: "prod-3",
-    name: "Black Satin Slip Dress",
+    name: "Henley Shirt",
     price: 180,
     oldPrice: 240,
     category: "Dresses",
-    collection: "summer",
+    collection: "regulars",
     badge: "SALE",
-    images: ["/dress_front.png", "/dress_back.png"],
+    images: ["/regular -1.jpg", "/dress_back.png"],
     description: "An elegant, flowy midi-length slip dress woven in heavy lustrous black silk-satin. Bias-cut for a drape that contours the body, featuring delicate cross-back spaghetti straps and a subtle cowl neckline.",
     colors: [
       { name: "Black Satin", hex: "#111111" },
@@ -61,13 +61,13 @@ export const PRODUCTS = [
   },
   {
     id: "prod-4",
-    name: "Tailored Pleated Trousers",
+    name: "Baggy Jeans",
     price: 160,
     oldPrice: null,
     category: "Pants",
-    collection: "tailoring",
+    collection: "oversized",
     badge: null,
-    images: ["/trouser_front.png", "/trouser_back.png"],
+    images: ["/oversized - 2.jpg", "/trouser_back.png"],
     description: "High-waisted wide-leg tailored trousers cut from soft structured wool-twill. Finished with pressed creases, deep double pleats, and side slip pockets for a relaxed yet commanding look.",
     colors: [
       { name: "Olive Green", hex: "#556B2F" },
@@ -83,24 +83,24 @@ export const PRODUCTS = [
 
 export const COLLECTIONS = [
   {
-    id: "tailoring",
-    title: "Minimalist Tailoring",
-    description: "Sculptural suits and structures engineered for modern ease.",
-    image: "/collection_tailoring.png",
+    id: "oversized",
+    title: "Oversized",
+    description: "Oversized structured garments for effortless luxury.",
+    image: "/Oversized outfit.jpg",
     tag: "Sale"
   },
   {
-    id: "lounge",
-    title: "Knitwear & Lounge",
-    description: "Premium heavy yarns, fluid shapes, and neutral tones.",
-    image: "/collection_lounge.png",
+    id: "polos",
+    title: "Polos",
+    description: "Tailored polo knits and luxury collared shirts.",
+    image: "/Polo outfit.jpg",
     tag: "Cozy Essentials"
   },
   {
-    id: "summer",
-    title: "Summer Editorial",
-    description: "Lightweight linens, breathable silks, and flowy slips.",
-    image: "/collection_summer.png",
+    id: "regulars",
+    title: "Regulars",
+    description: "Perfect fit daily wardrobe basics and casual essentials.",
+    image: "/Regular outfit.jpg",
     tag: "New Drop"
   }
 ];
