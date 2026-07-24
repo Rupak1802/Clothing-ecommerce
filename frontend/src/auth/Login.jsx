@@ -80,10 +80,10 @@ export default function Login() {
         </div>
 
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          {/* Email field */}
+          {/* Email or Phone field */}
           <div>
             <label className="block text-[10px] font-semibold uppercase tracking-wider text-[#4B352A] mb-2">
-              Email Address
+              Email or Phone Number
             </label>
             <div className="relative">
               <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#6D6D6D]/70 pointer-events-none">
@@ -96,12 +96,13 @@ export default function Login() {
                     ? "border-red-500 focus:ring-1 focus:ring-red-500"
                     : "border-[#6F4E37]/20 focus:border-[#4B352A] focus:ring-1 focus:ring-[#4B352A]"
                 }`}
-                placeholder="email@example.com"
+                placeholder="email@example.com or phone"
                 {...register("email", {
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email address"
+                  required: "Email or Phone is required",
+                  validate: (value) => {
+                    const isEmail = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value);
+                    const isPhone = /^[+]?[0-9\s-]{7,15}$/.test(value);
+                    return isEmail || isPhone || "Invalid email or phone number";
                   }
                 })}
               />

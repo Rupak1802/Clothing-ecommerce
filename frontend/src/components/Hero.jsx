@@ -10,7 +10,7 @@ export default function Hero({ onExploreClick }) {
   const opacityText = useTransform(scrollY, [0, 300], [1, 0]);
   const scaleImg = useTransform(scrollY, [0, 800], [1.02, 1.12]);
 
-  const titleWords = "The Art of Effortless Form".split(" ");
+  const titleWords = "Wear Your Story".split(" ");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -48,8 +48,8 @@ export default function Hero({ onExploreClick }) {
       >
         <div className="absolute inset-0 bg-black/15 z-10" />
         <img
-          src="/background.png"
-          alt="AURA high-fashion collection showcase"
+          src="/hero-image.png"
+          alt="THUKIL high-fashion collection showcase"
           className="h-full w-full object-cover object-center"
         />
       </motion.div>
@@ -68,11 +68,11 @@ export default function Hero({ onExploreClick }) {
             variants={wordVariants}
             className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-1.5"
           >
-            <span className="font-accent text-xl leading-none text-[#ff2a74] font-bold">
-              New Drop
+            <span className="font-accent text-xl leading-none text-[#4B352A] font-bold">
+              THUKIL
             </span>
             <span className="text-[10px] uppercase tracking-widest text-white/90">
-              - Editorial Vol. II
+              - Rooted In Tamil
             </span>
           </motion.div>
 
@@ -94,7 +94,7 @@ export default function Hero({ onExploreClick }) {
             variants={wordVariants}
             className="mb-8 max-w-lg text-sm sm:text-base text-white/80 font-light tracking-wide leading-relaxed"
           >
-            Sculptural silhouettes, sustainable textiles, and fluid tailored forms designed for the conscious modern minimal life.
+            Premium streetwear that blends Tamil heritage with modern design. Made for everyday, crafted to last.
           </motion.p>
 
           <motion.div variants={wordVariants}>
@@ -103,8 +103,8 @@ export default function Hero({ onExploreClick }) {
               whileHover={{ 
                 scale: 1.03,
                 borderRadius: "24px",
-                backgroundColor: "#ff2a74",
-                borderColor: "#ff2a74"
+                backgroundColor: "#7C7960",
+                borderColor: "#7C7960"
               }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 300, damping: 20 }}

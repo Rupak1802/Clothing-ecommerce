@@ -404,15 +404,15 @@ export default function CheckoutPage() {
               <div className="border-t border-[#6F4E37]/10 pt-4 mt-6 space-y-2 text-xs">
                 <div className="flex justify-between text-[#6D6D6D]">
                   <span>Subtotal</span>
-                  <span>${cartTotal}</span>
+                  <span>₹{cartTotal}</span>
                 </div>
                 <div className="flex justify-between text-[#6D6D6D]">
                   <span>Shipping</span>
-                  <span>{shippingFee === 0 ? "Complimentary" : `$${shippingFee}`}</span>
+                  <span>{shippingFee === 0 ? "Complimentary" : `₹${shippingFee}`}</span>
                 </div>
                 <div className="flex justify-between text-[#111111] font-semibold text-sm border-t border-black/5 pt-2 mt-2">
                   <span>Total Amount</span>
-                  <span className="text-[#4B352A]">${totalAmount}</span>
+                  <span className="text-[#4B352A]">₹{totalAmount}</span>
                 </div>
               </div>
             </div>

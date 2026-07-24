@@ -62,7 +62,7 @@ export default function Dashboard() {
     { label: "Total Products", value: stats.products, icon: ShoppingBag, color: "text-[#6F4E37] bg-[#6F4E37]/10" },
     { label: "Total Orders", value: stats.orders, icon: ListOrdered, color: "text-[#556B2F] bg-[#556B2F]/10" },
     { label: "Total Customers", value: stats.customers, icon: Users, color: "text-[#4B352A] bg-[#4B352A]/10" },
-    { label: "Total Revenue", value: `$${stats.revenue}`, icon: DollarSign, color: "text-[#7A8F52] bg-[#7A8F52]/10" }
+    { label: "Total Revenue", value: `₹${stats.revenue}`, icon: DollarSign, color: "text-[#7A8F52] bg-[#7A8F52]/10" }
   ];
 
   return (
@@ -152,7 +152,7 @@ export default function Dashboard() {
                       <tr key={o.id} className="border-b border-black/5 last:border-0 hover:bg-[#F5F1E8]/20">
                         <td className="py-3 font-semibold text-[#4B352A] uppercase">{o.id}</td>
                         <td className="py-3 font-light text-[#6D6D6D]">{o.shippingAddress?.fullName}</td>
-                        <td className="py-3 font-semibold text-[#111111]">${o.total}</td>
+                        <td className="py-3 font-semibold text-[#111111]">₹{o.total}</td>
                         <td className="py-3">
                           <span className={`px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wide border ${getStatusBadge(o.status)}`}>
                             {o.status}
@@ -177,7 +177,7 @@ export default function Dashboard() {
           <div className="space-y-4">
             <div className="flex items-center justify-between pb-3 border-b border-black/5">
               <div>
-                <h4 className="text-xs font-semibold text-[#111111]">AURA Trench Coat</h4>
+                <h4 className="text-xs font-semibold text-[#111111]">THUKIL Trench Coat</h4>
                 <p className="text-[9px] text-[#6D6D6D] uppercase tracking-wider font-light mt-0.5">Size: XS | Oatmeal</p>
               </div>
               <span className="px-2 py-0.5 bg-red-100 text-red-800 border border-red-200 rounded text-[9px] font-bold">

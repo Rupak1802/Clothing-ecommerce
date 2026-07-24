@@ -22,4 +22,72 @@ const getProductById = async (req, res) => {
   }
 };
 
-module.exports = { getProducts, getProductById };
+// @desc    Create a product
+// @route   POST /api/products
+// @access  Private/Admin
+const createProduct = async (req, res) => {
+  const { name, price, description, image, images, brand, category, countInStock, colors, sizes, collectionName, badge } = req.body;
+
+  const product = new Product({
+    name: name || 'Sample name',
+    price: price || 0,
+    user: req.user._id,
+    image: image || '/images/sample.jpg',
+    images: images || [],
+    brand: brand || 'THUKIL',
+    category: category || 'Sample category',
+    countInStock: countInStock || 0,
+    numReviews: 0,
+    description: description || 'Sample description',
+    colors: colors || [],
+    sizes: sizes || [],
+    collectionName: collectionName || '',
+    badge: badge || ''
+  });
+
+  const createdProduct = await product.save();
+  res.status(201).json(createdProduct);
+};
+
+// @desc    Update a product
+// @route   PUT /api/products/:id
+// @access  Private/Admin
+const updateProduct = async (req, res) => {
+  const { name, price, description, image, images, brand, category, countInStock } = req.body;
+
+  const product = await Product.findById(req.params.id);
+
+  if (product) {
+    product.name = name;
+    product.price = price;
+    product.description = description;
+    product.image = image;
+    product.images = images;
+    product.brand = brand;
+    product.category = category;
+    product.countInStock = countInStock;
+
+    const updatedProduct = await product.save();
+    res.json(updatedProduct);
+  } else {
+    res.status(404);
+    throw new Error('Product not found');
+  }
+};
+
+// @desc    Delete a product
+// @route   DELETE /api/products/:id
+// @access  Private/Admin
+const deleteProduct = async (req, res) => {
+  const product = await Product.findById(req.params.id);
+
+  if (product) {
+    await Product.deleteOne({ _id: product._id });
+    res.json({ message: 'Product removed' });
+  } else {
+    res.status(404);
+    throw new Error('Product not found');
+  }
+};
+
+module.exports = { getProducts, getProductById, createProduct, updateProduct, deleteProduct };

@@ -1,10 +1,11 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { PRODUCTS } from "../data/products";
+// removed api import
 import { useCart } from "../context/CartContext";
 
 // Components
+import { COLLECTIONS, PRODUCTS } from "../data/products";
 import Hero from "../components/Hero";
 import Collections from "../components/Collections";
 import ProductCard from "../components/ProductCard";
@@ -26,6 +27,9 @@ export default function Home() {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const productGridRef = useRef(null);
+  
+  const [products, setProducts] = useState(PRODUCTS);
+  const [loading, setLoading] = useState(false);
 
   // Sync query parameters with active filter
   useEffect(() => {
@@ -48,7 +52,7 @@ export default function Home() {
   };
 
   // Filter products
-  const filteredProducts = PRODUCTS.filter((product) => {
+  const filteredProducts = products.filter((product) => {
     const matchesSearch =
       product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       product.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -94,10 +98,8 @@ export default function Home() {
             </span>
             <h2 className="font-display text-3xl font-light uppercase tracking-wide text-[#111111]">
               {activeFilter === "all" && "All Products"}
-              {activeFilter === "tailoring" && "Minimalist Tailoring"}
-              {activeFilter === "lounge" && "Knitwear & Lounge"}
-              {activeFilter === "summer" && "Summer Editorial"}
               {activeFilter === "wishlist" && "My Wishlist"}
+              {activeFilter !== "all" && activeFilter !== "wishlist" && (COLLECTIONS.find(c => c.id === activeFilter)?.title || activeFilter)}
             </h2>
           </div>
 

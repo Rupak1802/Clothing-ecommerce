@@ -86,7 +86,7 @@ export default function AdminCustomers() {
                       </span>
                     </td>
                     <td className="py-3 font-semibold text-[#111111]">{c.ordersCount} orders</td>
-                    <td className="py-3 font-bold text-[#556B2F]">${c.totalSpend}</td>
+                    <td className="py-3 font-bold text-[#556B2F]">₹{c.totalSpend}</td>
                   </tr>
                 ))}
               </tbody>

@@ -40,7 +40,7 @@ export default function AdminLayout() {
       <aside className="hidden md:flex flex-col w-64 bg-[#4B352A] text-[#F5F1E8] border-r border-[#6F4E37]/20">
         <div className="h-20 flex items-center justify-center border-b border-[#6F4E37]/30 px-6">
           <span className="font-display text-2xl font-extrabold tracking-widest text-[#F5F1E8]">
-            AURA <span className="text-[#7A8F52] text-sm tracking-normal">admin</span>
+            THUKIL <span className="text-[#7A8F52] text-sm tracking-normal">admin</span>
           </span>
         </div>
 
@@ -87,7 +87,7 @@ export default function AdminLayout() {
         <aside className={`absolute top-0 bottom-0 left-0 w-64 bg-[#4B352A] text-[#F5F1E8] flex flex-col transition-transform duration-300 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
           <div className="h-20 flex items-center justify-between px-6 border-b border-[#6F4E37]/30">
             <span className="font-display text-2xl font-extrabold tracking-widest text-[#F5F1E8]">
-              AURA <span className="text-[#7A8F52] text-sm tracking-normal">admin</span>
+              THUKIL <span className="text-[#7A8F52] text-sm tracking-normal">admin</span>
             </span>
             <button onClick={() => setSidebarOpen(false)} className="text-[#F5F1E8] hover:opacity-80">
               <X size={22} />

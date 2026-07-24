@@ -44,7 +44,7 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-40 w-full border-b border-[#e5e4e7] bg-[#f9f6f0]/85 backdrop-blur-md transition-colors duration-300">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Mobile Menu Toggle */}
           <div className="flex lg:hidden">
             <button
@@ -81,9 +81,9 @@ export default function Navbar() {
             <Link
               to="/"
               onClick={() => setActiveFilter("all")}
-              className="font-display text-3xl font-extrabold tracking-tight text-[#111111] focus:outline-none hover:opacity-85 transition-opacity"
+              className="focus:outline-none hover:opacity-85 transition-opacity flex items-center"
             >
-              AURA<span className="font-accent text-lg font-normal lowercase tracking-normal text-[#6F4E37] ml-0.5">studio</span>
+              <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-10 w-auto object-contain invert mix-blend-multiply" />
             </Link>
           </div>
 
@@ -216,7 +216,7 @@ export default function Navbar() {
             >
               <div>
                 <div className="flex items-center justify-between pb-6 border-b border-[#e5e4e7]">
-                  <span className="font-display text-2xl font-bold tracking-tight">AURA</span>
+                  <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-12 w-auto object-contain invert mix-blend-multiply" />
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-2 text-[#111111] hover:opacity-75 focus:outline-none cursor-pointer"
@@ -329,7 +329,7 @@ export default function Navbar() {
               </div>
 
               <div className="border-t border-[#e5e4e7] pt-6 text-[10px] text-[#6b6375] tracking-widest uppercase">
-                &copy; 2026 AURA Studio. All rights reserved.
+                &copy; 2026 THUKIL. All rights reserved.
               </div>
             </motion.div>
           </>

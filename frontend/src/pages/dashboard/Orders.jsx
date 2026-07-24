@@ -94,7 +94,7 @@ export default function AdminOrders() {
                     <td className="py-3 font-semibold text-[#4B352A] uppercase">{o.id}</td>
                     <td className="py-3 font-light text-[#6D6D6D]">{o.date}</td>
                     <td className="py-3 font-medium text-[#111111]">{o.shippingAddress?.fullName}</td>
-                    <td className="py-3 font-semibold text-[#4B352A]">${o.total}</td>
+                    <td className="py-3 font-semibold text-[#4B352A]">₹{o.total}</td>
                     <td className="py-3">
                       {editingOrderId === o.id ? (
                         <select
@@ -191,7 +191,7 @@ export default function AdminOrders() {
                         <span className="font-medium text-[#111111]">{item.name}</span>
                         <span className="text-[10px] text-[#6D6D6D] ml-2">({item.size} / {item.color?.name || "Default"})</span>
                       </div>
-                      <span className="font-semibold text-[#4B352A]">x{item.quantity} - ${item.price * item.quantity}</span>
+                      <span className="font-semibold text-[#4B352A]">x{item.quantity} - ₹{item.price * item.quantity}</span>
                     </div>
                   ))}
                 </div>
@@ -199,7 +199,7 @@ export default function AdminOrders() {
 
               <div className="border-t border-black/5 pt-2 flex justify-between font-semibold text-[#111111]">
                 <span>Total Amount paid</span>
-                <span className="text-[#4B352A]">${selectedOrder.total}</span>
+                <span className="text-[#4B352A]">₹{selectedOrder.total}</span>
               </div>
             </div>
           </div>

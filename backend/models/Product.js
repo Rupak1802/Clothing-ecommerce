@@ -36,10 +36,18 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  collectionName: {
+    type: String,
+  },
   description: {
     type: String,
     required: true
   },
+  sizes: [String],
+  colors: [{
+    name: String,
+    hex: String
+  }],
   reviews: [reviewSchema],
   rating: {
     type: Number,

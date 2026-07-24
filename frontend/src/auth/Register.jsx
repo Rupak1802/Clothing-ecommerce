@@ -1,17 +1,23 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Eye, EyeOff, User, Mail, Phone, Lock, ArrowLeft } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { toast } from "react-toastify";
 
 export default function Register() {
-  const { register: registerUser } = useAuth();
+  const { register: registerUser, verifyOtp } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [otpStep, setOtpStep] = useState(false);
+  const [registeredEmail, setRegisteredEmail] = useState("");
+  const [otp, setOtp] = useState("");
+
+  const fromPath = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -36,10 +42,28 @@ export default function Register() {
     try {
       const { agreeTerms, confirmPassword, ...userData } = data;
       await registerUser(userData);
-      toast.success("Account created successfully! Please login.");
-      navigate("/login");
+      setRegisteredEmail(userData.email);
+      setOtpStep(true);
+      toast.success("OTP sent to your email!");
     } catch (err) {
       toast.error(err.message || "Registration failed.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const onVerifyOtp = async (e) => {
+    e.preventDefault();
+    if (!otp || otp.length < 6) {
+      return toast.error("Please enter a valid OTP");
+    }
+    setSubmitting(true);
+    try {
+      await verifyOtp(registeredEmail, otp);
+      toast.success("Account verified successfully! Welcome.");
+      navigate(fromPath, { replace: true });
+    } catch (err) {
+      toast.error(err.message || "OTP Verification failed.");
     } finally {
       setSubmitting(false);
     }
@@ -68,13 +92,15 @@ export default function Register() {
             AURA<span className="font-accent text-lg font-normal lowercase tracking-normal text-[#6F4E37] ml-0.5">studio</span>
           </span>
           <h2 className="mt-4 font-display text-xl font-light uppercase tracking-widest text-[#4B352A]">
-            Create Account
+            {otpStep ? "Verify Account" : "Create Account"}
           </h2>
           <p className="mt-2 text-xs font-light text-[#6D6D6D]">
-            Join Aura Studio for bespoke details and simple checkout
+            {otpStep ? `Enter the 6-digit code sent to ${registeredEmail}` : "Join THUKIL for bespoke details and simple checkout"}
           </p>
         </div>
 
+        {!otpStep ? (
+          <>
         <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
           {/* Full Name */}
           <div>
@@ -267,6 +293,44 @@ export default function Register() {
             </Link>
           </p>
         </div>
+        </>
+        ) : (
+          <form className="space-y-6" onSubmit={onVerifyOtp}>
+            <div>
+              <label className="block text-[10px] font-semibold uppercase tracking-wider text-[#4B352A] mb-2 text-center">
+                Enter OTP
+              </label>
+              <input
+                type="text"
+                className="block w-full px-4 py-3 text-center tracking-[0.5em] text-xl rounded-xl border border-[#6F4E37]/20 bg-[#F5F1E8]/30 focus:border-[#4B352A] outline-none transition-all"
+                placeholder="------"
+                maxLength={6}
+                value={otp}
+                onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
+              />
+            </div>
+            
+            <motion.button
+              whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.99 }}
+              type="submit"
+              disabled={submitting}
+              className="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-xl text-xs font-semibold uppercase tracking-widest text-white bg-[#4B352A] hover:bg-[#6F4E37] transition-colors focus:outline-none cursor-pointer shadow-md disabled:opacity-50"
+            >
+              {submitting ? "Verifying..." : "Verify & Login"}
+            </motion.button>
+
+            <div className="mt-6 text-center border-t border-[#6F4E37]/10 pt-4">
+              <button
+                type="button"
+                onClick={() => setOtpStep(false)}
+                className="text-xs font-bold uppercase tracking-wider text-[#6F4E37] hover:text-[#4B352A]"
+              >
+                Back to Registration
+              </button>
+            </div>
+          </form>
+        )}
       </motion.div>
     </div>
   );

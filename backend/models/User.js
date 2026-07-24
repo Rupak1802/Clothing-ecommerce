@@ -20,6 +20,15 @@ const userSchema = new mongoose.Schema({
     required: true,
     default: false
   },
+  phone: {
+    type: String,
+    required: false
+  },
+  isVerified: {
+    type: Boolean,
+    required: true,
+    default: false
+  },
   address: {
     street: String,
     city: String,

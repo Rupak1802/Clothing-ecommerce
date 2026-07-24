@@ -72,7 +72,7 @@ export default function AdminLogin() {
             <ShieldAlert size={26} />
           </div>
           <span className="font-display text-3xl font-extrabold tracking-tight text-[#111111]">
-            AURA<span className="font-accent text-lg font-normal lowercase tracking-normal text-[#556B2F] ml-0.5">admin</span>
+            THUKIL<span className="font-accent text-lg font-normal lowercase tracking-normal text-[#556B2F] ml-1">admin</span>
           </span>
           <h2 className="mt-4 font-display text-xl font-bold uppercase tracking-wider text-[#4B352A]">
             Admin Login

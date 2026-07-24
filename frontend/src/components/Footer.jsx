@@ -19,9 +19,9 @@ export default function Footer({ setActiveFilter }) {
           <div className="flex flex-col gap-4">
             <button
               onClick={() => setActiveFilter("all")}
-              className="text-left font-display text-2xl font-bold tracking-tight text-white hover:opacity-85 transition-opacity"
+              className="text-left hover:opacity-85 transition-opacity"
             >
-              AURA<span className="font-accent text-sm font-normal lowercase tracking-normal text-[#ff2a74] ml-0.5">studio</span>
+              <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-16 w-auto object-contain" />
             </button>
             <p className="text-xs font-light leading-relaxed text-white/50 max-w-xs">
               A design house creating timeless, sculptural silhouettes from ethically sourced, organic, and recycled fibers.
@@ -30,7 +30,7 @@ export default function Footer({ setActiveFilter }) {
 
           {/* Column 1: Shop */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#ff2a74] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#7C7960] mb-4">
               Shop Collections
             </h4>
             <ul className="flex flex-col gap-2.5 text-xs font-light text-white/60">
@@ -131,7 +131,7 @@ export default function Footer({ setActiveFilter }) {
         {/* Footer Bottom */}
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between text-[11px] text-white/40">
           <div>
-            &copy; {currentYear} AURA Studio. All designs protected. Crafted ethically.
+            &copy; {currentYear} THUKIL. All designs protected. Crafted ethically.
           </div>
 
           {/* Social Icons with spring physics */}
@@ -140,11 +140,11 @@ export default function Footer({ setActiveFilter }) {
               <motion.a
                 key={social.name}
                 href={social.href}
-                aria-label={`Follow AURA on ${social.name}`}
-                whileHover={{ rotate: 12, scale: 1.15, color: "#ff2a74" }}
+                aria-label={`Follow THUKIL on ${social.name}`}
+                whileHover={{ rotate: 12, scale: 1.15, color: "#7C7960" }}
                 whileTap={{ scale: 0.9 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:border-[#ff2a74]/30 transition-colors text-white/80 focus:outline-none focus:ring-1 focus:ring-[#ff2a74]"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/5 hover:border-[#7C7960]/30 transition-colors text-white/80 focus:outline-none focus:ring-1 focus:ring-[#7C7960]"
               >
                 {social.icon}
               </motion.a>

@@ -61,7 +61,7 @@ export default function Analytics() {
               return (
                 <div key={idx} className="flex-1 flex flex-col items-center gap-2 group h-full justify-end">
                   <div className="text-[9px] font-bold text-[#4B352A] opacity-0 group-hover:opacity-100 transition-opacity">
-                    ${m.sales}
+                    ₹{m.sales}
                   </div>
                   <div
                     style={{ height: `${heightPct * 0.75}%` }}

@@ -37,7 +37,7 @@ export default function OrdersPage() {
               My Orders
             </h1>
             <p className="text-xs text-[#6D6D6D] font-light mt-1">
-              Track and review your purchases at AURA Studio
+              Track and review your purchases at THUKIL
             </p>
           </div>
           <Link
@@ -88,7 +88,7 @@ export default function OrdersPage() {
                           {order.date}
                         </span>
                         <span>•</span>
-                        <span>Total: ${order.total}</span>
+                        <span>Total: ₹{order.total}</span>
                       </div>
                     </div>
                   </div>
