@@ -54,23 +54,23 @@ export default function AdminOrders() {
   return (
     <div className="space-y-6">
       {/* Top action header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#6F4E37]/10 shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-bg-secondary p-6 rounded-2xl border border-border/10 shadow-sm">
         <div>
-          <h2 className="font-display text-xl font-light uppercase tracking-wider text-[#4B352A]">
+          <h2 className="font-display text-xl font-light uppercase tracking-wider text-[var(--color-primary)]">
             Order Management
           </h2>
           <p className="text-xs text-[#6D6D6D] font-light mt-0.5">
             Track customer deliveries and update processing states
           </p>
         </div>
-        <div className="flex items-center gap-1.5 px-3.5 py-1.5 bg-[#4B352A]/10 border border-[#4B352A]/20 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#4B352A]">
+        <div className="flex items-center gap-1.5 px-3.5 py-1.5 bg-primary/10 border border-[var(--color-primary)]/20 rounded-full text-[10px] font-bold uppercase tracking-wider text-[var(--color-primary)]">
           <ListOrdered size={14} />
           Active Orders: {orders.length}
         </div>
       </div>
 
       {/* Orders List Table */}
-      <div className="bg-white rounded-2xl border border-[#6F4E37]/10 p-6 shadow-sm">
+      <div className="bg-bg-secondary rounded-2xl border border-border/10 p-6 shadow-sm">
         {orders.length === 0 ? (
           <p className="text-xs text-[#6D6D6D] font-light py-10 text-center">
             No orders have been submitted to the platform yet.
@@ -79,7 +79,7 @@ export default function AdminOrders() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="text-[10px] uppercase tracking-wider text-[#6D6D6D] border-b border-black/5">
+                <tr className="text-[10px] uppercase tracking-wider text-[#6D6D6D] border-b border-white/10">
                   <th className="py-3 font-semibold">Order ID</th>
                   <th className="py-3 font-semibold">Date</th>
                   <th className="py-3 font-semibold">Customer</th>
@@ -90,17 +90,17 @@ export default function AdminOrders() {
               </thead>
               <tbody>
                 {orders.map((o) => (
-                  <tr key={o.id} className="border-b border-black/5 last:border-0 hover:bg-[#F5F1E8]/20">
-                    <td className="py-3 font-semibold text-[#4B352A] uppercase">{o.id}</td>
+                  <tr key={o.id} className="border-b border-white/10 last:border-0 hover:bg-bg-dark/20">
+                    <td className="py-3 font-semibold text-[var(--color-primary)] uppercase">{o.id}</td>
                     <td className="py-3 font-light text-[#6D6D6D]">{o.date}</td>
-                    <td className="py-3 font-medium text-[#111111]">{o.shippingAddress?.fullName}</td>
-                    <td className="py-3 font-semibold text-[#4B352A]">₹{o.total}</td>
+                    <td className="py-3 font-medium text-text-light">{o.shippingAddress?.fullName}</td>
+                    <td className="py-3 font-semibold text-[var(--color-primary)]">₹{o.total}</td>
                     <td className="py-3">
                       {editingOrderId === o.id ? (
                         <select
                           value={statusVal}
                           onChange={(e) => setStatusVal(e.target.value)}
-                          className="border border-[#6F4E37]/30 rounded px-2 py-1 bg-white outline-none"
+                          className="border border-border/30 rounded px-2 py-1 bg-bg-secondary outline-none"
                         >
                           <option value="Processing">Processing</option>
                           <option value="Shipped">Shipped</option>
@@ -135,7 +135,7 @@ export default function AdminOrders() {
                         <>
                           <button
                             onClick={() => setSelectedOrder(o)}
-                            className="p-1.5 rounded-lg text-[#4B352A] hover:bg-[#4B352A]/10 inline-flex items-center cursor-pointer"
+                            className="p-1.5 rounded-lg text-[var(--color-primary)] hover:bg-primary/10 inline-flex items-center cursor-pointer"
                             title="Quick View"
                           >
                             <Eye size={14} />
@@ -161,7 +161,7 @@ export default function AdminOrders() {
       {/* Quick View Order Detail Modal */}
       {selectedOrder && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40">
-          <div className="bg-white rounded-2xl w-full max-w-md border border-[#6F4E37]/15 p-6 shadow-2xl relative text-[#111111]">
+          <div className="bg-bg-secondary rounded-2xl w-full max-w-md border border-border/15 p-6 shadow-2xl relative text-text-light">
             <button
               onClick={() => setSelectedOrder(null)}
               className="absolute top-4 right-4 text-[#6D6D6D] hover:opacity-85"
@@ -169,13 +169,13 @@ export default function AdminOrders() {
               <X size={20} />
             </button>
 
-            <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-[#4B352A] mb-4 border-b border-black/5 pb-2">
+            <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-4 border-b border-white/10 pb-2">
               Order Details: {selectedOrder.id}
             </h3>
 
             <div className="space-y-4 text-xs">
               <div>
-                <p className="font-semibold text-[#4B352A] uppercase text-[9px] tracking-wider mb-1">Shipping Target</p>
+                <p className="font-semibold text-[var(--color-primary)] uppercase text-[9px] tracking-wider mb-1">Shipping Target</p>
                 <p className="text-[#6D6D6D] font-light">
                   {selectedOrder.shippingAddress?.fullName}<br />
                   {selectedOrder.shippingAddress?.address}, {selectedOrder.shippingAddress?.city}, {selectedOrder.shippingAddress?.postalCode}, {selectedOrder.shippingAddress?.country}
@@ -183,23 +183,23 @@ export default function AdminOrders() {
               </div>
 
               <div>
-                <p className="font-semibold text-[#4B352A] uppercase text-[9px] tracking-wider mb-2">Order Items</p>
+                <p className="font-semibold text-[var(--color-primary)] uppercase text-[9px] tracking-wider mb-2">Order Items</p>
                 <div className="space-y-2 max-h-[150px] overflow-y-auto pr-1">
                   {selectedOrder.items.map((item, idx) => (
-                    <div key={idx} className="flex justify-between border-b border-black/5 pb-1">
+                    <div key={idx} className="flex justify-between border-b border-white/10 pb-1">
                       <div>
-                        <span className="font-medium text-[#111111]">{item.name}</span>
+                        <span className="font-medium text-text-light">{item.name}</span>
                         <span className="text-[10px] text-[#6D6D6D] ml-2">({item.size} / {item.color?.name || "Default"})</span>
                       </div>
-                      <span className="font-semibold text-[#4B352A]">x{item.quantity} - ₹{item.price * item.quantity}</span>
+                      <span className="font-semibold text-[var(--color-primary)]">x{item.quantity} - ₹{item.price * item.quantity}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="border-t border-black/5 pt-2 flex justify-between font-semibold text-[#111111]">
+              <div className="border-t border-white/10 pt-2 flex justify-between font-semibold text-text-light">
                 <span>Total Amount paid</span>
-                <span className="text-[#4B352A]">₹{selectedOrder.total}</span>
+                <span className="text-[var(--color-primary)]">₹{selectedOrder.total}</span>
               </div>
             </div>
           </div>

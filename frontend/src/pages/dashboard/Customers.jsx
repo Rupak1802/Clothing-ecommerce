@@ -29,9 +29,9 @@ export default function AdminCustomers() {
   return (
     <div className="space-y-6">
       {/* Action Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#6F4E37]/10 shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-bg-secondary p-6 rounded-2xl border border-border/10 shadow-sm">
         <div>
-          <h2 className="font-display text-xl font-light uppercase tracking-wider text-[#4B352A]">
+          <h2 className="font-display text-xl font-light uppercase tracking-wider text-[var(--color-primary)]">
             Customers Directory
           </h2>
           <p className="text-xs text-[#6D6D6D] font-light mt-0.5">
@@ -45,7 +45,7 @@ export default function AdminCustomers() {
       </div>
 
       {/* Directory Table */}
-      <div className="bg-white rounded-2xl border border-[#6F4E37]/10 p-6 shadow-sm">
+      <div className="bg-bg-secondary rounded-2xl border border-border/10 p-6 shadow-sm">
         {customers.length === 0 ? (
           <p className="text-xs text-[#6D6D6D] font-light py-10 text-center">
             No customer accounts registered in the database yet.
@@ -54,7 +54,7 @@ export default function AdminCustomers() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs border-collapse">
               <thead>
-                <tr className="text-[10px] uppercase tracking-wider text-[#6D6D6D] border-b border-black/5">
+                <tr className="text-[10px] uppercase tracking-wider text-[#6D6D6D] border-b border-white/10">
                   <th className="py-3 font-semibold">Name</th>
                   <th className="py-3 font-semibold">Email</th>
                   <th className="py-3 font-semibold">Phone</th>
@@ -64,10 +64,10 @@ export default function AdminCustomers() {
               </thead>
               <tbody>
                 {customers.map((c, idx) => (
-                  <tr key={idx} className="border-b border-black/5 last:border-0 hover:bg-[#F5F1E8]/20">
-                    <td className="py-3 font-semibold text-[#4B352A]">
+                  <tr key={idx} className="border-b border-white/10 last:border-0 hover:bg-bg-dark/20">
+                    <td className="py-3 font-semibold text-[var(--color-primary)]">
                       <div className="flex items-center gap-2">
-                        <div className="h-7 w-7 rounded-full bg-[#6F4E37]/10 text-[#4B352A] flex items-center justify-center font-bold text-xs uppercase">
+                        <div className="h-7 w-7 rounded-full bg-[var(--color-border)]/10 text-[var(--color-primary)] flex items-center justify-center font-bold text-xs uppercase">
                           {c.fullName[0]}
                         </div>
                         {c.fullName}
@@ -85,7 +85,7 @@ export default function AdminCustomers() {
                         {c.phone || "N/A"}
                       </span>
                     </td>
-                    <td className="py-3 font-semibold text-[#111111]">{c.ordersCount} orders</td>
+                    <td className="py-3 font-semibold text-text-light">{c.ordersCount} orders</td>
                     <td className="py-3 font-bold text-[#556B2F]">₹{c.totalSpend}</td>
                   </tr>
                 ))}

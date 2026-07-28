@@ -51,19 +51,19 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F1E8] py-12 px-4 sm:px-6 lg:px-8 text-[#111111]">
+    <div className="min-h-screen bg-bg-dark py-12 px-4 sm:px-6 lg:px-8 text-text-light">
       <div className="max-w-3xl mx-auto">
-        <h1 className="font-display text-3xl font-light uppercase tracking-widest text-[#4B352A] mb-8">
+        <h1 className="font-display text-3xl font-light uppercase tracking-widest text-[var(--color-primary)] mb-8">
           Account Profile
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Sidebar brief details */}
-          <div className="md:col-span-4 bg-white rounded-2xl p-6 border border-[#6F4E37]/10 text-center shadow-md">
-            <div className="mx-auto h-20 w-20 rounded-full bg-[#4B352A] text-[#F5F1E8] flex items-center justify-center font-display text-3xl uppercase tracking-wider font-extrabold mb-4 shadow-inner">
+          <div className="md:col-span-4 bg-bg-secondary rounded-2xl p-6 border border-border/10 text-center shadow-md">
+            <div className="mx-auto h-20 w-20 rounded-full bg-primary text-[var(--color-bg-dark)] flex items-center justify-center font-display text-3xl uppercase tracking-wider font-extrabold mb-4 shadow-inner">
               {currentUser?.fullName?.[0] || "U"}
             </div>
-            <h3 className="font-semibold text-base text-[#111111]">{currentUser?.fullName}</h3>
+            <h3 className="font-semibold text-base text-text-light">{currentUser?.fullName}</h3>
             <p className="text-xs text-[#6D6D6D] font-light mt-0.5">{currentUser?.email}</p>
             <div className="mt-4 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#556B2F]/10 border border-[#556B2F]/20 text-[#556B2F] text-[9px] font-bold uppercase tracking-wider">
               <ShieldCheck size={12} />
@@ -72,12 +72,12 @@ export default function ProfilePage() {
           </div>
 
           {/* Edit Form */}
-          <div className="md:col-span-8 bg-white rounded-2xl p-6 md:p-8 border border-[#6F4E37]/10 shadow-md">
+          <div className="md:col-span-8 bg-bg-secondary rounded-2xl p-6 md:p-8 border border-border/10 shadow-md">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 {/* Full Name */}
                 <div>
-                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1.5">
+                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1.5">
                     Full Name
                   </label>
                   <div className="relative">
@@ -86,7 +86,7 @@ export default function ProfilePage() {
                     </span>
                     <input
                       type="text"
-                      className="block w-full pl-9 pr-4 py-2.5 border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl bg-[#F5F1E8]/20 outline-none text-xs"
+                      className="block w-full pl-9 pr-4 py-2.5 border border-border/20 focus:border-[var(--color-primary)] rounded-xl bg-bg-dark/20 outline-none text-xs"
                       {...register("fullName", { required: "Name is required" })}
                     />
                   </div>
@@ -97,7 +97,7 @@ export default function ProfilePage() {
 
                 {/* Phone */}
                 <div>
-                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1.5">
+                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1.5">
                     Phone Number
                   </label>
                   <div className="relative">
@@ -106,7 +106,7 @@ export default function ProfilePage() {
                     </span>
                     <input
                       type="tel"
-                      className="block w-full pl-9 pr-4 py-2.5 border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl bg-[#F5F1E8]/20 outline-none text-xs"
+                      className="block w-full pl-9 pr-4 py-2.5 border border-border/20 focus:border-[var(--color-primary)] rounded-xl bg-bg-dark/20 outline-none text-xs"
                       {...register("phone", {
                         required: "Phone is required",
                         pattern: { value: /^[+]?[0-9\s-]{7,15}$/, message: "Invalid phone format" }
@@ -121,7 +121,7 @@ export default function ProfilePage() {
 
               {/* Email (Readonly) */}
               <div>
-                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1.5">
+                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1.5">
                   Email Address (Not editable)
                 </label>
                 <div className="relative">
@@ -131,21 +131,21 @@ export default function ProfilePage() {
                   <input
                     type="text"
                     disabled
-                    className="block w-full pl-9 pr-4 py-2.5 border border-[#6F4E37]/10 rounded-xl bg-[#F5F1E8]/50 text-xs text-[#6D6D6D] cursor-not-allowed outline-none"
+                    className="block w-full pl-9 pr-4 py-2.5 border border-border/10 rounded-xl bg-bg-dark/50 text-xs text-[#6D6D6D] cursor-not-allowed outline-none"
                     value={currentUser?.email}
                   />
                 </div>
               </div>
 
-              <div className="border-t border-[#6F4E37]/10 pt-6">
-                <h4 className="font-display text-xs font-semibold uppercase tracking-wider text-[#4B352A] mb-4">
+              <div className="border-t border-border/10 pt-6">
+                <h4 className="font-display text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-4">
                   Change Password (Leave blank to keep current)
                 </h4>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* New Password */}
                   <div>
-                    <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1.5">
+                    <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1.5">
                       New Password
                     </label>
                     <div className="relative">
@@ -155,7 +155,7 @@ export default function ProfilePage() {
                       <input
                         type="password"
                         placeholder="••••••"
-                        className="block w-full pl-9 pr-4 py-2.5 border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl bg-[#F5F1E8]/20 outline-none text-xs"
+                        className="block w-full pl-9 pr-4 py-2.5 border border-border/20 focus:border-[var(--color-primary)] rounded-xl bg-bg-dark/20 outline-none text-xs"
                         {...register("password", {
                           minLength: { value: 6, message: "Must be min. 6 characters" }
                         })}
@@ -168,7 +168,7 @@ export default function ProfilePage() {
 
                   {/* Confirm Password */}
                   <div>
-                    <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1.5">
+                    <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1.5">
                       Confirm New Password
                     </label>
                     <div className="relative">
@@ -178,7 +178,7 @@ export default function ProfilePage() {
                       <input
                         type="password"
                         placeholder="••••••"
-                        className="block w-full pl-9 pr-4 py-2.5 border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl bg-[#F5F1E8]/20 outline-none text-xs"
+                        className="block w-full pl-9 pr-4 py-2.5 border border-border/20 focus:border-[var(--color-primary)] rounded-xl bg-bg-dark/20 outline-none text-xs"
                         {...register("confirmPassword", {
                           validate: (val) =>
                             !newPassword || val === newPassword || "Passwords do not match"
@@ -197,7 +197,7 @@ export default function ProfilePage() {
                 whileTap={{ scale: 0.99 }}
                 type="submit"
                 disabled={submitting}
-                className="w-full sm:w-auto px-6 py-3 bg-[#4B352A] hover:bg-[#6F4E37] text-white rounded-xl text-xs font-semibold uppercase tracking-widest transition-colors shadow-md disabled:opacity-50 cursor-pointer"
+                className="w-full sm:w-auto px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-xl text-xs font-semibold uppercase tracking-widest transition-colors shadow-md disabled:opacity-50 cursor-pointer"
               >
                 {submitting ? "Updating..." : "Save Changes"}
               </motion.button>

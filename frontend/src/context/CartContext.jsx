@@ -37,7 +37,7 @@ export function CartProvider({ children }) {
 
   const addToCart = (product, quantity = 1, size = "", color = null) => {
     const selectedSize = size || product.sizes[0] || "M";
-    const selectedColor = color || product.colors[0] || { name: "Default", hex: "#111111" };
+    const selectedColor = color || product.colors[0] || { name: "Default", hex: "var(--color-text-light)" };
 
     setCart((prevCart) => {
       const existingIdx = prevCart.findIndex(

@@ -43,13 +43,13 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-[#e5e4e7] bg-[#f9f6f0]/85 backdrop-blur-md transition-colors duration-300">
+      <header className="sticky top-0 z-40 w-full border-b border-border bg-bg-dark/95 backdrop-blur-md transition-colors duration-300">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Mobile Menu Toggle */}
           <div className="flex lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 text-[#111111] hover:opacity-75 transition-opacity focus:outline-none cursor-pointer"
+              className="p-2 text-text-light hover:opacity-75 transition-opacity focus:outline-none cursor-pointer"
               aria-label="Open menu"
             >
               <Menu size={24} />
@@ -62,13 +62,13 @@ export default function Navbar() {
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className="relative py-2 text-xs font-semibold uppercase tracking-widest text-[#111111] hover:text-[#6F4E37] transition-colors cursor-pointer"
+                className="relative py-2 text-xs font-semibold uppercase tracking-widest text-text-primary hover:text-primary transition-colors cursor-pointer"
               >
                 {link.label}
                 {location.pathname === "/" && activeFilter === link.id && (
                   <motion.div
                     layoutId="activeNavLine"
-                    className="absolute bottom-0 left-0 h-[2px] w-full bg-[#6F4E37]"
+                    className="absolute bottom-0 left-0 h-[2px] w-full bg-primary"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -83,33 +83,23 @@ export default function Navbar() {
               onClick={() => setActiveFilter("all")}
               className="focus:outline-none hover:opacity-85 transition-opacity flex items-center"
             >
-              <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-10 w-auto object-contain invert mix-blend-multiply" />
+              <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-10 w-auto object-contain invert brightness-150" />
             </Link>
           </div>
 
           {/* Icons & Action Links - Right */}
-          <div className="flex items-center gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider text-[#111111] lg:flex-1 lg:justify-end">
+          <div className="flex items-center gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider text-text-light lg:flex-1 lg:justify-end">
             {/* Pages: About & Contact (Desktop) */}
             <div className="hidden lg:flex items-center gap-5 mr-2">
-              <Link to="/about" className="hover:text-[#6F4E37] transition-colors">About</Link>
-              <Link to="/contact" className="hover:text-[#6F4E37] transition-colors">Contact</Link>
+              <Link to="/about" className="hover:text-[var(--color-border)] transition-colors">About</Link>
+              <Link to="/contact" className="hover:text-[var(--color-border)] transition-colors">Contact</Link>
             </div>
 
             {/* User Info & Nav Links (Desktop) */}
             <div className="hidden lg:flex items-center gap-4">
-              {!isAuthenticated ? (
+              {!isAuthenticated ? null : role === "admin" ? (
                 <>
-                  <Link to="/login" className="hover:text-[#6F4E37] transition-colors">Login</Link>
-                  <Link
-                    to="/register"
-                    className="rounded-lg bg-[#4B352A] hover:bg-[#6F4E37] text-white px-3 py-1.5 transition-colors"
-                  >
-                    Register
-                  </Link>
-                </>
-              ) : role === "admin" ? (
-                <>
-                  <Link to="/admin/dashboard" className="flex items-center gap-1 hover:text-[#6F4E37] text-[#556B2F]">
+                  <Link to="/admin/dashboard" className="flex items-center gap-1 hover:text-[var(--color-border)] text-[#556B2F]">
                     <LayoutDashboard size={14} />
                     Admin
                   </Link>
@@ -119,8 +109,8 @@ export default function Navbar() {
                 </>
               ) : (
                 <>
-                  <Link to="/profile" className="hover:text-[#6F4E37] transition-colors">Profile</Link>
-                  <Link to="/orders" className="hover:text-[#6F4E37] transition-colors">Orders</Link>
+                  <Link to="/profile" className="hover:text-[var(--color-border)] transition-colors">Profile</Link>
+                  <Link to="/orders" className="hover:text-[var(--color-border)] transition-colors">Orders</Link>
                   <button onClick={handleLogout} className="hover:text-red-700 cursor-pointer">
                     Logout
                   </button>
@@ -134,7 +124,7 @@ export default function Navbar() {
             {/* Search */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2 text-[#111111] hover:text-[#6F4E37] transition-colors focus:outline-none cursor-pointer"
+              className="p-2 text-text-light hover:text-[var(--color-border)] transition-colors focus:outline-none cursor-pointer"
               aria-label="Search"
             >
               <Search size={20} />
@@ -145,7 +135,7 @@ export default function Navbar() {
               <Link
                 to="/wishlist"
                 className={`relative p-2 transition-colors focus:outline-none ${
-                  location.pathname === "/wishlist" ? "text-[#6F4E37]" : "text-[#111111] hover:text-[#6F4E37]"
+                  location.pathname === "/wishlist" ? "text-primary" : "text-text-primary hover:text-primary"
                 }`}
                 aria-label="Wishlist"
               >
@@ -156,7 +146,7 @@ export default function Navbar() {
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       exit={{ scale: 0 }}
-                      className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#6F4E37] text-[10px] font-bold text-white shadow-sm"
+                      className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-bg-dark shadow-sm"
                     >
                       {wishlist.length}
                     </motion.span>
@@ -169,7 +159,7 @@ export default function Navbar() {
             {role !== "admin" && (
               <button
                 onClick={() => setCartOpen(true)}
-                className="relative p-2 text-[#111111] hover:text-[#6F4E37] transition-colors focus:outline-none cursor-pointer"
+                className="relative p-2 text-text-primary hover:text-primary transition-colors focus:outline-none cursor-pointer"
                 aria-label="Open cart"
               >
                 <ShoppingBag size={20} />
@@ -181,7 +171,7 @@ export default function Navbar() {
                       animate={{ scale: [1.3, 1], y: 0 }}
                       exit={{ scale: 0 }}
                       transition={{ type: "spring", stiffness: 500, damping: 15 }}
-                      className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#111111] text-[10px] font-bold text-white shadow-sm"
+                      className="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-bg-dark shadow-sm"
                     >
                       {cartItemsCount}
                     </motion.span>
@@ -203,7 +193,7 @@ export default function Navbar() {
               animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 z-50 bg-[#111111]"
+              className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"
             />
 
             {/* Drawer menu */}
@@ -212,14 +202,14 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 220 }}
-              className="fixed bottom-0 top-0 left-0 z-50 w-full max-w-xs bg-[#f9f6f0] p-6 shadow-2xl flex flex-col justify-between"
+              className="fixed bottom-0 top-0 left-0 z-50 w-full max-w-xs bg-bg-secondary p-6 shadow-2xl flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between pb-6 border-b border-[#e5e4e7]">
-                  <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-12 w-auto object-contain invert mix-blend-multiply" />
+                <div className="flex items-center justify-between pb-6 border-b border-border">
+                  <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-12 w-auto object-contain invert brightness-150" />
                   <button
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-2 text-[#111111] hover:opacity-75 focus:outline-none cursor-pointer"
+                    className="p-2 text-text-light hover:opacity-75 focus:outline-none cursor-pointer"
                   >
                     <X size={24} />
                   </button>
@@ -233,9 +223,9 @@ export default function Navbar() {
                         handleNavClick(link.id);
                         setMobileMenuOpen(false);
                       }}
-                      className="flex items-center justify-between text-left text-sm py-2 border-b border-transparent hover:border-[#6F4E37] transition-all cursor-pointer text-[#111111]"
+                      className="flex items-center justify-between text-left text-sm py-2 border-b border-transparent hover:border-border transition-all cursor-pointer text-text-primary"
                     >
-                      <span className={activeFilter === link.id ? "text-[#6F4E37]" : ""}>
+                      <span className={activeFilter === link.id ? "text-primary" : ""}>
                         {link.label}
                       </span>
                       <ArrowRight size={16} className="opacity-40" />
@@ -245,7 +235,7 @@ export default function Navbar() {
                   <Link
                     to="/about"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between py-2 text-sm text-[#111111]"
+                    className="flex items-center justify-between py-2 text-sm text-text-light"
                   >
                     About Us
                     <ArrowRight size={16} className="opacity-40" />
@@ -254,31 +244,14 @@ export default function Navbar() {
                   <Link
                     to="/contact"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between py-2 text-sm text-[#111111]"
+                    className="flex items-center justify-between py-2 text-sm text-text-light"
                   >
                     Contact
                     <ArrowRight size={16} className="opacity-40" />
                   </Link>
 
-                  <div className="border-t border-[#e5e4e7] pt-4 mt-2 space-y-4">
-                    {!isAuthenticated ? (
-                      <>
-                        <Link
-                          to="/login"
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="block text-center py-2.5 rounded-xl border border-[#4B352A] text-[#4B352A] hover:bg-[#F5F1E8]"
-                        >
-                          Login
-                        </Link>
-                        <Link
-                          to="/register"
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="block text-center py-2.5 rounded-xl bg-[#4B352A] text-white hover:bg-[#6F4E37]"
-                        >
-                          Register
-                        </Link>
-                      </>
-                    ) : role === "admin" ? (
+                  <div className="border-t border-border pt-4 mt-2 space-y-4">
+                    {!isAuthenticated ? null : role === "admin" ? (
                       <>
                         <Link
                           to="/admin/dashboard"
@@ -292,7 +265,7 @@ export default function Navbar() {
                             setMobileMenuOpen(false);
                             handleLogout();
                           }}
-                          className="w-full text-center py-2.5 text-[#6D6D6D] border border-black/10 rounded-xl cursor-pointer"
+                          className="w-full text-center py-2.5 text-[#6D6D6D] border border-white/10 rounded-xl cursor-pointer"
                         >
                           Logout
                         </button>
@@ -302,14 +275,14 @@ export default function Navbar() {
                         <Link
                           to="/profile"
                           onClick={() => setMobileMenuOpen(false)}
-                          className="block text-center py-2 text-sm text-[#111111]"
+                          className="block text-center py-2 text-sm text-text-light"
                         >
                           My Profile
                         </Link>
                         <Link
                           to="/orders"
                           onClick={() => setMobileMenuOpen(false)}
-                          className="block text-center py-2 text-sm text-[#111111]"
+                          className="block text-center py-2 text-sm text-text-light"
                         >
                           My Orders
                         </Link>
@@ -328,7 +301,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div className="border-t border-[#e5e4e7] pt-6 text-[10px] text-[#6b6375] tracking-widest uppercase">
+              <div className="border-t border-border pt-6 text-[10px] text-text-muted tracking-widest uppercase">
                 &copy; 2026 THUKIL. All rights reserved.
               </div>
             </motion.div>

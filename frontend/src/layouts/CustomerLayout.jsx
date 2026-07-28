@@ -54,7 +54,7 @@ export default function CustomerLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f9f6f0] text-[#111111] antialiased flex flex-col justify-between">
+    <div className="min-h-screen bg-bg-dark text-text-primary antialiased flex flex-col justify-between">
       <div>
         <Navbar
           cartCount={cartItemsCount}
@@ -106,7 +106,7 @@ export default function CustomerLayout() {
               animate={{ opacity: 0.4 }}
               exit={{ opacity: 0 }}
               onClick={() => setSearchOpen(false)}
-              className="absolute inset-0 bg-[#111111]"
+              className="absolute inset-0 bg-[var(--color-text-light)]"
             />
 
             {/* Panel */}
@@ -115,19 +115,19 @@ export default function CustomerLayout() {
               animate={{ y: 0 }}
               exit={{ y: "-100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 220 }}
-              className="relative z-10 w-full bg-[#f9f6f0] border-b border-[#e5e4e7] py-8 px-4 sm:px-6 lg:px-8 shadow-2xl"
+              className="relative z-10 w-full bg-bg-secondary border-b border-border py-8 px-4 sm:px-6 lg:px-8 shadow-2xl"
             >
               <div className="mx-auto max-w-3xl">
-                <div className="flex items-center justify-between pb-4 border-b border-[#111111]">
+                <div className="flex items-center justify-between pb-4 border-b border-[var(--color-text-light)]">
                   <div className="flex items-center gap-3 flex-1">
-                    <Search size={22} className="text-[#6b6375]" />
+                    <Search size={22} className="text-text-muted" />
                     <input
                       ref={searchInputRef}
                       type="text"
                       value={searchQuery}
                       onChange={handleSearchChange}
                       placeholder="Search pants, dresses, tailoring, keywords..."
-                      className="w-full text-lg sm:text-xl font-light placeholder-black/30 border-none bg-transparent outline-none focus:ring-0 text-[#111111]"
+                      className="w-full text-lg sm:text-xl font-light placeholder-black/30 border-none bg-transparent outline-none focus:ring-0 text-text-light"
                     />
                   </div>
                   <button
@@ -135,7 +135,7 @@ export default function CustomerLayout() {
                       setSearchOpen(false);
                       setSearchQuery("");
                     }}
-                    className="p-2 text-[#111111] hover:opacity-75 focus:outline-none cursor-pointer"
+                    className="p-2 text-text-light hover:opacity-75 focus:outline-none cursor-pointer"
                   >
                     <X size={24} />
                   </button>
@@ -143,7 +143,7 @@ export default function CustomerLayout() {
 
                 {/* Suggestions */}
                 <div className="mt-4 flex flex-wrap gap-2 items-center text-xs">
-                  <span className="text-[#6b6375] font-semibold uppercase tracking-wider">Quick searches:</span>
+                  <span className="text-text-muted font-semibold uppercase tracking-wider">Quick searches:</span>
                   {["Trench", "Knit", "Silk", "Pants"].map((keyword) => (
                     <button
                       key={keyword}
@@ -153,7 +153,7 @@ export default function CustomerLayout() {
                           navigate("/");
                         }
                       }}
-                      className="px-3 py-1 rounded-full bg-white border border-[#e5e4e7] hover:border-[#ff2a74] transition-colors cursor-pointer text-[#111111]"
+                      className="px-3 py-1 rounded-full bg-bg-secondary border border-border hover:border-primary transition-colors cursor-pointer text-text-primary"
                     >
                       {keyword}
                     </button>

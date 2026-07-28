@@ -22,8 +22,8 @@ createRoot(document.getElementById("root")).render(
         pauseOnHover
         theme="light"
         toastStyle={{
-          backgroundColor: "#F5F1E8",
-          color: "#111111",
+          backgroundColor: "var(--color-bg-dark)",
+          color: "var(--color-text-light)",
           borderRadius: "12px",
           border: "1px solid rgba(111, 78, 55, 0.15)",
           fontSize: "12px",

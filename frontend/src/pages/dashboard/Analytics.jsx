@@ -13,7 +13,7 @@ export default function Analytics() {
   }, []);
 
   const collectionSales = [
-    { name: "Minimalist Tailoring", count: 48, pct: 60, color: "bg-[#6F4E37]" },
+    { name: "Minimalist Tailoring", count: 48, pct: 60, color: "bg-[var(--color-border)]" },
     { name: "Knitwear & Lounge", count: 24, pct: 30, color: "bg-[#556B2F]" },
     { name: "Summer Editorial", count: 8, pct: 10, color: "bg-[#7A8F52]" }
   ];
@@ -33,9 +33,9 @@ export default function Analytics() {
   return (
     <div className="space-y-6">
       {/* Action Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#6F4E37]/10 shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-bg-secondary p-6 rounded-2xl border border-border/10 shadow-sm">
         <div>
-          <h2 className="font-display text-xl font-light uppercase tracking-wider text-[#4B352A]">
+          <h2 className="font-display text-xl font-light uppercase tracking-wider text-[var(--color-primary)]">
             Sales Analytics
           </h2>
           <p className="text-xs text-[#6D6D6D] font-light mt-0.5">
@@ -50,8 +50,8 @@ export default function Analytics() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Sales Overview Bar Chart */}
-        <div className="lg:col-span-8 bg-white rounded-2xl border border-[#6F4E37]/10 p-6 shadow-sm">
-          <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-[#4B352A] pb-4 border-b border-black/5 mb-6">
+        <div className="lg:col-span-8 bg-bg-secondary rounded-2xl border border-border/10 p-6 shadow-sm">
+          <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-[var(--color-primary)] pb-4 border-b border-white/10 mb-6">
             Monthly Revenue Trends
           </h3>
 
@@ -60,12 +60,12 @@ export default function Analytics() {
               const heightPct = (m.sales / maxMonthSales) * 100;
               return (
                 <div key={idx} className="flex-1 flex flex-col items-center gap-2 group h-full justify-end">
-                  <div className="text-[9px] font-bold text-[#4B352A] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="text-[9px] font-bold text-[var(--color-primary)] opacity-0 group-hover:opacity-100 transition-opacity">
                     ₹{m.sales}
                   </div>
                   <div
                     style={{ height: `${heightPct * 0.75}%` }}
-                    className="w-full max-w-[36px] bg-[#6F4E37]/15 group-hover:bg-[#4B352A] rounded-t transition-all duration-300 relative"
+                    className="w-full max-w-[36px] bg-[var(--color-border)]/15 group-hover:bg-primary rounded-t transition-all duration-300 relative"
                   >
                     {idx === salesMonths.length - 1 && (
                       <div className="absolute top-0 left-0 right-0 h-1 bg-[#556B2F] rounded-t" />
@@ -79,20 +79,20 @@ export default function Analytics() {
         </div>
 
         {/* Collection Shares */}
-        <div className="lg:col-span-4 bg-white rounded-2xl border border-[#6F4E37]/10 p-6 shadow-sm flex flex-col justify-between">
+        <div className="lg:col-span-4 bg-bg-secondary rounded-2xl border border-border/10 p-6 shadow-sm flex flex-col justify-between">
           <div>
-            <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-[#4B352A] pb-4 border-b border-black/5 mb-6">
+            <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-[var(--color-primary)] pb-4 border-b border-white/10 mb-6">
               Collection Revenue Share
             </h3>
 
             <div className="space-y-4">
               {collectionSales.map((col, idx) => (
                 <div key={idx} className="space-y-1.5 text-xs">
-                  <div className="flex justify-between font-medium text-[#111111]">
+                  <div className="flex justify-between font-medium text-text-light">
                     <span>{col.name}</span>
-                    <span className="font-semibold text-[#4B352A]">{col.pct}%</span>
+                    <span className="font-semibold text-[var(--color-primary)]">{col.pct}%</span>
                   </div>
-                  <div className="w-full bg-[#F5F1E8] h-2 rounded-full overflow-hidden">
+                  <div className="w-full bg-bg-dark h-2 rounded-full overflow-hidden">
                     <div style={{ width: `${col.pct}%` }} className={`h-full ${col.color}`} />
                   </div>
                 </div>

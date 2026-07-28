@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { COLLECTIONS } from "../data/products";
+import { GlowCard } from "./ui/GlowCard";
 
 export default function Collections({ onSelectCollection }) {
   const containerVariants = {
@@ -28,16 +29,16 @@ export default function Collections({ onSelectCollection }) {
   return (
     <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
       {/* Section Title */}
-      <div className="mb-12 flex flex-col items-center justify-between border-b border-[#e5e4e7] pb-6 sm:flex-row">
+      <div className="mb-12 flex flex-col items-center justify-between border-b border-border pb-6 sm:flex-row">
         <div className="text-center sm:text-left">
-          <span className="font-accent text-3xl text-[#ff2a74] block mb-2 sm:inline-block sm:mr-3">
+          <span className="font-accent text-3xl text-primary block mb-2 sm:inline-block sm:mr-3">
             Selected Drops
           </span>
-          <h2 className="font-display text-3xl font-light tracking-tight sm:text-4xl text-[#111111] inline-block">
+          <h2 className="font-display text-3xl font-light tracking-tight sm:text-4xl text-text-light inline-block">
             Curated Collections
           </h2>
         </div>
-        <p className="mt-4 max-w-xs text-center text-xs tracking-wider text-[#6b6375] uppercase sm:mt-0 sm:text-right">
+        <p className="mt-4 max-w-xs text-center text-xs tracking-wider text-text-muted uppercase sm:mt-0 sm:text-right">
           Explore capsule wardrobes designed to layer seamlessly.
         </p>
       </div>
@@ -57,10 +58,15 @@ export default function Collections({ onSelectCollection }) {
             whileHover={{ y: -8 }}
             transition={{ duration: 0.3 }}
             onClick={() => onSelectCollection(collection.id)}
-            className="group relative cursor-pointer overflow-hidden rounded-2xl bg-white border border-[#e5e4e7] p-4 shadow-sm hover:shadow-xl transition-all duration-300"
+            className="group relative cursor-pointer h-full transition-all duration-300"
           >
+            <GlowCard 
+              customSize={true} 
+              glowColor="latte"
+              className="flex flex-col h-full w-full overflow-hidden p-4 hover:shadow-xl"
+            >
             {/* Image Container */}
-            <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-[#f5efe4]">
+            <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-bg-secondary">
               <img
                 src={collection.image}
                 alt={collection.title}
@@ -73,7 +79,7 @@ export default function Collections({ onSelectCollection }) {
                 <motion.div
                   initial={{ rotate: -5 }}
                   whileHover={{ rotate: 5, scale: 1.05 }}
-                  className="rounded-full bg-[#ff2a74] px-4 py-1 text-white shadow-md"
+                  className="rounded-full bg-primary px-4 py-1 text-bg-dark shadow-md"
                 >
                   <span className="font-accent text-lg font-bold leading-none select-none">
                     {collection.tag}
@@ -88,18 +94,19 @@ export default function Collections({ onSelectCollection }) {
             {/* Collection Metadata */}
             <div className="mt-6 flex flex-col justify-between">
               <div>
-                <h3 className="font-display text-xl font-medium text-[#111111] group-hover:text-[#ff2a74] transition-colors">
+                <h3 className="font-display text-xl font-medium text-text-primary group-hover:text-primary transition-colors">
                   {collection.title}
                 </h3>
-                <p className="mt-2 text-xs font-light leading-relaxed text-[#6b6375]">
+                <p className="mt-2 text-xs font-light leading-relaxed text-text-muted">
                   {collection.description}
                 </p>
               </div>
 
-              <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-[#111111] group-hover:underline">
+              <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-text-light group-hover:underline">
                 View Pieces &rarr;
               </div>
             </div>
+            </GlowCard>
           </motion.div>
         ))}
       </motion.div>

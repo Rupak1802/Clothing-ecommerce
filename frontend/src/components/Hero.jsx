@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { ShinyButton } from "./ui/ShinyButton";
 
 export default function Hero({ onExploreClick }) {
   const containerRef = useRef(null);
@@ -39,14 +40,14 @@ export default function Hero({ onExploreClick }) {
   return (
     <section
       ref={containerRef}
-      className="relative h-[85vh] w-full overflow-hidden bg-[#e9e4da] px-4 sm:px-6 lg:px-8"
+      className="relative h-[85vh] w-full overflow-hidden bg-bg-dark px-4 sm:px-6 lg:px-8"
     >
       {/* Background Image with Parallax */}
       <motion.div
         style={{ y: yBg, scale: scaleImg }}
         className="absolute inset-0 z-0 h-full w-full"
       >
-        <div className="absolute inset-0 bg-black/15 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/40 to-transparent z-10" />
         <img
           src="/hero-image.png"
           alt="THUKIL high-fashion collection showcase"
@@ -61,17 +62,17 @@ export default function Hero({ onExploreClick }) {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-2xl text-white"
+          className="max-w-2xl text-text-primary"
         >
           {/* Accent Badge */}
           <motion.div
             variants={wordVariants}
-            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm px-4 py-1.5"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-bg-secondary/10 backdrop-blur-sm px-4 py-1.5"
           >
-            <span className="font-accent text-xl leading-none text-[#4B352A] font-bold">
+            <span className="font-accent text-xl leading-none text-[var(--color-primary)] font-bold">
               THUKIL
             </span>
-            <span className="text-[10px] uppercase tracking-widest text-white/90">
+            <span className="text-[10px] uppercase tracking-widest text-text-primary/90">
               - Rooted In Tamil
             </span>
           </motion.div>
@@ -92,35 +93,15 @@ export default function Hero({ onExploreClick }) {
 
           <motion.p
             variants={wordVariants}
-            className="mb-8 max-w-lg text-sm sm:text-base text-white/80 font-light tracking-wide leading-relaxed"
+            className="mb-8 max-w-lg text-sm sm:text-base text-text-secondary font-light tracking-wide leading-relaxed"
           >
             Premium streetwear that blends Tamil heritage with modern design. Made for everyday, crafted to last.
           </motion.p>
 
           <motion.div variants={wordVariants}>
-            <motion.button
-              onClick={onExploreClick}
-              whileHover={{ 
-                scale: 1.03,
-                borderRadius: "24px",
-                backgroundColor: "#7C7960",
-                borderColor: "#7C7960"
-              }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="group flex items-center justify-center gap-3 border-2 border-white bg-transparent px-8 py-3.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors duration-200 cursor-pointer"
-            >
-              Explore Collection
-              <motion.span
-                className="inline-block"
-                variants={{
-                  hover: { x: 5 }
-                }}
-                whileHover="hover"
-              >
-                &rarr;
-              </motion.span>
-            </motion.button>
+            <ShinyButton onClick={onExploreClick}>
+              Explore Collection &rarr;
+            </ShinyButton>
           </motion.div>
         </motion.div>
       </div>
@@ -132,8 +113,8 @@ export default function Hero({ onExploreClick }) {
         transition={{ delay: 2, repeat: Infinity, duration: 1.5, repeatType: "reverse" }}
         className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1.5"
       >
-        <span className="text-[9px] uppercase tracking-widest text-white/60 font-semibold">Scroll</span>
-        <div className="h-6 w-[1px] bg-white/40" />
+        <span className="text-[9px] uppercase tracking-widest text-text-secondary font-semibold">Scroll</span>
+        <div className="h-6 w-[1px] bg-border" />
       </motion.div>
     </section>
   );

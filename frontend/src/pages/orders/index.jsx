@@ -29,11 +29,11 @@ export default function OrdersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F1E8] py-12 px-4 sm:px-6 lg:px-8 text-[#111111]">
+    <div className="min-h-screen bg-bg-dark py-12 px-4 sm:px-6 lg:px-8 text-text-light">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="font-display text-3xl font-light uppercase tracking-widest text-[#4B352A]">
+            <h1 className="font-display text-3xl font-light uppercase tracking-widest text-[var(--color-primary)]">
               My Orders
             </h1>
             <p className="text-xs text-[#6D6D6D] font-light mt-1">
@@ -42,7 +42,7 @@ export default function OrdersPage() {
           </div>
           <Link
             to="/"
-            className="self-start md:self-auto inline-flex items-center gap-2 rounded-xl bg-[#4B352A] hover:bg-[#6F4E37] px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-colors"
+            className="self-start md:self-auto inline-flex items-center gap-2 rounded-xl bg-primary hover:bg-primary/90 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-white shadow-sm transition-colors"
           >
             Continue Browsing
             <ArrowRight size={14} />
@@ -50,15 +50,15 @@ export default function OrdersPage() {
         </div>
 
         {orders.length === 0 ? (
-          <div className="text-center py-20 bg-white rounded-3xl border border-[#6F4E37]/10 p-8 shadow-sm">
-            <Package size={48} className="mx-auto text-[#6F4E37] opacity-60 mb-4" />
-            <h3 className="font-display text-lg font-medium text-[#111111]">No purchases recorded</h3>
+          <div className="text-center py-20 bg-bg-secondary rounded-3xl border border-border/10 p-8 shadow-sm">
+            <Package size={48} className="mx-auto text-[var(--color-border)] opacity-60 mb-4" />
+            <h3 className="font-display text-lg font-medium text-text-light">No purchases recorded</h3>
             <p className="mt-2 text-xs font-light text-[#6D6D6D] max-w-xs mx-auto leading-relaxed">
               You haven't placed any orders yet. Visit our Collections to select your wardrobe items.
             </p>
             <Link
               to="/"
-              className="mt-6 inline-block rounded-xl bg-[#4B352A] hover:bg-[#6F4E37] px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors cursor-pointer"
+              className="mt-6 inline-block rounded-xl bg-primary hover:bg-primary/90 px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors cursor-pointer"
             >
               Shop Collections
             </Link>
@@ -70,16 +70,16 @@ export default function OrdersPage() {
                 key={order.id}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white border border-[#6F4E37]/10 rounded-2xl p-6 shadow-md transition-shadow hover:shadow-lg"
+                className="bg-bg-secondary border border-border/10 rounded-2xl p-6 shadow-md transition-shadow hover:shadow-lg"
               >
                 {/* Order Top Panel */}
-                <div className="flex flex-wrap items-center justify-between pb-4 border-b border-black/5 gap-4">
+                <div className="flex flex-wrap items-center justify-between pb-4 border-b border-white/10 gap-4">
                   <div className="flex items-center gap-3">
-                    <span className="p-2 rounded-lg bg-[#F5F1E8] text-[#4B352A]">
+                    <span className="p-2 rounded-lg bg-bg-dark text-[var(--color-primary)]">
                       <Package size={18} />
                     </span>
                     <div>
-                      <h4 className="text-xs font-bold text-[#4B352A] uppercase tracking-wider">
+                      <h4 className="text-xs font-bold text-[var(--color-primary)] uppercase tracking-wider">
                         {order.id}
                       </h4>
                       <div className="flex items-center gap-3 mt-0.5 text-[10px] text-[#6D6D6D] font-light">
@@ -103,20 +103,20 @@ export default function OrdersPage() {
                   {order.items.map((item, idx) => (
                     <div key={idx} className="flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3">
-                        <div className="h-12 w-9 rounded overflow-hidden bg-[#F5F1E8]/40 border border-black/5 flex-shrink-0 flex items-center justify-center">
+                        <div className="h-12 w-9 rounded overflow-hidden bg-bg-dark/40 border border-white/10 flex-shrink-0 flex items-center justify-center">
                           {/* Use fallback letter if image isn't available */}
                           <span className="text-[10px] text-[#6D6D6D] font-bold">
                             {item.name[0]}
                           </span>
                         </div>
                         <div>
-                          <h5 className="text-xs font-semibold text-[#111111]">{item.name}</h5>
+                          <h5 className="text-xs font-semibold text-text-light">{item.name}</h5>
                           <p className="text-[10px] text-[#6D6D6D] mt-0.5 font-light">
                             Size: {item.size} | Color: {item.color?.name || "Default"} | Qty: {item.quantity}
                           </p>
                         </div>
                       </div>
-                      <span className="text-xs font-semibold text-[#4B352A]">
+                      <span className="text-xs font-semibold text-[var(--color-primary)]">
                         ${item.price * item.quantity}
                       </span>
                     </div>
@@ -124,9 +124,9 @@ export default function OrdersPage() {
                 </div>
 
                 {/* Address summary & Payment mode */}
-                <div className="pt-4 border-t border-black/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[10px] text-[#6D6D6D] font-light uppercase tracking-wider">
+                <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-[10px] text-[#6D6D6D] font-light uppercase tracking-wider">
                   <div>
-                    <span className="font-semibold text-[#4B352A]">Ship to: </span>
+                    <span className="font-semibold text-[var(--color-primary)]">Ship to: </span>
                     {order.shippingAddress?.fullName}, {order.shippingAddress?.address}, {order.shippingAddress?.city}
                   </div>
                   <div className="flex items-center gap-1.5">

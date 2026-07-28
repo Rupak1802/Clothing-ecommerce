@@ -49,12 +49,12 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[#4B352A] flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 text-[#F5F1E8]">
+    <div className="min-h-screen bg-primary flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 text-[var(--color-bg-dark)]">
       {/* Return button */}
       <div className="absolute top-6 left-6">
         <Link
           to="/"
-          className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#F5F1E8] hover:text-[#7A8F52] transition-colors"
+          className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-bg-dark)] hover:text-[#7A8F52] transition-colors"
         >
           <ArrowLeft size={16} />
           Back to Store
@@ -65,16 +65,16 @@ export default function AdminLogin() {
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md bg-white text-[#111111] p-8 rounded-2xl shadow-2xl border border-[#6F4E37]/30"
+        className="w-full max-w-md bg-bg-secondary text-text-light p-8 rounded-2xl shadow-2xl border border-border/30"
       >
         <div className="text-center mb-8">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#556B2F]/10 text-[#556B2F] mb-4">
             <ShieldAlert size={26} />
           </div>
-          <span className="font-display text-3xl font-extrabold tracking-tight text-[#111111]">
+          <span className="font-display text-3xl font-extrabold tracking-tight text-text-light">
             THUKIL<span className="font-accent text-lg font-normal lowercase tracking-normal text-[#556B2F] ml-1">admin</span>
           </span>
-          <h2 className="mt-4 font-display text-xl font-bold uppercase tracking-wider text-[#4B352A]">
+          <h2 className="mt-4 font-display text-xl font-bold uppercase tracking-wider text-[var(--color-primary)]">
             Admin Login
           </h2>
           <p className="mt-2 text-xs font-light text-[#6D6D6D]">
@@ -96,7 +96,7 @@ export default function AdminLogin() {
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           {/* Admin Email */}
           <div>
-            <label className="block text-[10px] font-semibold uppercase tracking-wider text-[#4B352A] mb-2">
+            <label className="block text-[10px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-2">
               Admin Email
             </label>
             <div className="relative">
@@ -105,10 +105,10 @@ export default function AdminLogin() {
               </span>
               <input
                 type="text"
-                className={`block w-full pl-10 pr-4 py-3 rounded-xl border bg-[#F5F1E8]/30 text-sm placeholder-black/30 outline-none transition-all ${
+                className={`block w-full pl-10 pr-4 py-3 rounded-xl border bg-bg-dark/30 text-sm placeholder-black/30 outline-none transition-all ${
                   errors.email
                     ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                    : "border-[#6F4E37]/20 focus:border-[#556B2F] focus:ring-1 focus:ring-[#556B2F]"
+                    : "border-border/20 focus:border-[#556B2F] focus:ring-1 focus:ring-[#556B2F]"
                 }`}
                 placeholder="admin@example.com"
                 {...register("email", {
@@ -127,7 +127,7 @@ export default function AdminLogin() {
 
           {/* Password */}
           <div>
-            <label className="block text-[10px] font-semibold uppercase tracking-wider text-[#4B352A] mb-2">
+            <label className="block text-[10px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-2">
               Security Key
             </label>
             <div className="relative">
@@ -136,10 +136,10 @@ export default function AdminLogin() {
               </span>
               <input
                 type={showPassword ? "text" : "password"}
-                className={`block w-full pl-10 pr-10 py-3 rounded-xl border bg-[#F5F1E8]/30 text-sm placeholder-black/30 outline-none transition-all ${
+                className={`block w-full pl-10 pr-10 py-3 rounded-xl border bg-bg-dark/30 text-sm placeholder-black/30 outline-none transition-all ${
                   errors.password
                     ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                    : "border-[#6F4E37]/20 focus:border-[#556B2F] focus:ring-1 focus:ring-[#556B2F]"
+                    : "border-border/20 focus:border-[#556B2F] focus:ring-1 focus:ring-[#556B2F]"
                 }`}
                 placeholder="Enter password"
                 {...register("password", {
@@ -164,7 +164,7 @@ export default function AdminLogin() {
             <label className="flex items-center text-[#6D6D6D] cursor-pointer">
               <input
                 type="checkbox"
-                className="mr-2 rounded border-[#6F4E37]/20 text-[#556B2F] focus:ring-[#556B2F]"
+                className="mr-2 rounded border-border/20 text-[#556B2F] focus:ring-[#556B2F]"
                 {...register("rememberMe")}
               />
               Remember Me
@@ -183,7 +183,7 @@ export default function AdminLogin() {
             whileTap={{ scale: 0.99 }}
             type="submit"
             disabled={submitting}
-            className="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-xl text-xs font-semibold uppercase tracking-widest text-white bg-[#4B352A] hover:bg-[#556B2F] transition-colors focus:outline-none cursor-pointer shadow-md disabled:opacity-50"
+            className="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-xl text-xs font-semibold uppercase tracking-widest text-white bg-primary hover:bg-[#556B2F] transition-colors focus:outline-none cursor-pointer shadow-md disabled:opacity-50"
           >
             {submitting ? "Verifying..." : "Access Dashboard"}
           </motion.button>

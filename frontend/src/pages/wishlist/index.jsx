@@ -9,20 +9,20 @@ export default function WishlistPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#F5F1E8] py-12 px-4 sm:px-6 lg:px-8 text-[#111111]">
+    <div className="min-h-screen bg-bg-dark py-12 px-4 sm:px-6 lg:px-8 text-text-primary">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="font-display text-3xl font-light uppercase tracking-widest text-[#4B352A]">
+            <h1 className="font-display text-3xl font-light uppercase tracking-widest text-[var(--color-primary)]">
               My Wishlist
             </h1>
-            <p className="text-xs text-[#6D6D6D] font-light mt-1">
-              Your curated premium selection of AURA pieces
+            <p className="text-xs text-text-secondary font-light mt-1">
+              Your curated premium selection of THUKIL pieces
             </p>
           </div>
           <Link
             to="/"
-            className="self-start md:self-auto inline-flex items-center gap-2 rounded-xl bg-[#4B352A] hover:bg-[#6F4E37] px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-white transition-colors"
+            className="self-start md:self-auto inline-flex items-center gap-2 rounded-xl bg-primary hover:bg-primary/90 px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-bg-dark transition-colors"
           >
             Explore More Items
             <ArrowRight size={14} />
@@ -30,15 +30,15 @@ export default function WishlistPage() {
         </div>
 
         {wishlist.length === 0 ? (
-          <div className="text-center py-20 bg-white rounded-3xl border border-[#6F4E37]/10 p-8 shadow-sm">
-            <Heart size={48} className="mx-auto text-[#6F4E37] opacity-60 mb-4 animate-pulse" />
-            <h3 className="font-display text-lg font-medium text-[#111111]">Your wishlist is empty</h3>
-            <p className="mt-2 text-xs font-light text-[#6D6D6D] max-w-xs mx-auto leading-relaxed">
+          <div className="text-center py-20 bg-bg-secondary rounded-3xl border border-border/10 p-8 shadow-sm">
+            <Heart size={48} className="mx-auto text-[var(--color-border)] opacity-60 mb-4 animate-pulse" />
+            <h3 className="font-display text-lg font-medium text-text-primary">Your wishlist is empty</h3>
+            <p className="mt-2 text-xs font-light text-text-secondary max-w-xs mx-auto leading-relaxed">
               Tap the heart icon on any piece while browsing to save it to your wishlist.
             </p>
             <Link
               to="/"
-              className="mt-6 inline-block rounded-xl bg-[#4B352A] px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-white hover:bg-[#6F4E37] transition-colors"
+              className="mt-6 inline-block rounded-xl bg-primary px-6 py-2.5 text-xs font-semibold uppercase tracking-widest text-bg-dark hover:bg-primary/90 transition-colors"
             >
               Shop Store
             </Link>
@@ -46,7 +46,7 @@ export default function WishlistPage() {
         ) : (
           <motion.div
             layout
-            className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 bg-white rounded-3xl p-6 md:p-8 border border-[#6F4E37]/10 shadow-sm"
+            className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 bg-bg-secondary rounded-3xl p-6 md:p-8 border border-border/10 shadow-sm"
           >
             <AnimatePresence mode="popLayout">
               {wishlist.map((product) => (

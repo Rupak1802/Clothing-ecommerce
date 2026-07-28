@@ -260,9 +260,9 @@ export default function ProductManagement() {
   return (
     <div className="space-y-6">
       {/* Top action header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#6F4E37]/10 shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-bg-secondary p-6 rounded-2xl border border-border/10 shadow-sm">
         <div>
-          <h2 className="font-display text-xl font-light uppercase tracking-wider text-[#4B352A]">
+          <h2 className="font-display text-xl font-light uppercase tracking-wider text-[var(--color-primary)]">
             Product Management
           </h2>
           <p className="text-xs text-[#6D6D6D] font-light mt-0.5">
@@ -281,14 +281,14 @@ export default function ProductManagement() {
       {/* Inventory List Grouped by Category */}
       {Object.keys(groupedProducts).length > 0 ? (
         Object.keys(groupedProducts).map((collection) => (
-          <div key={collection} className="bg-white rounded-2xl border border-[#6F4E37]/10 p-6 shadow-sm">
-            <h3 className="font-display text-lg font-semibold uppercase tracking-wider text-[#4B352A] mb-4 pb-2 border-b border-[#6F4E37]/10">
+          <div key={collection} className="bg-bg-secondary rounded-2xl border border-border/10 p-6 shadow-sm">
+            <h3 className="font-display text-lg font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-4 pb-2 border-b border-border/10">
               {collection}
             </h3>
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="text-[10px] uppercase tracking-wider text-[#6D6D6D] border-b border-black/5">
+                  <tr className="text-[10px] uppercase tracking-wider text-[#6D6D6D] border-b border-white/10">
                     <th className="py-3 font-semibold">Image</th>
                     <th className="py-3 font-semibold">Name</th>
                     <th className="py-3 font-semibold">Stock</th>
@@ -299,13 +299,13 @@ export default function ProductManagement() {
                 </thead>
                 <tbody>
                   {groupedProducts[collection].map((p) => (
-                    <tr key={p.id} className="border-b border-black/5 last:border-0 hover:bg-[#F5F1E8]/20">
+                    <tr key={p.id} className="border-b border-white/10 last:border-0 hover:bg-bg-dark/20">
                       <td className="py-3">
-                        <div className="h-10 w-8 bg-[#f5efe4] rounded overflow-hidden flex items-center justify-center">
+                        <div className="h-10 w-8 bg-bg-secondary rounded overflow-hidden flex items-center justify-center">
                           <img src={p.image || p.images?.[0] || ""} alt="" className="h-full w-full object-cover" />
                         </div>
                       </td>
-                      <td className="py-3 font-semibold text-[#4B352A]">{p.name}</td>
+                      <td className="py-3 font-semibold text-[var(--color-primary)]">{p.name}</td>
                       <td className="py-3 font-light text-[#6D6D6D]">
                         {p.countInStock > 0 ? (
                           <span className="text-[#556B2F]">{p.countInStock} in stock</span>
@@ -314,7 +314,7 @@ export default function ProductManagement() {
                         )}
                       </td>
                       <td className="py-3 font-light text-[#6D6D6D] uppercase tracking-wider">{p.collection || p.collectionName}</td>
-                      <td className="py-3 font-semibold text-[#111111]">₹{p.price}</td>
+                      <td className="py-3 font-semibold text-text-light">₹{p.price}</td>
                       <td className="py-3 text-right space-x-2">
                         <button
                           onClick={() => handleOpenEdit(p)}
@@ -339,7 +339,7 @@ export default function ProductManagement() {
           </div>
         ))
       ) : (
-        <div className="bg-white rounded-2xl border border-[#6F4E37]/10 p-12 text-center shadow-sm">
+        <div className="bg-bg-secondary rounded-2xl border border-border/10 p-12 text-center shadow-sm">
           <p className="text-[#6D6D6D] font-light">No products found. Create your first product.</p>
         </div>
       )}
@@ -347,7 +347,7 @@ export default function ProductManagement() {
       {/* Add / Edit modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40">
-          <div className="bg-white rounded-2xl w-full max-w-lg border border-[#6F4E37]/15 p-6 max-h-[90vh] overflow-y-auto shadow-2xl relative text-[#111111]">
+          <div className="bg-bg-secondary rounded-2xl w-full max-w-lg border border-border/15 p-6 max-h-[90vh] overflow-y-auto shadow-2xl relative text-text-light">
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 text-[#6D6D6D] hover:opacity-85"
@@ -355,7 +355,7 @@ export default function ProductManagement() {
               <X size={20} />
             </button>
 
-            <h3 className="font-display text-lg font-light uppercase tracking-wider text-[#4B352A] mb-6 border-b border-black/5 pb-2">
+            <h3 className="font-display text-lg font-light uppercase tracking-wider text-[var(--color-primary)] mb-6 border-b border-white/10 pb-2">
               {editingProduct ? "Edit Product Details" : "Create Catalog Product"}
             </h3>
 
@@ -363,11 +363,11 @@ export default function ProductManagement() {
               
               {/* Image Upload Area */}
               <div className="mb-4">
-                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-2">
+                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-2">
                   Product Image
                 </label>
                 <div 
-                  className="w-full border-2 border-dashed border-[#6F4E37]/30 rounded-xl p-4 flex flex-col items-center justify-center bg-[#F5F1E8]/30 hover:bg-[#F5F1E8]/60 transition-colors cursor-pointer"
+                  className="w-full border-2 border-dashed border-border/30 rounded-xl p-4 flex flex-col items-center justify-center bg-bg-dark/30 hover:bg-bg-dark/60 transition-colors cursor-pointer"
                   onClick={() => fileInputRef.current?.click()}
                 >
                   {imagePreview ? (
@@ -379,8 +379,8 @@ export default function ProductManagement() {
                     </div>
                   ) : (
                     <div className="flex flex-col items-center py-4 text-[#6D6D6D]">
-                      <Upload size={24} className="mb-2 text-[#4B352A]/50" />
-                      <span className="font-semibold text-[#4B352A]">Click to upload photo</span>
+                      <Upload size={24} className="mb-2 text-[var(--color-primary)]/50" />
+                      <span className="font-semibold text-[var(--color-primary)]">Click to upload photo</span>
                       <span className="text-[9px] mt-1">JPEG, PNG, WEBP</span>
                     </div>
                   )}
@@ -396,12 +396,12 @@ export default function ProductManagement() {
 
               {/* Product name */}
               <div>
-                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1">
+                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1">
                   Product Name
                 </label>
                 <input
                   type="text"
-                  className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl px-3 py-2 outline-none"
+                  className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-xl px-3 py-2 outline-none"
                   placeholder="THUKIL Silk Shirt"
                   {...register("name", { required: "Name is required" })}
                 />
@@ -411,24 +411,24 @@ export default function ProductManagement() {
               {/* Price & Quantity */}
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1">
+                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1">
                     Price (₹)
                   </label>
                   <input
                     type="number"
-                    className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl px-3 py-2 outline-none"
+                    className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-xl px-3 py-2 outline-none"
                     placeholder="180"
                     {...register("price", { required: "Price is required", min: 1 })}
                   />
                   {errors.price && <p className="text-red-500 mt-0.5">{errors.price.message}</p>}
                 </div>
                 <div>
-                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1">
+                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1">
                     Quantity In Stock
                   </label>
                   <input
                     type="number"
-                    className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl px-3 py-2 outline-none"
+                    className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-xl px-3 py-2 outline-none"
                     placeholder="10"
                     {...register("countInStock", { required: "Stock is required", min: 0 })}
                   />
@@ -439,11 +439,11 @@ export default function ProductManagement() {
               <div className="grid grid-cols-2 gap-4">
                 {/* Category */}
                 <div>
-                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1">
+                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1">
                     Category
                   </label>
                   <select
-                    className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl px-3 py-2 outline-none bg-white"
+                    className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-xl px-3 py-2 outline-none bg-bg-secondary"
                     {...register("category")}
                   >
                     <option value="Outerwear">Outerwear</option>
@@ -455,11 +455,11 @@ export default function ProductManagement() {
 
                 {/* Collection */}
                 <div>
-                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1">
+                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1">
                     Collection Group
                   </label>
                   <select
-                    className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl px-3 py-2 outline-none bg-white"
+                    className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-xl px-3 py-2 outline-none bg-bg-secondary"
                     {...register("collectionName")}
                   >
                     <option value="tailoring">Minimalist Tailoring</option>
@@ -474,12 +474,12 @@ export default function ProductManagement() {
 
               {/* Badge */}
               <div>
-                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1">
+                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1">
                   Banner Badge (Optional)
                 </label>
                 <input
                   type="text"
-                  className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl px-3 py-2 outline-none"
+                  className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-xl px-3 py-2 outline-none"
                   placeholder="SALE or NEW DROP"
                   {...register("badge")}
                 />
@@ -487,12 +487,12 @@ export default function ProductManagement() {
 
               {/* Sizes */}
               <div>
-                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1">
+                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1">
                   Sizes (comma separated)
                 </label>
                 <input
                   type="text"
-                  className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl px-3 py-2 outline-none"
+                  className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-xl px-3 py-2 outline-none"
                   placeholder="XS,S,M,L,XL"
                   {...register("sizes", { required: "Sizes list is required" })}
                 />
@@ -501,7 +501,7 @@ export default function ProductManagement() {
               {/* Colors Visual Selector */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A]">
+                  <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)]">
                     Colors
                   </label>
                   <button 
@@ -522,7 +522,7 @@ export default function ProductManagement() {
                           value={color.name}
                           onChange={(e) => updateColor(index, 'name', e.target.value)}
                           placeholder="Color Name (e.g. Obsidian Black)"
-                          className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-lg px-3 py-1.5 outline-none text-xs"
+                          className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-lg px-3 py-1.5 outline-none text-xs"
                         />
                       </div>
                       <div className="relative">
@@ -549,12 +549,12 @@ export default function ProductManagement() {
 
               {/* Description */}
               <div>
-                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1">
+                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1">
                   Description
                 </label>
                 <textarea
                   rows="3"
-                  className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl px-3 py-2 outline-none resize-none font-light leading-relaxed"
+                  className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-xl px-3 py-2 outline-none resize-none font-light leading-relaxed"
                   placeholder="Product descriptive narrative..."
                   {...register("description", { required: "Description is required" })}
                 />
@@ -566,7 +566,7 @@ export default function ProductManagement() {
               {/* Submit */}
               <button
                 type="submit"
-                className="w-full py-3 bg-[#4B352A] hover:bg-[#6F4E37] text-white rounded-xl text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer"
+                className="w-full py-3 bg-primary hover:bg-primary/90 text-white rounded-xl text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer"
               >
                 {editingProduct ? "Save Updates" : "Create Catalog Entry"}
               </button>

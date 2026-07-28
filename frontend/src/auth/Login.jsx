@@ -49,12 +49,12 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F1E8] flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 text-[#111111]">
+    <div className="min-h-screen bg-[conic-gradient(from_45deg,var(--color-secondary)_25%,var(--color-bg-secondary)_0_50%,var(--color-secondary)_0_75%,var(--color-bg-secondary)_0)] flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 text-text-primary">
       {/* Return button */}
       <div className="absolute top-6 left-6">
         <Link
           to="/"
-          className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#4B352A] hover:text-[#6F4E37] transition-colors"
+          className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-bg-dark hover:text-bg-secondary transition-colors"
         >
           <ArrowLeft size={16} />
           Back to Store
@@ -65,16 +65,16 @@ export default function Login() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md bg-white border border-[#6F4E37]/10 p-8 rounded-2xl shadow-xl"
+        className="w-full max-w-md bg-bg-dark border border-border/10 p-8 rounded-2xl shadow-xl"
       >
         <div className="text-center mb-8">
-          <span className="font-display text-3xl font-extrabold tracking-tight text-[#111111]">
-            AURA<span className="font-accent text-lg font-normal lowercase tracking-normal text-[#6F4E37] ml-0.5">studio</span>
+          <span className="font-display text-3xl font-extrabold tracking-tight text-text-primary uppercase tracking-widest">
+            THUKIL
           </span>
-          <h2 className="mt-4 font-display text-xl font-light uppercase tracking-widest text-[#4B352A]">
+          <h2 className="mt-4 font-display text-xl font-light uppercase tracking-widest text-[var(--color-primary)]">
             Customer Login
           </h2>
-          <p className="mt-2 text-xs font-light text-[#6D6D6D]">
+          <p className="mt-2 text-xs font-light text-text-secondary">
             Access your profile, orders, and premium selections
           </p>
         </div>
@@ -82,19 +82,19 @@ export default function Login() {
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           {/* Email or Phone field */}
           <div>
-            <label className="block text-[10px] font-semibold uppercase tracking-wider text-[#4B352A] mb-2">
+            <label className="block text-[10px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-2">
               Email or Phone Number
             </label>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#6D6D6D]/70 pointer-events-none">
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-text-secondary pointer-events-none">
                 <Mail size={16} />
               </span>
               <input
                 type="text"
-                className={`block w-full pl-10 pr-4 py-3 rounded-xl border bg-[#F5F1E8]/30 text-sm placeholder-black/30 outline-none transition-all ${
+                className={`block w-full pl-10 pr-4 py-3 rounded-xl border bg-bg-dark/30 text-sm placeholder-text-secondary/50 outline-none transition-all ${
                   errors.email
                     ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                    : "border-[#6F4E37]/20 focus:border-[#4B352A] focus:ring-1 focus:ring-[#4B352A]"
+                    : "border-border/20 focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]"
                 }`}
                 placeholder="email@example.com or phone"
                 {...register("email", {
@@ -115,26 +115,26 @@ export default function Login() {
           {/* Password field */}
           <div>
             <div className="flex items-center justify-between mb-2">
-              <label className="block text-[10px] font-semibold uppercase tracking-wider text-[#4B352A]">
+              <label className="block text-[10px] font-semibold uppercase tracking-wider text-[var(--color-primary)]">
                 Password
               </label>
               <Link
                 to="/forgot-password"
-                className="text-[10px] font-bold uppercase tracking-wider text-[#6F4E37] hover:underline"
+                className="text-[10px] font-bold uppercase tracking-wider text-[var(--color-border)] hover:underline"
               >
                 Forgot password?
               </Link>
             </div>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-[#6D6D6D]/70 pointer-events-none">
+              <span className="absolute inset-y-0 left-0 pl-3.5 flex items-center text-text-secondary pointer-events-none">
                 <Lock size={16} />
               </span>
               <input
                 type={showPassword ? "text" : "password"}
-                className={`block w-full pl-10 pr-10 py-3 rounded-xl border bg-[#F5F1E8]/30 text-sm placeholder-black/30 outline-none transition-all ${
+                className={`block w-full pl-10 pr-10 py-3 rounded-xl border bg-bg-dark/30 text-sm placeholder-text-secondary/50 outline-none transition-all ${
                   errors.password
                     ? "border-red-500 focus:ring-1 focus:ring-red-500"
-                    : "border-[#6F4E37]/20 focus:border-[#4B352A] focus:ring-1 focus:ring-[#4B352A]"
+                    : "border-border/20 focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]"
                 }`}
                 placeholder="Enter password"
                 {...register("password", {
@@ -143,7 +143,7 @@ export default function Login() {
               />
               <button
                 type="button"
-                className="absolute inset-y-0 right-0 pr-3 flex items-center text-[#6D6D6D] hover:opacity-85 focus:outline-none cursor-pointer"
+                className="absolute inset-y-0 right-0 pr-3 flex items-center text-text-secondary hover:opacity-85 focus:outline-none cursor-pointer"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -159,10 +159,10 @@ export default function Login() {
             <input
               id="rememberMe"
               type="checkbox"
-              className="h-4 w-4 rounded border-[#6F4E37]/30 text-[#4B352A] focus:ring-[#4B352A] focus:ring-offset-0 cursor-pointer"
+              className="h-4 w-4 rounded border-border/30 text-[var(--color-primary)] focus:ring-[var(--color-primary)] focus:ring-offset-0 cursor-pointer"
               {...register("rememberMe")}
             />
-            <label htmlFor="rememberMe" className="ml-2 block text-xs font-light text-[#6D6D6D] cursor-pointer">
+            <label htmlFor="rememberMe" className="ml-2 block text-xs font-light text-text-secondary cursor-pointer">
               Remember me on this browser
             </label>
           </div>
@@ -173,18 +173,18 @@ export default function Login() {
             whileTap={{ scale: 0.99 }}
             type="submit"
             disabled={submitting}
-            className="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-xl text-xs font-semibold uppercase tracking-widest text-white bg-[#4B352A] hover:bg-[#6F4E37] transition-colors focus:outline-none cursor-pointer shadow-md disabled:opacity-50"
+            className="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-xl text-xs font-semibold uppercase tracking-widest text-bg-dark bg-primary hover:bg-primary/90 transition-colors focus:outline-none cursor-pointer shadow-md disabled:opacity-50"
           >
             {submitting ? "Signing in..." : "Sign In"}
           </motion.button>
         </form>
 
-        <div className="mt-8 text-center border-t border-[#6F4E37]/10 pt-6">
-          <p className="text-xs font-light text-[#6D6D6D]">
+        <div className="mt-8 text-center border-t border-border/10 pt-6">
+          <p className="text-xs font-light text-text-secondary">
             Don't have an account?{" "}
             <Link
               to="/register"
-              className="font-bold uppercase tracking-wider text-[#6F4E37] hover:text-[#4B352A] ml-1"
+              className="font-bold uppercase tracking-wider text-[var(--color-border)] hover:text-[var(--color-primary)] ml-1"
             >
               Register
             </Link>

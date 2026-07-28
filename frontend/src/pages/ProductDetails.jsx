@@ -29,7 +29,7 @@ export default function ProductDetails() {
     if (found) {
       setProduct(found);
       setSelectedSize(found.sizes[0] || "M");
-      setSelectedColor(found.colors[0] || { name: "Default", hex: "#111111" });
+      setSelectedColor(found.colors[0] || { name: "Default", hex: "var(--color-text-light)" });
       setActiveImageIdx(0);
     } else {
       toast.error("Product not found");
@@ -39,8 +39,8 @@ export default function ProductDetails() {
 
   if (!product) {
     return (
-      <div className="min-h-screen bg-[#F5F1E8] flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#4B352A]" />
+      <div className="min-h-screen bg-bg-dark flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--color-primary)]" />
       </div>
     );
   }
@@ -53,23 +53,23 @@ export default function ProductDetails() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F1E8] py-12 px-4 sm:px-6 lg:px-8 text-[#111111]">
+    <div className="min-h-screen bg-bg-dark py-12 px-4 sm:px-6 lg:px-8 text-text-light">
       <div className="max-w-7xl mx-auto">
         {/* Back Link */}
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#4B352A] hover:text-[#6F4E37] mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)] hover:text-[var(--color-border)] mb-8 transition-colors"
         >
           <ArrowLeft size={16} />
           Back to Collections
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-white rounded-3xl p-6 md:p-10 border border-[#6F4E37]/10 shadow-lg">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-bg-secondary rounded-3xl p-6 md:p-10 border border-border/10 shadow-lg">
           {/* Gallery View */}
           <div className="flex flex-col gap-4">
-            <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-[#f5efe4] relative border border-[#6F4E37]/10">
+            <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-bg-secondary relative border border-border/10">
               {product.badge && (
-                <span className="absolute top-4 left-4 z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-[#4B352A] text-white shadow-sm">
+                <span className="absolute top-4 left-4 z-10 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wider bg-primary text-white shadow-sm">
                   {product.badge}
                 </span>
               )}
@@ -87,7 +87,7 @@ export default function ProductDetails() {
                   key={idx}
                   onClick={() => setActiveImageIdx(idx)}
                   className={`relative flex-shrink-0 w-20 h-24 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
-                    activeImageIdx === idx ? "border-[#4B352A]" : "border-transparent opacity-60 hover:opacity-100"
+                    activeImageIdx === idx ? "border-[var(--color-primary)]" : "border-transparent opacity-60 hover:opacity-100"
                   }`}
                 >
                   <img src={img} alt="" className="w-full h-full object-cover" />
@@ -99,10 +99,10 @@ export default function ProductDetails() {
           {/* Product Info */}
           <div className="flex flex-col justify-between py-2">
             <div>
-              <span className="text-xs uppercase tracking-widest text-[#6F4E37] font-semibold">
+              <span className="text-xs uppercase tracking-widest text-[var(--color-border)] font-semibold">
                 {product.category}
               </span>
-              <h1 className="mt-2 font-display text-3xl font-light uppercase tracking-wide text-[#111111]">
+              <h1 className="mt-2 font-display text-3xl font-light uppercase tracking-wide text-text-light">
                 {product.name}
               </h1>
 
@@ -117,18 +117,18 @@ export default function ProductDetails() {
                       className="text-[#7A8F52]"
                     />
                   ))}
-                  <span className="text-xs font-semibold text-[#111111] ml-2 mt-0.5">
+                  <span className="text-xs font-semibold text-text-light ml-2 mt-0.5">
                     {product.rating}
                   </span>
                 </div>
-                <span className="text-xs text-[#6D6D6D] border-l border-black/10 pl-4">
+                <span className="text-xs text-[#6D6D6D] border-l border-white/10 pl-4">
                   {product.reviewsCount} Editorial Reviews
                 </span>
               </div>
 
               {/* Price */}
               <div className="flex items-baseline gap-4 mt-6">
-                <span className="text-2xl font-bold text-[#4B352A]">₹{product.price}</span>
+                <span className="text-2xl font-bold text-[var(--color-primary)]">₹{product.price}</span>
                 {product.oldPrice && (
                   <span className="text-sm text-[#6D6D6D] line-through font-light">
                     ${product.oldPrice}
@@ -144,7 +144,7 @@ export default function ProductDetails() {
               {/* Size Select */}
               <div className="mt-8">
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-[#4B352A]">
+                  <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-primary)]">
                     Select Size
                   </span>
                   <span className="text-[10px] text-[#6D6D6D] underline cursor-pointer">
@@ -158,8 +158,8 @@ export default function ProductDetails() {
                       onClick={() => setSelectedSize(size)}
                       className={`h-11 w-14 flex items-center justify-center rounded-xl border text-xs font-semibold uppercase transition-all cursor-pointer ${
                         selectedSize === size
-                          ? "border-[#4B352A] bg-[#4B352A] text-white shadow-sm"
-                          : "border-[#6F4E37]/20 hover:border-[#4B352A] text-[#111111]"
+                          ? "border-[var(--color-primary)] bg-primary text-white shadow-sm"
+                          : "border-border/20 hover:border-[var(--color-primary)] text-text-light"
                       }`}
                     >
                       {size}
@@ -170,7 +170,7 @@ export default function ProductDetails() {
 
               {/* Color Select */}
               <div className="mt-6">
-                <span className="block text-[10px] font-semibold uppercase tracking-wider text-[#4B352A] mb-3">
+                <span className="block text-[10px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-3">
                   Select Color: <span className="font-light normal-case text-xs text-[#6D6D6D] ml-1">{selectedColor?.name}</span>
                 </span>
                 <div className="flex gap-3">
@@ -181,8 +181,8 @@ export default function ProductDetails() {
                       style={{ backgroundColor: color.hex }}
                       className={`h-7 w-7 rounded-full border transition-all cursor-pointer ${
                         selectedColor?.name === color.name
-                          ? "ring-2 ring-offset-2 ring-[#4B352A] scale-110"
-                          : "border-black/10 hover:scale-105"
+                          ? "ring-2 ring-offset-2 ring-[var(--color-primary)] scale-110"
+                          : "border-white/10 hover:scale-105"
                       }`}
                       title={color.name}
                     />
@@ -192,10 +192,10 @@ export default function ProductDetails() {
             </div>
 
             {/* Actions */}
-            <div className="mt-10 border-t border-[#6F4E37]/10 pt-6">
+            <div className="mt-10 border-t border-border/10 pt-6">
               <div className="flex gap-4">
                 {/* Quantity */}
-                <div className="flex items-center border border-[#6F4E37]/20 rounded-xl h-12 px-2 bg-[#F5F1E8]/30">
+                <div className="flex items-center border border-border/20 rounded-xl h-12 px-2 bg-bg-dark/30">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
                     className="px-2 font-bold text-lg hover:opacity-70 focus:outline-none cursor-pointer"
@@ -214,7 +214,7 @@ export default function ProductDetails() {
                 {/* Add to Cart */}
                 <button
                   onClick={handleAddToCartClick}
-                  className="flex-1 h-12 bg-[#4B352A] hover:bg-[#6F4E37] text-white flex items-center justify-center gap-2 rounded-xl text-xs font-semibold uppercase tracking-widest shadow-md transition-colors cursor-pointer"
+                  className="flex-1 h-12 bg-primary hover:bg-primary/90 text-white flex items-center justify-center gap-2 rounded-xl text-xs font-semibold uppercase tracking-widest shadow-md transition-colors cursor-pointer"
                 >
                   <ShoppingBag size={16} />
                   Add to Bag
@@ -228,26 +228,26 @@ export default function ProductDetails() {
                   }}
                   className={`h-12 w-12 flex items-center justify-center rounded-xl border transition-all cursor-pointer ${
                     isWishlisted
-                      ? "border-[#4B352A] text-[#ff2a74]"
-                      : "border-[#6F4E37]/20 text-[#111111] hover:border-[#4B352A]"
+                      ? "border-primary text-primary"
+                      : "border-border/20 text-text-light hover:border-[var(--color-primary)]"
                   }`}
                 >
-                  <Heart size={18} fill={isWishlisted ? "#ff2a74" : "none"} />
+                  <Heart size={18} fill={isWishlisted ? "currentColor" : "none"} />
                 </button>
               </div>
 
               {/* Guarantees */}
               <div className="grid grid-cols-3 gap-4 mt-8 text-center text-[10px] uppercase tracking-wider text-[#6D6D6D]">
-                <div className="flex flex-col items-center gap-1.5 p-2 bg-[#F5F1E8]/40 rounded-xl border border-[#6F4E37]/5">
-                  <Truck size={16} className="text-[#6F4E37]" />
+                <div className="flex flex-col items-center gap-1.5 p-2 bg-bg-dark/40 rounded-xl border border-border/5">
+                  <Truck size={16} className="text-[var(--color-border)]" />
                   <span>Complimentary Shipping</span>
                 </div>
-                <div className="flex flex-col items-center gap-1.5 p-2 bg-[#F5F1E8]/40 rounded-xl border border-[#6F4E37]/5">
+                <div className="flex flex-col items-center gap-1.5 p-2 bg-bg-dark/40 rounded-xl border border-border/5">
                   <ShieldCheck size={16} className="text-[#556B2F]" />
                   <span>100% Genuine</span>
                 </div>
-                <div className="flex flex-col items-center gap-1.5 p-2 bg-[#F5F1E8]/40 rounded-xl border border-[#6F4E37]/5">
-                  <RefreshCw size={16} className="text-[#4B352A]" />
+                <div className="flex flex-col items-center gap-1.5 p-2 bg-bg-dark/40 rounded-xl border border-border/5">
+                  <RefreshCw size={16} className="text-[var(--color-primary)]" />
                   <span>Easy Exchange</span>
                 </div>
               </div>

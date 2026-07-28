@@ -45,21 +45,22 @@ export default function QuickViewModal({
             animate={{ opacity: 0.5 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-[#111111] backdrop-blur-sm"
+            className="fixed inset-0 bg-black backdrop-blur-sm"
           />
 
           {/* Modal Container */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 15 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 15 }}
-            transition={{ type: "spring", damping: 25, stiffness: 220 }}
-            className="relative z-50 w-full max-w-4xl overflow-hidden rounded-3xl bg-[#f9f6f0] p-6 sm:p-8 shadow-2xl border border-[#e5e4e7]"
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+            className="relative z-50 w-full max-w-4xl overflow-hidden rounded-3xl bg-bg-secondary p-6 sm:p-8 shadow-2xl border border-border"
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#111111]/5 hover:bg-[#111111]/10 transition-colors text-[#111111] cursor-pointer"
+              className="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition-colors text-text-light cursor-pointer"
               aria-label="Close modal"
             >
               <X size={20} />
@@ -70,7 +71,7 @@ export default function QuickViewModal({
               {/* Left Column: Product Gallery */}
               <div className="flex flex-col gap-4">
                 {/* Main Image */}
-                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-[#f5efe4] border border-[#e5e4e7]">
+                <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-bg-secondary border border-border">
                   <motion.img
                     key={selectedImageIdx}
                     initial={{ opacity: 0.7 }}
@@ -88,10 +89,10 @@ export default function QuickViewModal({
                     <button
                       key={idx}
                       onClick={() => setSelectedImageIdx(idx)}
-                      className={`relative aspect-[3/4] w-20 overflow-hidden rounded-xl bg-[#f5efe4] border transition-all cursor-pointer ${
+                      className={`relative h-20 w-16 cursor-pointer overflow-hidden rounded-lg border-2 transition-all duration-300 ${
                         selectedImageIdx === idx
-                          ? "border-[#ff2a74] scale-102 ring-1 ring-[#ff2a74]"
-                          : "border-[#e5e4e7] opacity-75 hover:opacity-100"
+                          ? "border-primary scale-102 ring-1 ring-primary"
+                          : "border-transparent opacity-60 hover:opacity-100 hover:scale-105"
                       }`}
                     >
                       <img src={img} alt="thumbnail" className="h-full w-full object-cover" />
@@ -105,55 +106,55 @@ export default function QuickViewModal({
                 <div>
                   {/* Category & Badge */}
                   <div className="flex items-center justify-between">
-                    <span className="text-xs uppercase tracking-widest text-[#6b6375] font-semibold">
+                    <span className="text-xs uppercase tracking-widest text-text-muted font-semibold">
                       {product.category}
                     </span>
-                    {product.badge && (
-                      <span className="rounded-full bg-[#ff2a74] px-3 py-0.5 text-[9px] font-bold tracking-wider text-white">
-                        {product.badge}
+                    {product.isNew && (
+                      <span className="rounded-full bg-primary px-3 py-0.5 text-[9px] font-bold tracking-wider text-bg-dark">
+                        NEW ARRIVAL
                       </span>
                     )}
                   </div>
 
                   {/* Title */}
-                  <h2 className="mt-2 font-display text-3xl font-light text-[#111111] leading-tight">
+                  <h2 className="mt-2 font-display text-3xl font-light text-text-light leading-tight">
                     {product.name}
                   </h2>
 
                   {/* Price & Rating */}
                   <div className="mt-3 flex items-center gap-6">
                     <div className="flex items-center gap-2.5">
-                      <span className="text-2xl font-semibold text-[#111111]">${product.price}</span>
+                      <span className="text-2xl font-semibold text-text-light">${product.price}</span>
                       {product.oldPrice && (
-                        <span className="text-base text-[#6b6375] line-through font-light">
+                        <span className="text-base text-text-muted line-through font-light">
                           ${product.oldPrice}
                         </span>
                       )}
                     </div>
-                    <div className="h-4 w-[1px] bg-[#e5e4e7]" />
+                    <div className="h-4 w-[1px] bg-[var(--color-border)]" />
                     <div className="flex items-center gap-1.5">
                       <div className="flex text-amber-500">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} size={15} fill="currentColor" />
                         ))}
                       </div>
-                      <span className="text-xs text-[#6b6375] font-medium">
+                      <span className="text-xs text-text-muted font-medium">
                         {product.rating} ({product.reviewsCount} reviews)
                       </span>
                     </div>
                   </div>
 
                   {/* Description */}
-                  <p className="mt-5 text-sm font-light leading-relaxed text-[#6b6375]">
+                  <p className="mt-5 text-sm font-light leading-relaxed text-text-muted">
                     {product.description}
                   </p>
 
-                  <div className="h-[1px] w-full bg-[#e5e4e7] my-6" />
+                  <div className="h-[1px] w-full bg-[var(--color-border)] my-6" />
 
                   {/* Color Selector */}
                   <div className="mb-5">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#111111]">
-                      Color: <span className="font-light text-[#6b6375] capitalize">{selectedColor?.name}</span>
+                    <span className="text-xs font-semibold uppercase tracking-wider text-text-light">
+                      Color: <span className="font-light text-text-muted capitalize">{selectedColor?.name}</span>
                     </span>
                     <div className="mt-2 flex gap-3">
                       {product.colors.map((color) => {
@@ -167,12 +168,12 @@ export default function QuickViewModal({
                           >
                             <span
                               style={{ backgroundColor: color.hex }}
-                              className="h-6 w-6 rounded-full border border-black/10 shadow-sm"
+                              className="h-6 w-6 rounded-full border border-white/10 shadow-sm"
                             />
                             {isSelected && (
                               <motion.span
                                 layoutId="activeColorOutline"
-                                className="absolute inset-0 rounded-full border-2 border-[#111111]"
+                                className="absolute inset-0 rounded-full border-2 border-text-light"
                                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
                               />
                             )}
@@ -184,7 +185,7 @@ export default function QuickViewModal({
 
                   {/* Size Selector */}
                   <div>
-                    <span className="text-xs font-semibold uppercase tracking-wider text-[#111111]">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-text-light">
                       Select Size
                     </span>
                     <div className="mt-2.5 flex flex-wrap gap-2.5">
@@ -196,15 +197,15 @@ export default function QuickViewModal({
                             onClick={() => setSelectedSize(size)}
                             className={`relative px-4 py-2 text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer rounded-lg border ${
                               isSelected
-                                ? "text-white border-[#111111] z-10"
-                                : "text-[#111111] border-[#e5e4e7] hover:border-[#111111]"
+                                ? "text-white border-text-light z-10"
+                                : "text-text-light border-border hover:border-text-light"
                             }`}
                           >
                             {size}
                             {isSelected && (
                               <motion.div
                                 layoutId="activeSizeBg"
-                                className="absolute inset-0 -z-10 rounded-lg bg-[#111111]"
+                                className="absolute inset-0 -z-10 rounded-lg bg-text-light"
                                 transition={{ type: "spring", stiffness: 350, damping: 28 }}
                               />
                             )}
@@ -219,10 +220,10 @@ export default function QuickViewModal({
                 <div className="mt-8">
                   <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                     {/* Quantity Stepper */}
-                    <div className="flex h-12 items-center justify-between rounded-xl border border-[#e5e4e7] px-3 sm:w-32 bg-white shadow-sm">
+                    <div className="flex h-12 items-center justify-between rounded-xl border border-border px-3 sm:w-32 bg-bg-secondary shadow-sm">
                       <button
-                        onClick={handleDecrement}
-                        className="p-1 hover:text-[#ff2a74] transition-colors focus:outline-none cursor-pointer"
+                        onClick={() => handleQuantityChange(-1)}
+                        className="p-1 hover:text-primary transition-colors focus:outline-none cursor-pointer"
                         disabled={quantity <= 1}
                       >
                         <Minus size={15} />
@@ -231,13 +232,13 @@ export default function QuickViewModal({
                         key={quantity}
                         initial={{ scale: 0.8, y: -2 }}
                         animate={{ scale: 1, y: 0 }}
-                        className="text-sm font-semibold text-[#111111] tabular-nums"
+                        className="text-sm font-semibold text-text-light tabular-nums"
                       >
                         {quantity}
                       </motion.span>
                       <button
-                        onClick={handleIncrement}
-                        className="p-1 hover:text-[#ff2a74] transition-colors focus:outline-none cursor-pointer"
+                        onClick={() => handleQuantityChange(1)}
+                        className="p-1 hover:text-primary transition-colors focus:outline-none cursor-pointer"
                       >
                         <Plus size={15} />
                       </button>
@@ -246,7 +247,7 @@ export default function QuickViewModal({
                     {/* Add to Cart Button */}
                     <button
                       onClick={handleAddToCart}
-                      className="flex-1 flex h-12 items-center justify-center gap-2 rounded-xl bg-[#111111] text-xs font-semibold uppercase tracking-widest text-white shadow-md hover:bg-[#ff2a74] transition-colors cursor-pointer"
+                      className="flex-1 flex h-12 items-center justify-center gap-2 rounded-xl bg-primary text-xs font-semibold uppercase tracking-widest text-bg-dark shadow-md hover:bg-primary/90 transition-colors cursor-pointer"
                     >
                       <ShoppingBag size={15} />
                       Add to Cart
@@ -254,9 +255,9 @@ export default function QuickViewModal({
 
                     {/* Wishlist Button */}
                     <button
-                      onClick={() => onToggleWishlist(product)}
-                      className={`flex h-12 w-12 items-center justify-center rounded-xl border border-[#e5e4e7] bg-white transition-colors cursor-pointer ${
-                        isWishlisted ? "text-[#ff2a74] border-[#ff2a74]" : "text-[#111111] hover:text-[#ff2a74]"
+                      onClick={handleToggleWishlist}
+                      className={`flex h-12 w-12 items-center justify-center rounded-xl border transition-all duration-300 focus:outline-none cursor-pointer ${
+                        isWishlisted ? "text-primary border-primary bg-primary/10" : "text-text-primary border-border hover:border-primary hover:text-primary"
                       }`}
                     >
                       <Heart size={18} fill={isWishlisted ? "currentColor" : "none"} />
@@ -264,11 +265,11 @@ export default function QuickViewModal({
                   </div>
 
                   {/* Brand Taglines */}
-                  <div className="mt-6 flex justify-around text-[10px] uppercase tracking-widest text-[#6b6375] font-semibold border-t border-[#e5e4e7]/60 pt-5">
+                  <div className="mt-6 flex justify-around text-[10px] uppercase tracking-widest text-text-muted font-semibold border-t border-border/60 pt-5">
                     <span>Free Shipping</span>
-                    <span className="text-[#e5e4e7]">•</span>
+                    <span className="text-[var(--color-border)]">•</span>
                     <span>14-day Returns</span>
-                    <span className="text-[#e5e4e7]">•</span>
+                    <span className="text-[var(--color-border)]">•</span>
                     <span>Ethical Sourcing</span>
                   </div>
                 </div>

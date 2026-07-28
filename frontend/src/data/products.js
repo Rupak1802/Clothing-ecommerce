@@ -12,7 +12,7 @@ export const PRODUCTS = [
     colors: [
       { name: "Oatmeal", hex: "#DCD7C9" },
       { name: "Navy Blue", hex: "#2C3E50" },
-      { name: "Obsidian Black", hex: "#111111" }
+      { name: "Obsidian Black", hex: "var(--color-text-light)" }
     ],
     sizes: ["XS", "S", "M", "L", "XL"],
     rating: 4.8,
@@ -50,7 +50,7 @@ export const PRODUCTS = [
     images: ["/regular -1.jpg", "/dress_back.png"],
     description: "An elegant, flowy midi-length slip dress woven in heavy lustrous black silk-satin. Bias-cut for a drape that contours the body, featuring delicate cross-back spaghetti straps and a subtle cowl neckline.",
     colors: [
-      { name: "Black Satin", hex: "#111111" },
+      { name: "Black Satin", hex: "var(--color-text-light)" },
       { name: "Champagne", hex: "#E5D9C4" },
       { name: "Bronze", hex: "#A27B5C" }
     ],
@@ -71,7 +71,7 @@ export const PRODUCTS = [
     description: "High-waisted wide-leg tailored trousers cut from soft structured wool-twill. Finished with pressed creases, deep double pleats, and side slip pockets for a relaxed yet commanding look.",
     colors: [
       { name: "Olive Green", hex: "#556B2F" },
-      { name: "Midnight Black", hex: "#111111" },
+      { name: "Midnight Black", hex: "var(--color-text-light)" },
       { name: "Sand", hex: "#F5F5DC" }
     ],
     sizes: ["XS", "S", "M", "L", "XL"],

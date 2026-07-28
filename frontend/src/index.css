@@ -4,9 +4,33 @@
   --font-display: "Fraunces", serif;
   --font-accent: "Caveat", cursive;
   --font-sans: "Inter", sans-serif;
-  --color-accent: #44422D;
-  --color-brand-pink: #7C7960;
-  --color-brand-pastel: #FFF9F3;
+  
+  /* Premium Warm Backgrounds */
+  --color-bg-dark: #2B1D17;
+  --color-bg-secondary: #6B4A3A;
+  --color-bg-tertiary: #4A3328;
+  
+  /* Premium Accents */
+  --color-primary: #C48A5A;
+  --color-secondary: #E7D6C1;
+  --color-accent-dark: #2B1D17;
+  
+  /* Text & Borders */
+  --color-text-primary: #FAF6F0;
+  --color-text-secondary: #E7D6C1;
+  --color-text-muted: #D3B9A3;
+  --color-border: #6B4A3A;
+  --color-border-light: #C48A5A;
+  
+  /* Functional */
+  --color-success: #4CAF50;
+  --color-error: #FF6B6B;
+  --color-warning: #FFA500;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.6);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.8);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.9);
 }
 
 /* Base style resets and scroll behaviour */
@@ -15,9 +39,18 @@ html {
 }
 
 body {
-  background-color: var(--color-brand-pastel);
-  color: var(--color-accent);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
   font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+
+
+.secondary-button {
+  background-color: transparent;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
 }
 
 /* Custom scrollbar styling */
@@ -26,14 +59,14 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--color-brand-pastel);
+  background: var(--color-bg-dark);
 }
 ::-webkit-scrollbar-thumb {
-  background: #e3dcc9;
+  background: var(--color-bg-tertiary);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c7bea9;
+  background: var(--color-primary);
 }
 
 /* Utilities */
@@ -47,7 +80,7 @@ body {
 
 /* Text stroke for editorial typography outline effect */
 .text-stroke {
-  -webkit-text-stroke: 1px var(--color-accent);
+  -webkit-text-stroke: 1px var(--color-text-primary);
   color: transparent;
 }
 
@@ -82,7 +115,7 @@ body {
 }
 
 .shimmer-bg {
-  background: linear-gradient(90deg, #f3ede2 25%, #eae2d3 50%, #f3ede2 75%);
+  background: linear-gradient(90deg, var(--color-bg-secondary) 25%, var(--color-bg-tertiary) 50%, var(--color-bg-secondary) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }

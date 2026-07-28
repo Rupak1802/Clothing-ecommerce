@@ -93,9 +93,9 @@ export default function CategoryManagement() {
   return (
     <div className="space-y-6">
       {/* Top Action Panel */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 rounded-2xl border border-[#6F4E37]/10 shadow-sm">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-bg-secondary p-6 rounded-2xl border border-border/10 shadow-sm">
         <div>
-          <h2 className="font-display text-xl font-light uppercase tracking-wider text-[#4B352A]">
+          <h2 className="font-display text-xl font-light uppercase tracking-wider text-[var(--color-primary)]">
             Category Management
           </h2>
           <p className="text-xs text-[#6D6D6D] font-light mt-0.5">
@@ -116,13 +116,13 @@ export default function CategoryManagement() {
         {categories.map((c) => (
           <div
             key={c.id}
-            className="bg-white p-6 rounded-2xl border border-[#6F4E37]/10 shadow-sm flex flex-col justify-between"
+            className="bg-bg-secondary p-6 rounded-2xl border border-border/10 shadow-sm flex flex-col justify-between"
           >
             <div>
               <span className="text-[9px] font-bold uppercase tracking-wider text-[#6D6D6D]">
                 Slug: {c.slug}
               </span>
-              <h3 className="font-display text-lg font-medium text-[#4B352A] mt-1">
+              <h3 className="font-display text-lg font-medium text-[var(--color-primary)] mt-1">
                 {c.name}
               </h3>
               <p className="text-xs font-light text-[#6D6D6D] mt-2">
@@ -130,7 +130,7 @@ export default function CategoryManagement() {
               </p>
             </div>
 
-            <div className="flex justify-end gap-3 mt-6 border-t border-black/5 pt-3">
+            <div className="flex justify-end gap-3 mt-6 border-t border-white/10 pt-3">
               <button
                 onClick={() => handleOpenEdit(c)}
                 className="p-1.5 rounded-lg text-[#556B2F] hover:bg-[#556B2F]/10 flex items-center cursor-pointer"
@@ -153,7 +153,7 @@ export default function CategoryManagement() {
       {/* Category Modal Form */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40">
-          <div className="bg-white rounded-2xl w-full max-w-sm border border-[#6F4E37]/15 p-6 shadow-2xl relative text-[#111111]">
+          <div className="bg-bg-secondary rounded-2xl w-full max-w-sm border border-border/15 p-6 shadow-2xl relative text-text-light">
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 text-[#6D6D6D] hover:opacity-85"
@@ -161,18 +161,18 @@ export default function CategoryManagement() {
               <X size={20} />
             </button>
 
-            <h3 className="font-display text-lg font-light uppercase tracking-wider text-[#4B352A] mb-6 border-b border-black/5 pb-2">
+            <h3 className="font-display text-lg font-light uppercase tracking-wider text-[var(--color-primary)] mb-6 border-b border-white/10 pb-2">
               {editingCategory ? "Update Category" : "Add E-commerce Category"}
             </h3>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-xs">
               <div>
-                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1">
+                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1">
                   Category Name
                 </label>
                 <input
                   type="text"
-                  className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl px-3 py-2 outline-none"
+                  className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-xl px-3 py-2 outline-none"
                   placeholder="Knitwear"
                   {...register("name", { required: "Name is required" })}
                 />
@@ -180,12 +180,12 @@ export default function CategoryManagement() {
               </div>
 
               <div>
-                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[#4B352A] mb-1">
+                <label className="block text-[9px] font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-1">
                   Category Slug
                 </label>
                 <input
                   type="text"
-                  className="w-full border border-[#6F4E37]/20 focus:border-[#4B352A] rounded-xl px-3 py-2 outline-none"
+                  className="w-full border border-border/20 focus:border-[var(--color-primary)] rounded-xl px-3 py-2 outline-none"
                   placeholder="knitwear"
                   {...register("slug", { required: "Slug is required" })}
                 />
@@ -194,7 +194,7 @@ export default function CategoryManagement() {
 
               <button
                 type="submit"
-                className="w-full py-3 bg-[#4B352A] hover:bg-[#6F4E37] text-white rounded-xl text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer"
+                className="w-full py-3 bg-primary hover:bg-primary/90 text-white rounded-xl text-xs font-semibold uppercase tracking-widest transition-colors cursor-pointer"
               >
                 {editingCategory ? "Save Updates" : "Create Category"}
               </button>
