@@ -151,7 +151,7 @@ export default function Home() {
                     isWishlisted={wishlist.some((item) => item.id === product.id)}
                     onToggleWishlist={toggleWishlist}
                     onAddToCart={addToCart}
-                    onQuickView={(p) => navigate(`/product/${p.id}`)}
+                    onQuickView={(p) => openQuickView(p)}
                   />
                 </motion.div>
               ))}

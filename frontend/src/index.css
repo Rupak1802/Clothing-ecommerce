@@ -6,21 +6,21 @@
   --font-sans: "Inter", sans-serif;
   
   /* Premium Warm Backgrounds */
-  --color-bg-dark: #2B1D17;
-  --color-bg-secondary: #6B4A3A;
-  --color-bg-tertiary: #4A3328;
+  --color-bg-dark: #0F0F10;
+  --color-bg-secondary: #1D1D1D;
+  --color-bg-tertiary: #6E7268;
   
   /* Premium Accents */
-  --color-primary: #C48A5A;
-  --color-secondary: #E7D6C1;
-  --color-accent-dark: #2B1D17;
+  --color-primary: #B8925A;
+  --color-secondary: #D7C6AE;
+  --color-accent-dark: #0F0F10;
   
   /* Text & Borders */
-  --color-text-primary: #FAF6F0;
-  --color-text-secondary: #E7D6C1;
-  --color-text-muted: #D3B9A3;
-  --color-border: #6B4A3A;
-  --color-border-light: #C48A5A;
+  --color-text-primary: #F2ECE3;
+  --color-text-secondary: #B5B2AC;
+  --color-text-muted: #6E7268;
+  --color-border: #1D1D1D;
+  --color-border-light: #B8925A;
   
   /* Functional */
   --color-success: #4CAF50;

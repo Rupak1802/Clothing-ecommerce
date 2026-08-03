@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Heart, ShoppingBag, Eye } from "lucide-react";
-import { GlowCard } from "./ui/GlowCard";
 
 export default function ProductCard({
   product,
@@ -28,13 +27,12 @@ export default function ProductCard({
       whileHover={{ scale: 1.02 }}
       className="group relative h-full transition-all duration-400 hover:shadow-[0_0_20px_rgba(255,109,41,0.15)]"
     >
-      <GlowCard 
-        customSize={true} 
-        glowColor="caramel"
-        className="flex flex-col h-full w-full overflow-hidden p-3"
-      >
+      <div className="flex flex-col h-full w-full overflow-hidden p-3 bg-bg-dark border border-border rounded-2xl">
       {/* Image Gallery Panel */}
-      <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-bg-secondary">
+      <div 
+        className="relative aspect-[3/4] overflow-hidden rounded-xl bg-bg-secondary cursor-pointer"
+        onClick={() => onQuickView(product)}
+      >
         {/* Shimmer skeleton */}
         {!image1Loaded && (
           <div className="absolute inset-0 z-20 shimmer-bg" />
@@ -85,7 +83,10 @@ export default function ProductCard({
 
         {/* Quick View trigger */}
         <button
-          onClick={() => onQuickView(product)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onQuickView(product);
+          }}
           className="absolute right-3 bottom-3 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-bg-dark/90 shadow-md opacity-0 scale-90 translate-y-2 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0 transition-all duration-400 hover:text-primary cursor-pointer"
           title="Quick View"
         >
@@ -95,7 +96,10 @@ export default function ProductCard({
         {/* Add to Cart Slider Panel */}
         <div className="absolute inset-x-0 bottom-0 z-10 p-3 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-out hidden sm:block">
           <motion.button
-            onClick={() => onAddToCart(product)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onAddToCart(product);
+            }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="flex w-full items-center justify-center gap-2 rounded-lg bg-secondary py-2.5 text-xs font-semibold uppercase tracking-widest text-bg-dark shadow-md hover:bg-primary hover:text-bg-dark transition-colors cursor-pointer"
@@ -152,7 +156,7 @@ export default function ProductCard({
           </div>
         </div>
       </div>
-      </GlowCard>
+      </div>
     </motion.div>
   );
 }

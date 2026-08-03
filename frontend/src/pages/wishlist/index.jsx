@@ -5,7 +5,7 @@ import { Heart, ShoppingBag, ArrowRight } from "lucide-react";
 import ProductCard from "../../components/ProductCard";
 
 export default function WishlistPage() {
-  const { wishlist, toggleWishlist, addToCart } = useCart();
+  const { wishlist, toggleWishlist, addToCart, openQuickView } = useCart();
   const navigate = useNavigate();
 
   return (
@@ -63,7 +63,7 @@ export default function WishlistPage() {
                     isWishlisted={true}
                     onToggleWishlist={toggleWishlist}
                     onAddToCart={addToCart}
-                    onQuickView={(p) => navigate(`/product/${p.id}`)}
+                    onQuickView={(p) => openQuickView(p)}
                   />
                 </motion.div>
               ))}

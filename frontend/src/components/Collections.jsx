@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { COLLECTIONS } from "../data/products";
-import { GlowCard } from "./ui/GlowCard";
 
 export default function Collections({ onSelectCollection }) {
   const containerVariants = {
@@ -60,11 +59,7 @@ export default function Collections({ onSelectCollection }) {
             onClick={() => onSelectCollection(collection.id)}
             className="group relative cursor-pointer h-full transition-all duration-300"
           >
-            <GlowCard 
-              customSize={true} 
-              glowColor="latte"
-              className="flex flex-col h-full w-full overflow-hidden p-4 hover:shadow-xl"
-            >
+            <div className="flex flex-col h-full w-full overflow-hidden p-4 hover:shadow-xl bg-bg-dark border border-border rounded-xl">
             {/* Image Container */}
             <div className="relative aspect-[3/4] overflow-hidden rounded-xl bg-bg-secondary">
               <img
@@ -106,7 +101,7 @@ export default function Collections({ onSelectCollection }) {
                 View Pieces &rarr;
               </div>
             </div>
-            </GlowCard>
+            </div>
           </motion.div>
         ))}
       </motion.div>

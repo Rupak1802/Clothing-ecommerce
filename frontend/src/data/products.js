@@ -7,7 +7,7 @@ export const PRODUCTS = [
     category: "Outerwear",
     collection: "oversized",
     badge: "SALE",
-    images: ["/oversized - 1.jpg", "/trench_back.png"],
+    images: ["/trench_oatmeal.png", "/trench_navy.png", "/trench_black.png"],
     description: "A fluid, double-breasted trench coat crafted from premium structured linen and organic cotton blend. Designed with clean minimal lapels, a waist-defining belt, and oversized storm flaps. An editorial staple for transition season layering.",
     colors: [
       { name: "Oatmeal", hex: "#DCD7C9" },

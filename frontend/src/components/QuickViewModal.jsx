@@ -162,7 +162,13 @@ export default function QuickViewModal({
                         return (
                           <button
                             key={color.name}
-                            onClick={() => setSelectedColor(color)}
+                            onClick={() => {
+                              setSelectedColor(color);
+                              const colorIndex = product.colors.findIndex(c => c.name === color.name);
+                              if (colorIndex !== -1 && product.images.length > 0) {
+                                setSelectedImageIdx(colorIndex % product.images.length);
+                              }
+                            }}
                             className="relative flex h-8 w-8 items-center justify-center rounded-full cursor-pointer focus:outline-none"
                             title={color.name}
                           >
@@ -222,7 +228,7 @@ export default function QuickViewModal({
                     {/* Quantity Stepper */}
                     <div className="flex h-12 items-center justify-between rounded-xl border border-border px-3 sm:w-32 bg-bg-secondary shadow-sm">
                       <button
-                        onClick={() => handleQuantityChange(-1)}
+                        onClick={handleDecrement}
                         className="p-1 hover:text-primary transition-colors focus:outline-none cursor-pointer"
                         disabled={quantity <= 1}
                       >
@@ -237,7 +243,7 @@ export default function QuickViewModal({
                         {quantity}
                       </motion.span>
                       <button
-                        onClick={() => handleQuantityChange(1)}
+                        onClick={handleIncrement}
                         className="p-1 hover:text-primary transition-colors focus:outline-none cursor-pointer"
                       >
                         <Plus size={15} />
@@ -255,7 +261,7 @@ export default function QuickViewModal({
 
                     {/* Wishlist Button */}
                     <button
-                      onClick={handleToggleWishlist}
+                      onClick={() => onToggleWishlist(product)}
                       className={`flex h-12 w-12 items-center justify-center rounded-xl border transition-all duration-300 focus:outline-none cursor-pointer ${
                         isWishlisted ? "text-primary border-primary bg-primary/10" : "text-text-primary border-border hover:border-primary hover:text-primary"
                       }`}
