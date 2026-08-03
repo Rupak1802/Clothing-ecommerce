@@ -53,18 +53,18 @@ export default function ProductDetails() {
   };
 
   return (
-    <div className="min-h-screen bg-bg-dark py-12 px-4 sm:px-6 lg:px-8 text-text-light">
+    <div className="min-h-screen bg-bg-dark py-6 sm:py-12 px-4 sm:px-6 lg:px-8 text-text-light">
       <div className="max-w-7xl mx-auto">
         {/* Back Link */}
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)] hover:text-[var(--color-border)] mb-8 transition-colors"
+          className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[var(--color-primary)] hover:text-[var(--color-border)] mb-6 sm:mb-8 transition-colors"
         >
           <ArrowLeft size={16} />
           Back to Collections
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 bg-bg-secondary rounded-3xl p-6 md:p-10 border border-border/10 shadow-lg">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 bg-bg-secondary rounded-3xl p-4 sm:p-6 md:p-10 border border-border/10 shadow-lg">
           {/* Gallery View */}
           <div className="flex flex-col gap-4">
             <div className="aspect-[3/4] rounded-2xl overflow-hidden bg-bg-secondary relative border border-border/10">
@@ -102,7 +102,7 @@ export default function ProductDetails() {
               <span className="text-xs uppercase tracking-widest text-[var(--color-border)] font-semibold">
                 {product.category}
               </span>
-              <h1 className="mt-2 font-display text-3xl font-light uppercase tracking-wide text-text-light">
+              <h1 className="mt-1 md:mt-2 font-display text-2xl md:text-3xl font-light uppercase tracking-wide text-text-light">
                 {product.name}
               </h1>
 
@@ -127,7 +127,7 @@ export default function ProductDetails() {
               </div>
 
               {/* Price */}
-              <div className="flex items-baseline gap-4 mt-6">
+              <div className="flex items-baseline gap-3 md:gap-4 mt-4 md:mt-6">
                 <span className="text-2xl font-bold text-[var(--color-primary)]">₹{product.price}</span>
                 {product.oldPrice && (
                   <span className="text-sm text-[#6D6D6D] line-through font-light">
@@ -192,47 +192,49 @@ export default function ProductDetails() {
             </div>
 
             {/* Actions */}
-            <div className="mt-10 border-t border-border/10 pt-6">
-              <div className="flex gap-4">
-                {/* Quantity */}
-                <div className="flex items-center border border-border/20 rounded-xl h-12 px-2 bg-bg-dark/30">
+            <div className="mt-8 md:mt-10 border-t border-border/10 pt-6">
+              <div className="flex flex-wrap sm:flex-nowrap gap-3 sm:gap-4">
+                <div className="flex gap-3 sm:gap-4 w-full sm:w-auto">
+                  {/* Quantity */}
+                  <div className="flex-1 sm:flex-none flex items-center justify-between sm:justify-center border border-border/20 rounded-xl h-12 px-4 sm:px-2 bg-bg-dark/30">
+                    <button
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="px-2 font-bold text-lg hover:opacity-70 focus:outline-none cursor-pointer"
+                    >
+                      -
+                    </button>
+                    <span className="w-8 text-center text-xs font-semibold">{quantity}</span>
+                    <button
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="px-2 font-bold text-lg hover:opacity-70 focus:outline-none cursor-pointer"
+                    >
+                      +
+                    </button>
+                  </div>
+
+                  {/* Wishlist toggle */}
                   <button
-                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                    className="px-2 font-bold text-lg hover:opacity-70 focus:outline-none cursor-pointer"
+                    onClick={() => {
+                      toggleWishlist(product);
+                      toast.success(isWishlisted ? "Removed from wishlist." : "Added to wishlist.");
+                    }}
+                    className={`h-12 w-12 flex-shrink-0 flex items-center justify-center rounded-xl border transition-all cursor-pointer ${
+                      isWishlisted
+                        ? "border-primary text-primary"
+                        : "border-border/20 text-text-light hover:border-[var(--color-primary)]"
+                    }`}
                   >
-                    -
-                  </button>
-                  <span className="w-8 text-center text-xs font-semibold">{quantity}</span>
-                  <button
-                    onClick={() => setQuantity(quantity + 1)}
-                    className="px-2 font-bold text-lg hover:opacity-70 focus:outline-none cursor-pointer"
-                  >
-                    +
+                    <Heart size={18} fill={isWishlisted ? "currentColor" : "none"} />
                   </button>
                 </div>
 
                 {/* Add to Cart */}
                 <button
                   onClick={handleAddToCartClick}
-                  className="flex-1 h-12 bg-primary hover:bg-primary/90 text-white flex items-center justify-center gap-2 rounded-xl text-xs font-semibold uppercase tracking-widest shadow-md transition-colors cursor-pointer"
+                  className="w-full sm:flex-1 h-12 bg-primary hover:bg-primary/90 text-white flex items-center justify-center gap-2 rounded-xl text-xs font-semibold uppercase tracking-widest shadow-md transition-colors cursor-pointer"
                 >
                   <ShoppingBag size={16} />
                   Add to Bag
-                </button>
-
-                {/* Wishlist toggle */}
-                <button
-                  onClick={() => {
-                    toggleWishlist(product);
-                    toast.success(isWishlisted ? "Removed from wishlist." : "Added to wishlist.");
-                  }}
-                  className={`h-12 w-12 flex items-center justify-center rounded-xl border transition-all cursor-pointer ${
-                    isWishlisted
-                      ? "border-primary text-primary"
-                      : "border-border/20 text-text-light hover:border-[var(--color-primary)]"
-                  }`}
-                >
-                  <Heart size={18} fill={isWishlisted ? "currentColor" : "none"} />
                 </button>
               </div>
 
