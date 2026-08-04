@@ -27,7 +27,7 @@ export const PRODUCTS = [
     category: "Knitwear",
     collection: "polos",
     badge: "NEW DROP",
-    images: ["/polo -1.jpg", "/knit_back.png"],
+    images: ["/polo -1.jpg"],
     description: "Oversized chunky knit sweater knitted in organic wool and alpaca blend. Features relaxed drop shoulders, a mock neck collar, and ribbed trim details. Soft on skin and heavy enough to retain a sculptural silhouette.",
     colors: [
       { name: "Charcoal", hex: "#3A3B3C" },
@@ -47,7 +47,7 @@ export const PRODUCTS = [
     category: "Dresses",
     collection: "regulars",
     badge: "SALE",
-    images: ["/regular -1.jpg", "/dress_back.png"],
+    images: ["/regular -1.jpg"],
     description: "An elegant, flowy midi-length slip dress woven in heavy lustrous black silk-satin. Bias-cut for a drape that contours the body, featuring delicate cross-back spaghetti straps and a subtle cowl neckline.",
     colors: [
       { name: "Black Satin", hex: "var(--color-text-light)" },
@@ -67,7 +67,7 @@ export const PRODUCTS = [
     category: "Pants",
     collection: "oversized",
     badge: null,
-    images: ["/oversized - 2.jpg", "/trouser_back.png"],
+    images: ["/oversized - 2.jpg"],
     description: "High-waisted wide-leg tailored trousers cut from soft structured wool-twill. Finished with pressed creases, deep double pleats, and side slip pockets for a relaxed yet commanding look.",
     colors: [
       { name: "Olive Green", hex: "#556B2F" },
