@@ -78,30 +78,99 @@ export const PRODUCTS = [
     rating: 4.6,
     reviewsCount: 15,
     tags: ["Wool-Twill", "Wide-Leg"]
+  },
+  {
+    id: "prod-5",
+    name: "Classic Crewneck",
+    price: 95,
+    oldPrice: 120,
+    category: "T-Shirts",
+    collection: "regulars",
+    badge: "BEST SELLER",
+    images: ["/regular -1.jpg"],
+    description: "A timeless crewneck t-shirt made from heavy-weight ringspun cotton. Pre-shrunk and garment-dyed for a vintage feel and long-lasting color. The perfect foundational piece for any outfit.",
+    colors: [
+      { name: "White", hex: "#FFFFFF" },
+      { name: "Ash Grey", hex: "#B2BEB5" },
+      { name: "Navy", hex: "#000080" }
+    ],
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    rating: 4.9,
+    reviewsCount: 112,
+    tags: ["Heavyweight", "Garment Dyed"]
+  },
+  {
+    id: "prod-6",
+    name: "Oversized Hoodie",
+    price: 150,
+    oldPrice: null,
+    category: "Sweatshirts",
+    collection: "oversized",
+    badge: "NEW",
+    images: ["/Oversized outfit.jpg"],
+    description: "Ultra-cozy oversized hoodie constructed from dense French terry cotton. Features a drop-shoulder design, spacious kangaroo pocket, and double-lined hood for extra warmth and structure.",
+    colors: [
+      { name: "Heather Grey", hex: "#9BA1A6" },
+      { name: "Mocha", hex: "#7E6A59" },
+      { name: "Black", hex: "#1A1A1A" }
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    rating: 4.8,
+    reviewsCount: 45,
+    tags: ["French Terry", "Relaxed Fit"]
+  },
+  {
+    id: "prod-7",
+    name: "Textured Knitted Polo",
+    price: 135,
+    oldPrice: 160,
+    category: "Knitwear",
+    collection: "polos",
+    badge: null,
+    images: ["/Polo outfit.jpg"],
+    description: "A refined take on the classic polo. This piece features a unique waffle-knit texture woven from a breathable cotton-silk blend. Finished with a subtle three-button placket and ribbed cuffs.",
+    colors: [
+      { name: "Dusty Blue", hex: "#7895A2" },
+      { name: "Sage", hex: "#8A9A86" },
+      { name: "Ecru", hex: "#F3EFE0" }
+    ],
+    sizes: ["S", "M", "L", "XL"],
+    rating: 4.7,
+    reviewsCount: 28,
+    tags: ["Cotton-Silk", "Textured"]
   }
 ];
 
 export const COLLECTIONS = [
   {
-    id: "oversized",
-    title: "Oversized",
-    description: "Oversized structured garments for effortless luxury.",
-    image: "/Oversized outfit.jpg",
-    tag: "Sale"
-  },
-  {
-    id: "polos",
-    title: "Polos",
-    description: "Tailored polo knits and luxury collared shirts.",
-    image: "/Polo outfit.jpg",
-    tag: "Cozy Essentials"
-  },
-  {
-    id: "regulars",
-    title: "Regulars",
-    description: "Perfect fit daily wardrobe basics and casual essentials.",
+    id: "best-sellers",
+    title: "BEST SELLERS",
     image: "/Regular outfit.jpg",
-    tag: "New Drop"
+  },
+  {
+    id: "new-launches",
+    title: "NEW LAUNCHES",
+    image: "/Polo outfit.jpg",
+  },
+  {
+    id: "shirts",
+    title: "SHIRTS COLLECTION",
+    image: "/regular -1.jpg",
+  },
+  {
+    id: "oversized",
+    title: "OVERSIZED COLLECTION",
+    image: "/Oversized outfit.jpg",
+  },
+  {
+    id: "wardrobe-staples",
+    title: "WARDROBE STAPLES",
+    image: "/polo -1.jpg",
+  },
+  {
+    id: "bottom-wear",
+    title: "BOTTOM WEAR",
+    image: "/oversized - 2.jpg",
   }
 ];
 

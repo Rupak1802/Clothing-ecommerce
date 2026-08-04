@@ -5,22 +5,22 @@
   --font-accent: "Caveat", cursive;
   --font-sans: "Inter", sans-serif;
   
-  /* Premium Warm Backgrounds */
-  --color-bg-dark: #0F0F10;
-  --color-bg-secondary: #1D1D1D;
-  --color-bg-tertiary: #6E7268;
+  /* Premium Smoky White Backgrounds */
+  --color-bg-dark: #F5F5F5; /* Smoky white base */
+  --color-bg-secondary: #EEEEEE; 
+  --color-bg-tertiary: #E5E5E5;
   
   /* Premium Accents */
-  --color-primary: #B8925A;
-  --color-secondary: #D7C6AE;
-  --color-accent-dark: #0F0F10;
+  --color-primary: #FFD100; /* Yellow accent like MYDESIGNATION header in image */
+  --color-secondary: #B8925A;
+  --color-accent-dark: #FFFFFF;
   
   /* Text & Borders */
-  --color-text-primary: #F2ECE3;
-  --color-text-secondary: #B5B2AC;
-  --color-text-muted: #6E7268;
-  --color-border: #1D1D1D;
-  --color-border-light: #B8925A;
+  --color-text-primary: #111111;
+  --color-text-secondary: #444444;
+  --color-text-muted: #666666;
+  --color-border: #E5E1D8;
+  --color-border-light: #F2EFE9;
   
   /* Functional */
   --color-success: #4CAF50;
