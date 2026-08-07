@@ -47,7 +47,7 @@ export default function Hero({ onExploreClick }) {
         style={{ y: yBg, scale: scaleImg }}
         className="absolute inset-0 z-0 h-full w-full"
       >
-        <div className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-bg-dark to-transparent z-10" />
+        <div className="absolute bottom-0 left-0 w-full h-1/5 bg-gradient-to-t from-bg-dark to-transparent z-10" />
         <img
           src="/hero-image.png"
           alt="THUKIL high-fashion collection showcase"
