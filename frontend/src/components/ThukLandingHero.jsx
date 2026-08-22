@@ -256,7 +256,7 @@ function ProductStampCard({ img, label, tamilLabel, collectionId, delay, navigat
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
             <div className="absolute top-2 right-2 opacity-50">
-              <img src="/LOGO 5.png" alt="THUKIL" className="w-8 h-auto invert" />
+              <img src="/LOGO 5.png" alt="THUKIL" className="w-8 h-auto mix-blend-multiply" style={{ filter: "invert(1)" }} />
             </div>
           </div>
           <div className="px-3 py-3 text-center border-t border-border/10" style={{ background: "#FFF8F0" }}>
@@ -316,10 +316,10 @@ export default function ThukLandingHero({ onExploreClick }) {
 
         {/* Corner ornaments */}
         {[
-          { pos: "top-8 left-8", dir: "normal",  color: "#E8A020", size: "text-5xl" },
-          { pos: "top-8 right-8", dir: "reverse", color: "#E8A020", size: "text-5xl" },
-          { pos: "bottom-20 left-12", dir: "normal",  color: "#CC2200", size: "text-3xl" },
-          { pos: "bottom-20 right-12", dir: "reverse", color: "#CC2200", size: "text-3xl" }
+          { pos: "top-8 left-8", dir: "normal",  color: "#E8A020", size: "text-6xl" },
+          { pos: "top-8 right-8", dir: "reverse", color: "#E8A020", size: "text-6xl" },
+          { pos: "bottom-20 left-12", dir: "normal",  color: "#CC2200", size: "text-5xl" },
+          { pos: "bottom-20 right-12", dir: "reverse", color: "#CC2200", size: "text-5xl" }
         ].map((o, i) => (
           <div key={i} className={`absolute ${o.pos} ${o.size} opacity-20 animate-kolam-spin`}
             style={{ color: o.color, animationDirection: o.dir }}>✿</div>
@@ -339,7 +339,7 @@ export default function ThukLandingHero({ onExploreClick }) {
           >
             <span className="text-[10px] uppercase tracking-[0.4em] font-semibold" style={{ color: "#C1440E" }}>Tamil Heritage Brand</span>
             <span style={{ color: "#E8A020", opacity: 0.5 }}>·</span>
-            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold" style={{ color: "#1C0A00", opacity: 0.7 }}>Est. 2024</span>
+            <span className="text-[10px] uppercase tracking-[0.3em] font-semibold" style={{ color: "#1C0A00", opacity: 0.7 }}>Est. 2026</span>
           </motion.div>
 
           {/* Brand name */}
@@ -602,9 +602,9 @@ export default function ThukLandingHero({ onExploreClick }) {
           viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <div className="text-[11px] uppercase tracking-[0.5em] font-bold mb-4" style={{ color: "#E8A020" }}>— The Collection —</div>
-          <h2 className="font-display font-black text-5xl sm:text-6xl uppercase tracking-wide" style={{ color: "#1C0A00" }}>Shop The Stamps</h2>
-          <div className="mt-3 text-base" style={{ fontFamily: "'Noto Serif Tamil', serif", color: "#CC2200" }}>எங்கள் சேகரிப்பை காண்க</div>
+          <div className="text-[11px] uppercase tracking-[0.5em] font-bold mb-4" style={{ color: "#E8A020" }}>— Curated —</div>
+          <h2 className="font-display font-black text-5xl sm:text-6xl uppercase tracking-wide" style={{ color: "#1C0A00" }}>Explore The Collection</h2>
+          <div className="mt-3 text-base" style={{ color: "#CC2200" }}>Handpicked styles for every celebration.</div>
         </motion.div>
 
         {/* Product stamp grid */}

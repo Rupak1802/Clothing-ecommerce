@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600;700;900&family=Fraunces:wght@300;400;700;900&family=Caveat:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Caveat:wght@400;700&family=Inter:wght@300;400;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Fraunces", serif;
+  --font-display: "Playfair Display", serif;
   --font-accent: "Caveat", cursive;
   --font-sans: "Inter", sans-serif;
   --font-tamil: "Noto Serif Tamil", serif;

@@ -85,7 +85,7 @@ export default function Navbar() {
               onClick={() => setActiveFilter("all")}
               className="focus:outline-none hover:opacity-85 transition-opacity flex items-center"
             >
-              <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-10 w-auto object-contain" style={{ filter: "brightness(0.1)" }} />
+              <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-10 w-auto object-contain mix-blend-multiply" style={{ filter: "invert(1)" }} />
             </Link>
           </div>
 
@@ -209,7 +209,7 @@ export default function Navbar() {
             >
               <div>
                 <div className="flex items-center justify-between pb-6 border-b border-border">
-                  <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-12 w-auto object-contain" style={{ filter: "invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(1.2)" }} />
+                  <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-12 w-auto object-contain mix-blend-screen" style={{ filter: "sepia(1) saturate(5) hue-rotate(10deg) brightness(1.5)" }} />
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-2 text-text-light hover:opacity-75 focus:outline-none cursor-pointer"
