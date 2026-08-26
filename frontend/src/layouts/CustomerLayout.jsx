@@ -27,7 +27,8 @@ export default function CustomerLayout() {
     searchOpen,
     setSearchOpen,
     searchQuery,
-    setSearchQuery
+    setSearchQuery,
+    activeFilter
   } = useCart();
 
   const searchInputRef = useRef(null);
@@ -54,7 +55,7 @@ export default function CustomerLayout() {
   };
 
   return (
-    <div className="min-h-screen bg-bg-dark text-text-primary antialiased flex flex-col justify-between">
+    <div className="min-h-screen text-text-primary antialiased flex flex-col justify-between customer-portal">
       <div>
         <Navbar
           cartCount={cartItemsCount}

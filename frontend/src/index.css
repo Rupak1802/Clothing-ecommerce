@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Tamil:wght@400;600;700;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Caveat:wght@400;700&family=Inter:wght@300;400;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Fraunces", serif;
+  --font-display: "Playfair Display", serif;
   --font-accent: "Caveat", cursive;
   --font-sans: "Inter", sans-serif;
+  --font-tamil: "Noto Serif Tamil", serif;
   
   /* Premium Smoky White Backgrounds */
   --color-bg-dark: #F5F5F5; /* Smoky white base */
@@ -31,6 +33,19 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.6);
   --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.8);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.9);
+
+  /* ═══════════════════════════════════════════════ */
+  /* Traditional Indian Color Palette — THUKIL       */
+  /* ═══════════════════════════════════════════════ */
+  --color-turmeric: #E8A020;       /* Manjal — Turmeric Yellow      */
+  --color-mango: #F5B800;          /* Mango Gold                    */
+  --color-vermilion: #CC2200;      /* Civappu — Vermilion Red       */
+  --color-leaf: #2D6A2D;           /* Pachai — Leaf Green           */
+  --color-rice: #FFF8F0;           /* Rice White                    */
+  --color-terracotta: #C1440E;     /* Terracotta Red                */
+  --color-peacock: #006B8F;        /* Vibrant Peacock Blue          */
+  --color-deep-maroon: #6B1A1A;    /* Deep Maroon (kolam bg)        */
+  --color-sandalwood: #D4956A;     /* Sandalwood beige              */
 }
 
 /* Base style resets and scroll behaviour */
@@ -39,10 +54,22 @@ html {
 }
 
 body {
-  background-color: var(--color-bg-dark);
+  background-color: #FFF8F0;
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   line-height: 1.6;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/images/tamil-pookolam-bg.jpg');
+  background-repeat: repeat;
+  background-size: 320px;
+  opacity: 0.16; /* Balanced traditional pookolam watermark */
+  pointer-events: none;
+  z-index: -1;
 }
 
 
@@ -119,3 +146,209 @@ body {
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   THUKIL — Brand Animation Keyframes
+   ═══════════════════════════════════════════════════════════ */
+
+/* Stamp expand bloom */
+@keyframes stamp-bloom {
+  0%   { transform: scale(0.5) rotate(-5deg); opacity: 0; }
+  60%  { transform: scale(1.05) rotate(1deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Tamil language text shimmer */
+@keyframes tamil-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Gentle float for product stamps */
+@keyframes float-stamp {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-10px) rotate(1deg); }
+}
+
+/* Kolam / rangoli slow rotation */
+@keyframes kolam-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Wax seal pulse */
+@keyframes wax-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(193,68,14,0.4); }
+  50%       { box-shadow: 0 0 0 12px rgba(193,68,14,0); }
+}
+
+/* Stamp perforated border animation */
+@keyframes perf-dash {
+  to { stroke-dashoffset: -20; }
+}
+
+/* Section fade-up reveal */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   THUKIL — Utility Classes
+   ═══════════════════════════════════════════════════════════ */
+
+.font-tamil {
+  font-family: "Noto Serif Tamil", serif;
+}
+
+.animate-stamp-bloom {
+  animation: stamp-bloom 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.animate-float-stamp {
+  animation: float-stamp 4s ease-in-out infinite;
+}
+
+.animate-kolam-spin {
+  animation: kolam-spin 30s linear infinite;
+}
+
+.animate-wax-pulse {
+  animation: wax-pulse 2s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease both;
+}
+
+/* Postal stamp perforated border */
+.stamp-border {
+  position: relative;
+  background: #FFF8F0;
+  padding: 12px;
+}
+
+.stamp-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  background: 
+    radial-gradient(circle at top, transparent 7px, #FFF8F0 7px) top / 16px 14px repeat-x,
+    radial-gradient(circle at bottom, transparent 7px, #FFF8F0 7px) bottom / 16px 14px repeat-x,
+    radial-gradient(circle at left, transparent 7px, #FFF8F0 7px) left / 14px 16px repeat-y,
+    radial-gradient(circle at right, transparent 7px, #FFF8F0 7px) right / 14px 16px repeat-y;
+  background-color: transparent;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Tamil text shimmer gradient */
+.text-vermilion-shimmer {
+  background: linear-gradient(
+    90deg,
+    #CC2200 0%,
+    #FF4500 30%,
+    #FF6B35 50%,
+    #FF4500 70%,
+    #CC2200 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: tamil-shimmer 3s linear infinite;
+}
+
+/* Funky ikat background pattern */
+.bg-ikat-pattern {
+  background-color: #1a0a00;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(232,160,32,0.15) 0px,
+      rgba(232,160,32,0.15) 2px,
+      transparent 2px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(193,68,14,0.12) 0px,
+      rgba(193,68,14,0.12) 2px,
+      transparent 2px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,107,143,0.08) 0px,
+      rgba(0,107,143,0.08) 1px,
+      transparent 1px,
+      transparent 40px
+    );
+}
+
+/* Kolam hero background texture */
+.bg-kolam-hero {
+  background-color: #1C0A00;
+  background-image:
+    radial-gradient(ellipse at top, rgba(200,80,0,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(107,26,26,0.3) 0%, transparent 70%);
+}
+
+.bg-ikat-pattern-light {
+  background-color: #FFF8F0;
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(232,160,32,0.05) 0px,
+      rgba(232,160,32,0.05) 2px,
+      transparent 2px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(193,68,14,0.04) 0px,
+      rgba(193,68,14,0.04) 2px,
+      transparent 2px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0,107,143,0.02) 0px,
+      rgba(0,107,143,0.02) 1px,
+      transparent 1px,
+      transparent 40px
+    );
+}
+
+.bg-kolam-hero-light {
+  background-color: #FFF8F0;
+  background-image:
+    radial-gradient(ellipse at top, rgba(232,160,32,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(204,34,0,0.05) 0%, transparent 70%);
+}
+
+.customer-portal .bg-bg-dark {
+  background-color: transparent !important;
+}
+
+.sari-border-divider {
+  background-image: url('/images/tamil-sari-border.jpg');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: center;
+  opacity: 0.8;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 35s linear infinite;
+}
+
+
+
+

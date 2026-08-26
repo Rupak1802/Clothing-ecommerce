@@ -43,13 +43,13 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-border bg-bg-dark/95 backdrop-blur-md transition-colors duration-300">
+      <header className="sticky top-0 z-40 w-full border-b border-[#E8A020]/20" style={{ background: "rgba(255,248,240,0.96)", backdropFilter: "blur(16px)" }}>
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Mobile Menu Toggle */}
           <div className="flex lg:hidden">
             <button
               onClick={() => setMobileMenuOpen(true)}
-              className="p-2 text-text-light hover:opacity-75 transition-opacity focus:outline-none cursor-pointer"
+              className="p-2 text-text-primary hover:opacity-75 transition-opacity focus:outline-none cursor-pointer"
               aria-label="Open menu"
             >
               <Menu size={24} />
@@ -62,13 +62,15 @@ export default function Navbar() {
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className="relative py-2 text-xs font-semibold uppercase tracking-widest text-text-primary hover:text-primary transition-colors cursor-pointer"
+                className="relative py-2 text-xs font-semibold uppercase tracking-widest hover:text-[#C1440E] transition-colors cursor-pointer"
+                style={{ color: "rgba(28,10,0,0.85)" }}
               >
                 {link.label}
                 {location.pathname === "/" && activeFilter === link.id && (
                   <motion.div
                     layoutId="activeNavLine"
-                    className="absolute bottom-0 left-0 h-[2px] w-full bg-primary"
+                    className="absolute bottom-0 left-0 h-[2px] w-full"
+                    style={{ background: "#E8A020" }}
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -83,16 +85,16 @@ export default function Navbar() {
               onClick={() => setActiveFilter("all")}
               className="focus:outline-none hover:opacity-85 transition-opacity flex items-center"
             >
-              <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-10 w-auto object-contain invert brightness-150" />
+              <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-10 w-auto object-contain mix-blend-multiply" style={{ filter: "invert(1)" }} />
             </Link>
           </div>
 
           {/* Icons & Action Links - Right */}
-          <div className="flex items-center gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider text-text-light lg:flex-1 lg:justify-end">
+          <div className="flex items-center gap-2 sm:gap-4 text-xs font-semibold uppercase tracking-wider lg:flex-1 lg:justify-end" style={{ color: "rgba(28,10,0,0.85)" }}>
             {/* Pages: About & Contact (Desktop) */}
             <div className="hidden lg:flex items-center gap-5 mr-2">
-              <Link to="/about" className="hover:text-[var(--color-border)] transition-colors">About</Link>
-              <Link to="/contact" className="hover:text-[var(--color-border)] transition-colors">Contact</Link>
+              <Link to="/about" className="transition-colors hover:text-[#C1440E]" style={{ color: "rgba(28,10,0,0.8)" }}>About</Link>
+              <Link to="/contact" className="transition-colors hover:text-[#C1440E]" style={{ color: "rgba(28,10,0,0.8)" }}>Contact</Link>
             </div>
 
             {/* User Info & Nav Links (Desktop) */}
@@ -124,7 +126,7 @@ export default function Navbar() {
             {/* Search */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="p-2 text-text-light hover:text-[var(--color-border)] transition-colors focus:outline-none cursor-pointer"
+              className="p-2 text-text-primary hover:text-[var(--color-border)] transition-colors focus:outline-none cursor-pointer"
               aria-label="Search"
             >
               <Search size={20} />
@@ -202,11 +204,12 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 220 }}
-              className="fixed bottom-0 top-0 left-0 z-50 w-full max-w-xs bg-bg-secondary p-6 shadow-2xl flex flex-col justify-between"
+            className="fixed bottom-0 top-0 left-0 z-50 w-full max-w-xs p-6 shadow-2xl flex flex-col justify-between"
+              style={{ background: "#1C0A00", borderRight: "1px solid rgba(232,160,32,0.15)" }}
             >
               <div>
                 <div className="flex items-center justify-between pb-6 border-b border-border">
-                  <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-12 w-auto object-contain invert brightness-150" />
+                  <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-12 w-auto object-contain mix-blend-screen" style={{ filter: "sepia(1) saturate(5) hue-rotate(10deg) brightness(1.5)" }} />
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-2 text-text-light hover:opacity-75 focus:outline-none cursor-pointer"

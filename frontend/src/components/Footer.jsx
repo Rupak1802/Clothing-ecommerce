@@ -21,7 +21,7 @@ export default function Footer({ setActiveFilter }) {
               onClick={() => setActiveFilter("all")}
               className="text-left hover:opacity-85 transition-opacity"
             >
-              <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-16 w-auto object-contain" />
+              <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-16 w-auto object-contain mix-blend-multiply" style={{ filter: "invert(1)" }} />
             </button>
             <p className="text-xs font-light leading-relaxed text-bg-secondary/90 max-w-xs">
               A design house creating timeless, sculptural silhouettes from ethically sourced, organic, and recycled fibers.

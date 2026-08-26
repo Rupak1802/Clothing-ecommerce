@@ -4,8 +4,8 @@ import { ArrowRight, Feather, Scissors, Heart } from "lucide-react";
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[conic-gradient(from_45deg,var(--color-secondary)_25%,var(--color-bg-secondary)_0_50%,var(--color-secondary)_0_75%,var(--color-bg-secondary)_0)] py-16 px-4 sm:px-6 lg:px-8 text-text-primary">
-      <div className="max-w-4xl mx-auto bg-bg-dark rounded-3xl p-8 md:p-12 border border-border shadow-2xl">
+    <div className="min-h-screen bg-bg-dark py-16 px-4 sm:px-6 lg:px-8 text-text-primary">
+      <div className="max-w-4xl mx-auto bg-white/95 rounded-3xl p-8 md:p-12 border border-border/80 shadow-2xl">
         <div className="text-center mb-12">
           <span className="font-accent text-3xl text-primary">The Heritage</span>
           <h1 className="mt-2 font-display text-4xl font-light uppercase tracking-widest text-text-primary">

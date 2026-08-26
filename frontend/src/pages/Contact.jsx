@@ -29,8 +29,8 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[conic-gradient(from_45deg,var(--color-secondary)_25%,var(--color-bg-secondary)_0_50%,var(--color-secondary)_0_75%,var(--color-bg-secondary)_0)] py-12 px-4 sm:px-6 lg:px-8 text-text-primary">
-      <div className="max-w-6xl mx-auto bg-bg-dark rounded-3xl p-6 md:p-10 border border-border/15 shadow-2xl">
+    <div className="min-h-screen bg-bg-dark py-12 px-4 sm:px-6 lg:px-8 text-text-primary">
+      <div className="max-w-6xl mx-auto bg-white/95 rounded-3xl p-6 md:p-10 border border-border/80 shadow-2xl">
         <div className="text-center mb-12">
           <span className="font-accent text-2xl text-[var(--color-border)]">Concierge Desk</span>
           <h1 className="mt-2 font-display text-3xl font-light uppercase tracking-widest text-[var(--color-primary)]">

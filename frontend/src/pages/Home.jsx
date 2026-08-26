@@ -7,6 +7,7 @@ import { useCart } from "../context/CartContext";
 // Components
 import { COLLECTIONS, PRODUCTS } from "../data/products";
 import Hero from "../components/Hero";
+import ThukLandingHero from "../components/ThukLandingHero";
 import Collections from "../components/Collections";
 import ProductCard from "../components/ProductCard";
 import Testimonials from "../components/Testimonials";
@@ -74,7 +75,7 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       {activeFilter === "all" && (
-        <Hero
+        <ThukLandingHero
           onExploreClick={() => {
             productGridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
           }}
@@ -87,33 +88,33 @@ export default function Home() {
       )}
 
       {/* Product Grid Section */}
-      <div className="w-full bg-secondary text-bg-secondary">
+      <div id="product-grid" className="w-full bg-bg-dark text-text-primary">
         <main
           ref={productGridRef}
-          className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 border-t border-bg-secondary/20"
+          className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 border-t border-border/10"
         >
         <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <span className="font-accent text-2xl text-bg-secondary block mb-1">
+            <span className="font-accent text-2xl text-[#C1440E] block mb-1">
               {activeFilter === "wishlist" ? "Curated Choice" : "The Studio Collection"}
             </span>
-            <h2 className="font-display text-3xl font-light uppercase tracking-wide text-bg-dark">
+            <h2 className="font-display text-3xl font-light uppercase tracking-wide text-text-primary">
               {activeFilter === "all" && "All Products"}
               {activeFilter === "wishlist" && "My Wishlist"}
               {activeFilter !== "all" && activeFilter !== "wishlist" && (COLLECTIONS.find(c => c.id === activeFilter)?.title || activeFilter)}
             </h2>
           </div>
 
-          <div className="text-xs uppercase tracking-widest text-bg-secondary/80 font-semibold">
+          <div className="text-xs uppercase tracking-widest text-text-secondary font-semibold">
             Showing {filteredProducts.length} items
           </div>
         </div>
 
         {filteredProducts.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 text-center rounded-2xl bg-secondary border border-bg-secondary/20 p-8 shadow-sm">
+          <div className="flex flex-col items-center justify-center py-20 text-center rounded-2xl bg-bg-secondary border border-border/20 p-8 shadow-sm">
             <span className="text-4xl mb-4">🔍</span>
-            <h3 className="font-display text-lg font-medium text-bg-dark">No pieces found</h3>
-            <p className="mt-2 text-xs font-light text-bg-secondary max-w-xs leading-relaxed">
+            <h3 className="font-display text-lg font-medium text-text-primary">No pieces found</h3>
+            <p className="mt-2 text-xs font-light text-text-secondary max-w-xs leading-relaxed">
               {activeFilter === "wishlist"
                 ? "Your wishlist is empty. Tap the heart icons on product cards to add your favorite items here."
                 : "No matching pieces match your filter or search criteria. Try resetting filters."}
@@ -125,7 +126,7 @@ export default function Home() {
                   setSearchQuery("");
                   setSearchParams({});
                 }}
-                className="mt-6 rounded-lg bg-bg-secondary hover:bg-bg-dark px-5 py-2 text-xs font-semibold uppercase tracking-widest text-secondary transition-colors cursor-pointer"
+                className="mt-6 rounded-lg bg-bg-tertiary hover:bg-bg-secondary px-5 py-2 text-xs font-semibold uppercase tracking-widest text-text-primary transition-colors cursor-pointer border border-border/10"
               >
                 Reset Filters
               </button>
