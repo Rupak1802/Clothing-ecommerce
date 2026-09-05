@@ -43,7 +43,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full border-b border-[#E8A020]/20" style={{ background: "rgba(255,248,240,0.96)", backdropFilter: "blur(16px)" }}>
+      <header className="sticky top-0 z-40 w-full border-b border-[#E8A020]/20" style={{ background: "rgba(239,229,216,0.96)", backdropFilter: "blur(16px)" }}>
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Mobile Menu Toggle */}
           <div className="flex lg:hidden">

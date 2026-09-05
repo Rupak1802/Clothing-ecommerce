@@ -1,35 +1,8 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import DhrishtiBommai from "./DhrishtiBommai";
 
-/* ─────────────────────────────────────────────────────────────────
-   Drishti Doll Face — inline SVG illustration
-───────────────────────────────────────────────────────────────── */
-function DrishtiDollFace({ color = "#E8A020", size = 52 }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="40" cy="40" r="32" fill={color} />
-      <path d="M20 20 Q40 0 60 20" stroke="#F5B800" strokeWidth="4" fill="#F5B800" fillOpacity="0.5" />
-      <circle cx="40" cy="10" r="4" fill="#F5B800" />
-      <circle cx="26" cy="16" r="3" fill="#F5B800" />
-      <circle cx="54" cy="16" r="3" fill="#F5B800" />
-      <ellipse cx="29" cy="38" rx="7" ry="9" fill="white" />
-      <ellipse cx="51" cy="38" rx="7" ry="9" fill="white" />
-      <circle cx="31" cy="39" r="4.5" fill="#111" />
-      <circle cx="53" cy="39" r="4.5" fill="#111" />
-      <circle cx="32.5" cy="37" r="1.5" fill="white" />
-      <circle cx="54.5" cy="37" r="1.5" fill="white" />
-      <circle cx="40" cy="28" r="3" fill="#CC2200" />
-      <ellipse cx="40" cy="44" rx="3" ry="2" fill={color} stroke="#00000020" strokeWidth="1" />
-      <circle cx="43" cy="44" r="2" fill="none" stroke="#F5B800" strokeWidth="1.5" />
-      <path d="M33 52 Q40 58 47 52" stroke="#CC2200" strokeWidth="2" fill="none" strokeLinecap="round" />
-      <circle cx="8" cy="40" r="3" fill="#F5B800" />
-      <circle cx="72" cy="40" r="3" fill="#F5B800" />
-      <circle cx="20" cy="46" r="4" fill="#CC2200" fillOpacity="0.2" />
-      <circle cx="60" cy="46" r="4" fill="#CC2200" fillOpacity="0.2" />
-    </svg>
-  );
-}
 
 /* ─────────────────────────────────────────────────────────────────
    Hanging Brass Lamp — traditional temple hanging lamp SVG
@@ -72,9 +45,9 @@ function HangingBrassLamp() {
    Category Options that expand from the Male Stamp
 ───────────────────────────────────────────────────────────────── */
 const CATEGORY_OPTIONS = [
-  { id: "oversized", label: "Oversized", sublabel: "வித்தியாசமான", dollColor: "#E8A020", badge: "01" },
-  { id: "polos",     label: "Polo",      sublabel: "பாரம்பரிய",    dollColor: "#2D6A2D", badge: "02" },
-  { id: "regulars",  label: "Regular",   sublabel: "அன்றாட அழகு",  dollColor: "#006B8F", badge: "03" }
+  { id: "oversized", label: "Oversized", sublabel: "வித்தியாசமான", variant: "yellow", dollColor: "#E8A020", badge: "01" },
+  { id: "polos",     label: "Polo",      sublabel: "பாரம்பரிய",    variant: "green",  dollColor: "#2D6A2D", badge: "02" },
+  { id: "regulars",  label: "Regular",   sublabel: "அன்றாட அழகு",  variant: "blue",   dollColor: "#006B8F", badge: "03" }
 ];
 
 function CategoryOptionStamp({ opt, delay, onClick }) {
@@ -89,12 +62,12 @@ function CategoryOptionStamp({ opt, delay, onClick }) {
       aria-label={`Browse ${opt.label} collection`}
     >
       <div className="flex-shrink-0 transition-transform duration-300 group-hover:scale-110">
-        <DrishtiDollFace color={opt.dollColor} size={56} />
+        <DhrishtiBommai variant={opt.variant} color={opt.dollColor} size={58} />
       </div>
       <div
         className="relative flex items-center gap-3 px-5 py-3 rounded-lg transition-all duration-300 group-hover:scale-105 group-hover:brightness-110"
         style={{
-          background: "#FFF8F0",
+          background: "#EFE5D8",
           border: "1.5px solid #E8A02060",
           boxShadow: "0 4px 15px rgba(232,160,32,0.1), 4px 4px 0 rgba(0,0,0,0.15)",
           minWidth: "180px"
@@ -141,7 +114,7 @@ function CategoryStamp({ type, isOpen, onClick }) {
       <div 
         className="relative rounded-xl overflow-hidden p-3 transition-colors duration-300" 
         style={{ 
-          background: "#FFF8F0", 
+          background: "#EFE5D8", 
           border: "2px solid #E8A02070",
           boxShadow: "0 4px 20px rgba(232,160,32,0.15)"
         }}
@@ -237,7 +210,7 @@ function ProductStampCard({ img, label, tamilLabel, collectionId, delay, navigat
       <div 
         className="relative rounded-xl overflow-hidden p-3" 
         style={{ 
-          background: "#FFF8F0", 
+          background: "#EFE5D8", 
           border: "2px solid #E8A02070",
           boxShadow: "0 4px 20px rgba(232,160,32,0.12)"
         }}
@@ -259,7 +232,7 @@ function ProductStampCard({ img, label, tamilLabel, collectionId, delay, navigat
               <img src="/LOGO 5.png" alt="THUKIL" className="w-8 h-auto mix-blend-multiply" style={{ filter: "invert(1)" }} />
             </div>
           </div>
-          <div className="px-3 py-3 text-center border-t border-border/10" style={{ background: "#FFF8F0" }}>
+          <div className="px-3 py-3 text-center border-t border-border/10" style={{ background: "#EFE5D8" }}>
             <div className="font-display font-black text-xl uppercase tracking-wide text-[#1C0A00]">{label}</div>
             <div className="text-sm mt-0.5" style={{ fontFamily: "'Noto Serif Tamil', serif", color: "#C1440E" }}>{tamilLabel}</div>
             <div className="mt-2 text-[10px] uppercase tracking-widest font-bold opacity-60 text-[#1C0A00]">Shop Now →</div>
@@ -304,14 +277,14 @@ export default function ThukLandingHero({ onExploreClick }) {
       {/* ══════════════════════════════════════════════════════
           SECTION 1 — Hero Banner with Rangoli Background
       ══════════════════════════════════════════════════════ */}
-      <section className="relative h-screen w-full overflow-hidden" style={{ background: "#FFF8F0" }}>
+      <section className="relative h-screen w-full overflow-hidden" style={{ background: "#EFE5D8" }}>
         <motion.div style={{ y: heroBgY, scale: heroScale }} className="absolute inset-0 z-0">
           <img
             src="/kolam-banner.jpg"
             alt="Traditional Tamil kolam rangoli design"
             className="absolute inset-0 w-full h-full object-cover object-top opacity-[0.25] mix-blend-multiply"
           />
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(255,248,240,0.2) 0%, rgba(255,248,240,0.7) 50%, rgba(255,248,240,0.95) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, rgba(239,229,216,0.2) 0%, rgba(239,229,216,0.7) 50%, rgba(239,229,216,0.95) 100%)" }} />
         </motion.div>
 
         {/* Corner ornaments */}
@@ -529,9 +502,17 @@ export default function ThukLandingHero({ onExploreClick }) {
         </div>
 
         <motion.div style={{ opacity: tamilOpacity, y: tamilY }} className="relative z-10 text-center flex flex-col items-center gap-8">
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
-            className="text-[11px] uppercase tracking-[0.6em] font-bold" style={{ color: "#CC2200" }}
-          >✦ Now in Tamil ✦</motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="font-tamil text-sm sm:text-base font-bold tracking-[0.2em] select-none"
+            style={{ color: "#CC2200" }}
+          >
+            தமிழ் • பாரம்பரியம் • புதுமை
+          </motion.div>
+
 
           {/* Tamil brand name */}
           <motion.div
@@ -560,7 +541,7 @@ export default function ThukLandingHero({ onExploreClick }) {
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ delay: 0.7, duration: 0.8 }}
-            className="text-center flex flex-col items-center gap-4 max-w-xl mx-auto px-8 py-6 rounded-3xl border border-[#E8A020]/15 shadow-lg bg-[#FFF8F0]/60 backdrop-blur-sm relative overflow-hidden"
+            className="text-center flex flex-col items-center gap-4 max-w-xl mx-auto px-8 py-6 rounded-3xl border border-[#E8A020]/20 shadow-lg bg-[#EFE5D8]/85 backdrop-blur-sm relative overflow-hidden"
           >
             {/* Corner gold accents */}
             <div className="absolute top-2.5 left-2.5 w-3 h-3 border-t border-l border-[#E8A020]/60" />
@@ -576,20 +557,102 @@ export default function ThukLandingHero({ onExploreClick }) {
             </span>
           </motion.div>
 
-          {/* Floating drishti dolls */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }} transition={{ delay: 0.9 }}
-            className="flex gap-8 items-center mt-4"
-          >
-            {[{ color: "#E8A020", size: 44 }, { color: "#CC2200", size: 56 }, { color: "#006B8F", size: 44 }].map((d, i) => (
-              <motion.div key={i} animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 2 + i * 0.5, ease: "easeInOut", delay: i * 0.3 }}
-              >
-                <DrishtiDollFace color={d.color} size={d.size} />
-              </motion.div>
-            ))}
-          </motion.div>
+          {/* 3 Dhrishti Bommais: Rising from below one-by-one and settling into position (கலை | மரபு | நவீனம்) */}
+          <div className="w-full max-w-xl mx-auto mt-8 overflow-visible">
+            <div className="flex justify-center items-end gap-8 sm:gap-14 md:gap-16">
+              {[
+                {
+                  tamil: "கலை",
+                  variant: "yellow",
+                  color: "#F7C325",
+                  size: 46,
+                  initialX: -20,
+                  initialY: 70,
+                  initialRotate: -10,
+                  delay: 0.2
+                },
+                {
+                  tamil: "மரபு",
+                  variant: "maroon",
+                  color: "#7F2424",
+                  size: 58,
+                  initialX: 0,
+                  initialY: 90,
+                  initialRotate: 0,
+                  delay: 0.55
+                },
+                {
+                  tamil: "நவீனம்",
+                  variant: "blue",
+                  color: "#1F597A",
+                  size: 46,
+                  initialX: 20,
+                  initialY: 70,
+                  initialRotate: 10,
+                  delay: 0.9
+                }
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{
+                    opacity: 0,
+                    x: item.initialX,
+                    y: item.initialY,
+                    scale: 0.4,
+                    rotate: item.initialRotate
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    x: 0,
+                    y: 0,
+                    scale: 1,
+                    rotate: 0
+                  }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 95,
+                    damping: 14,
+                    mass: 0.85,
+                    delay: item.delay
+                  }}
+                  className="group flex flex-col items-center cursor-pointer select-none"
+                >
+                  {/* Continuous gentle floating mascot after rising & settling */}
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{
+                      repeat: Infinity,
+                      duration: 3 + i * 0.4,
+                      ease: "easeInOut",
+                      delay: 1.4 + item.delay
+                    }}
+                    whileHover={{ scale: 1.15, y: -10 }}
+                    className="flex-shrink-0 drop-shadow-md transition-transform duration-300"
+                  >
+                    <DhrishtiBommai variant={item.variant} color={item.color} size={item.size} />
+                  </motion.div>
+
+                  {/* Clean Tamil Wording directly below (no card/box) */}
+                  <motion.span
+                    initial={{ opacity: 0, y: 15 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: item.delay + 0.25, duration: 0.45 }}
+                    className="font-tamil font-bold text-base sm:text-lg md:text-xl tracking-wider block mt-2 text-[#1C0A00] transition-all duration-300 group-hover:text-[#CC2200] group-hover:scale-105"
+                    style={{ textShadow: "0 1px 4px rgba(0,0,0,0.04)" }}
+                  >
+                    {item.tamil}
+                  </motion.span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+
+
+
+
         </motion.div>
       </section>
 

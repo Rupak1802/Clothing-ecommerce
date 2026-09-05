@@ -41,7 +41,7 @@
   --color-mango: #F5B800;          /* Mango Gold                    */
   --color-vermilion: #CC2200;      /* Civappu — Vermilion Red       */
   --color-leaf: #2D6A2D;           /* Pachai — Leaf Green           */
-  --color-rice: #FFF8F0;           /* Rice White                    */
+  --color-rice: #EFE5D8;           /* Warm Sand / Antique Rice      */
   --color-terracotta: #C1440E;     /* Terracotta Red                */
   --color-peacock: #006B8F;        /* Vibrant Peacock Blue          */
   --color-deep-maroon: #6B1A1A;    /* Deep Maroon (kolam bg)        */
@@ -54,7 +54,7 @@ html {
 }
 
 body {
-  background-color: #FFF8F0;
+  background-color: #EFE5D8;
   color: var(--color-text-primary);
   font-family: var(--font-sans);
   line-height: 1.6;
@@ -67,10 +67,11 @@ body::before {
   background-image: url('/images/tamil-pookolam-bg.jpg');
   background-repeat: repeat;
   background-size: 320px;
-  opacity: 0.16; /* Balanced traditional pookolam watermark */
+  opacity: 0.22; /* Richer traditional pookolam watermark */
   pointer-events: none;
   z-index: -1;
 }
+
 
 
 
@@ -224,7 +225,7 @@ body::before {
 /* Postal stamp perforated border */
 .stamp-border {
   position: relative;
-  background: #FFF8F0;
+  background: #EFE5D8;
   padding: 12px;
 }
 
@@ -234,14 +235,15 @@ body::before {
   inset: 0;
   border-radius: 4px;
   background: 
-    radial-gradient(circle at top, transparent 7px, #FFF8F0 7px) top / 16px 14px repeat-x,
-    radial-gradient(circle at bottom, transparent 7px, #FFF8F0 7px) bottom / 16px 14px repeat-x,
-    radial-gradient(circle at left, transparent 7px, #FFF8F0 7px) left / 14px 16px repeat-y,
-    radial-gradient(circle at right, transparent 7px, #FFF8F0 7px) right / 14px 16px repeat-y;
+    radial-gradient(circle at top, transparent 7px, #EFE5D8 7px) top / 16px 14px repeat-x,
+    radial-gradient(circle at bottom, transparent 7px, #EFE5D8 7px) bottom / 16px 14px repeat-x,
+    radial-gradient(circle at left, transparent 7px, #EFE5D8 7px) left / 14px 16px repeat-y,
+    radial-gradient(circle at right, transparent 7px, #EFE5D8 7px) right / 14px 16px repeat-y;
   background-color: transparent;
   pointer-events: none;
   z-index: 2;
 }
+
 
 /* Tamil text shimmer gradient */
 .text-vermilion-shimmer {
@@ -296,7 +298,7 @@ body::before {
 }
 
 .bg-ikat-pattern-light {
-  background-color: #FFF8F0;
+  background-color: #EFE5D8;
   background-image:
     repeating-linear-gradient(
       45deg,
@@ -322,7 +324,7 @@ body::before {
 }
 
 .bg-kolam-hero-light {
-  background-color: #FFF8F0;
+  background-color: #EFE5D8;
   background-image:
     radial-gradient(ellipse at top, rgba(232,160,32,0.07) 0%, transparent 60%),
     radial-gradient(ellipse at bottom, rgba(204,34,0,0.05) 0%, transparent 70%);
