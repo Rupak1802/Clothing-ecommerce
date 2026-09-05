@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useNavigate } from "react-router-dom";
 import DhrishtiBommai from "./DhrishtiBommai";
 
-
 /* ─────────────────────────────────────────────────────────────────
    Hanging Brass Lamp — traditional temple hanging lamp SVG
 ───────────────────────────────────────────────────────────────── */
@@ -513,7 +512,6 @@ export default function ThukLandingHero({ onExploreClick }) {
             தமிழ் • பாரம்பரியம் • புதுமை
           </motion.div>
 
-
           {/* Tamil brand name */}
           <motion.div
             initial={{ opacity: 0, scale: 0.6 }}
@@ -648,11 +646,6 @@ export default function ThukLandingHero({ onExploreClick }) {
               ))}
             </div>
           </div>
-
-
-
-
-
         </motion.div>
       </section>
 
