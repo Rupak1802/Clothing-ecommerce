@@ -136,6 +136,11 @@ export default function Navbar() {
             {role !== "admin" && (
               <Link
                 to="/wishlist"
+                onClick={() => {
+                  window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                  if (document.documentElement) document.documentElement.scrollTop = 0;
+                  if (document.body) document.body.scrollTop = 0;
+                }}
                 className={`relative p-2 transition-colors focus:outline-none ${
                   location.pathname === "/wishlist" ? "text-primary" : "text-text-primary hover:text-primary"
                 }`}

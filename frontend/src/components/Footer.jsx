@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Instagram, Heart, Facebook, Play } from "lucide-react";
 
@@ -64,7 +65,7 @@ function KuthuvilakkuIcon({ className = "w-6 h-6", size = 26 }) {
 export default function Footer({ setActiveFilter }) {
   const socialIcons = [
     { icon: <Instagram size={15} />, href: "#", name: "Instagram" },
-    { icon: <Heart size={15} />, href: "#", name: "Wishlist" },
+    { icon: <Heart size={15} />, href: "/wishlist", name: "Wishlist" },
     { icon: <Facebook size={15} />, href: "#", name: "Facebook" },
     { icon: <Play size={13} className="ml-0.5" fill="currentColor" />, href: "#", name: "YouTube" }
   ];
@@ -298,19 +299,38 @@ export default function Footer({ setActiveFilter }) {
           <div className="flex flex-col items-start sm:items-end gap-3.5">
             {/* Social Icons: ◎  ♡  f  ▶ */}
             <div className="flex gap-3">
-              {socialIcons.map((social) => (
-                <motion.a
-                  key={social.name}
-                  href={social.href}
-                  aria-label={`Follow THUKIL on ${social.name}`}
-                  whileHover={{ rotate: 6, scale: 1.15 }}
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-bg-secondary/25 bg-bg-secondary/10 hover:bg-bg-dark transition-colors text-bg-secondary hover:text-secondary focus:outline-none focus:ring-1 focus:ring-bg-dark"
-                >
-                  {social.icon}
-                </motion.a>
-              ))}
+              {socialIcons.map((social) => {
+                if (social.href.startsWith("/")) {
+                  return (
+                    <Link
+                      key={social.name}
+                      to={social.href}
+                      onClick={() => {
+                        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+                        if (document.documentElement) document.documentElement.scrollTop = 0;
+                        if (document.body) document.body.scrollTop = 0;
+                      }}
+                      aria-label={social.name}
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-bg-secondary/25 bg-bg-secondary/10 hover:bg-bg-dark transition-colors text-bg-secondary hover:text-secondary focus:outline-none focus:ring-1 focus:ring-bg-dark"
+                    >
+                      {social.icon}
+                    </Link>
+                  );
+                }
+                return (
+                  <motion.a
+                    key={social.name}
+                    href={social.href}
+                    aria-label={`Follow THUKIL on ${social.name}`}
+                    whileHover={{ rotate: 6, scale: 1.15 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    className="flex h-8 w-8 items-center justify-center rounded-full border border-bg-secondary/25 bg-bg-secondary/10 hover:bg-bg-dark transition-colors text-bg-secondary hover:text-secondary focus:outline-none focus:ring-1 focus:ring-bg-dark"
+                  >
+                    {social.icon}
+                  </motion.a>
+                );
+              })}
             </div>
 
             {/* Privacy Policy & Terms */}

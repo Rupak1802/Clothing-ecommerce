@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useCart } from "../../context/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
@@ -8,8 +9,19 @@ export default function WishlistPage() {
   const { wishlist, toggleWishlist, addToCart, openQuickView } = useCart();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    if (document.documentElement) document.documentElement.scrollTop = 0;
+    if (document.body) document.body.scrollTop = 0;
+  }, []);
+
   return (
-    <div className="min-h-screen bg-bg-dark py-12 px-4 sm:px-6 lg:px-8 text-text-primary">
+    <motion.div
+      initial={{ opacity: 0, y: -24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+      className="min-h-screen bg-bg-dark py-12 px-4 sm:px-6 lg:px-8 text-text-primary"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
           <div>
@@ -71,6 +83,6 @@ export default function WishlistPage() {
           </motion.div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

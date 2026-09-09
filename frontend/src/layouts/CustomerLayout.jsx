@@ -104,10 +104,10 @@ export default function CustomerLayout() {
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
+              animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               onClick={() => setSearchOpen(false)}
-              className="absolute inset-0 bg-[var(--color-text-light)]"
+              className="absolute inset-0 bg-black/40 backdrop-blur-xs"
             />
 
             {/* Panel */}
@@ -119,16 +119,16 @@ export default function CustomerLayout() {
               className="relative z-10 w-full bg-bg-secondary border-b border-border py-8 px-4 sm:px-6 lg:px-8 shadow-2xl"
             >
               <div className="mx-auto max-w-3xl">
-                <div className="flex items-center justify-between pb-4 border-b border-[var(--color-text-light)]">
+                <div className="flex items-center justify-between pb-4 border-b border-border">
                   <div className="flex items-center gap-3 flex-1">
-                    <Search size={22} className="text-text-muted" />
+                    <Search size={22} className="text-text-muted shrink-0" />
                     <input
                       ref={searchInputRef}
                       type="text"
                       value={searchQuery}
                       onChange={handleSearchChange}
                       placeholder="Search pants, dresses, tailoring, keywords..."
-                      className="w-full text-lg sm:text-xl font-light placeholder-black/30 border-none bg-transparent outline-none focus:ring-0 text-text-light"
+                      className="w-full text-lg sm:text-xl font-normal placeholder:text-text-muted/60 border-none bg-transparent outline-none focus:ring-0 text-text-primary caret-primary"
                     />
                   </div>
                   <button
@@ -136,7 +136,8 @@ export default function CustomerLayout() {
                       setSearchOpen(false);
                       setSearchQuery("");
                     }}
-                    className="p-2 text-text-light hover:opacity-75 focus:outline-none cursor-pointer"
+                    className="p-2 text-text-muted hover:text-text-primary transition-colors focus:outline-none cursor-pointer rounded-full hover:bg-black/5"
+                    aria-label="Close search"
                   >
                     <X size={24} />
                   </button>
@@ -154,7 +155,7 @@ export default function CustomerLayout() {
                           navigate("/");
                         }
                       }}
-                      className="px-3 py-1 rounded-full bg-bg-secondary border border-border hover:border-primary transition-colors cursor-pointer text-text-primary"
+                      className="px-3.5 py-1 rounded-full bg-bg-dark border border-border hover:border-primary hover:text-primary transition-colors cursor-pointer text-text-primary font-medium"
                     >
                       {keyword}
                     </button>

@@ -8,6 +8,7 @@ import AdminLayout from "./layouts/AdminLayout";
 
 // Route Guard
 import ProtectedRoute from "./components/ProtectedRoute";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Authentication Pages
 import Login from "./auth/Login";
@@ -40,6 +41,7 @@ export default function App() {
   return (
     <AuthProvider>
       <CartProvider>
+        <ScrollToTop />
         <Routes>
           {/* Customer Portal (Public & Protected routes) */}
           <Route element={<CustomerLayout />}>
