@@ -204,62 +204,102 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 220 }}
-            className="fixed bottom-0 top-0 left-0 z-50 w-full max-w-xs p-6 shadow-2xl flex flex-col justify-between"
-              style={{ background: "#1C0A00", borderRight: "1px solid rgba(232,160,32,0.15)" }}
+              className="fixed bottom-0 top-0 left-0 z-50 w-full max-w-xs p-6 shadow-2xl flex flex-col justify-between"
+              style={{
+                background: "linear-gradient(180deg, #1C0A00 0%, #100400 100%)",
+                borderRight: "1.5px solid rgba(232,160,32,0.3)",
+                boxShadow: "0 25px 60px rgba(0,0,0,0.85), 6px 0 30px rgba(232,160,32,0.12)"
+              }}
             >
               <div>
-                <div className="flex items-center justify-between pb-6 border-b border-border">
-                  <img src="/LOGO 5.png" alt="THUKIL Logo" className="h-12 w-auto object-contain mix-blend-screen" style={{ filter: "sepia(1) saturate(5) hue-rotate(10deg) brightness(1.5)" }} />
+                {/* Header with Logo & Close Button */}
+                <div className="flex items-center justify-between pb-5 border-b border-[#E8A020]/25">
+                  <img
+                    src="/LOGO 5.png"
+                    alt="THUKIL Logo"
+                    className="h-11 w-auto object-contain mix-blend-screen"
+                    style={{ filter: "sepia(1) saturate(5) hue-rotate(10deg) brightness(1.6)" }}
+                  />
                   <button
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-2 text-text-light hover:opacity-75 focus:outline-none cursor-pointer"
+                    className="p-2 text-[#FFF8F0] hover:text-[#E8A020] hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+                    aria-label="Close menu"
                   >
-                    <X size={24} />
+                    <X size={24} strokeWidth={2.2} />
                   </button>
                 </div>
 
-                <div className="mt-8 flex flex-col gap-5 text-xs font-semibold uppercase tracking-wider text-left">
-                  {navLinks.map((link) => (
-                    <button
-                      key={link.id}
-                      onClick={() => {
-                        handleNavClick(link.id);
-                        setMobileMenuOpen(false);
-                      }}
-                      className="flex items-center justify-between text-left text-sm py-2 border-b border-transparent hover:border-border transition-all cursor-pointer text-text-primary"
+                {/* Navigation Links */}
+                <div className="mt-6 flex flex-col gap-2 text-xs font-semibold uppercase tracking-wider text-left">
+                  {navLinks.map((link) => {
+                    const isActive = location.pathname === "/" && activeFilter === link.id;
+                    return (
+                      <button
+                        key={link.id}
+                        onClick={() => {
+                          handleNavClick(link.id);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={`group flex items-center justify-between text-left text-sm py-2.5 px-3 rounded-lg transition-all cursor-pointer ${
+                          isActive
+                            ? "bg-[#E8A020]/20 text-[#E8A020] font-bold border-l-2 border-[#E8A020]"
+                            : "text-[#FFF8F0] hover:text-[#E8A020] hover:bg-white/5 font-medium"
+                        }`}
+                      >
+                        <span className="tracking-wider flex items-center gap-2">
+                          {isActive && <span className="text-[10px] text-[#E8A020]">✦</span>}
+                          {link.label}
+                        </span>
+                        <ArrowRight
+                          size={16}
+                          className={`transition-transform duration-200 group-hover:translate-x-1 ${
+                            isActive
+                              ? "text-[#E8A020] opacity-100"
+                              : "text-[#FFF8F0]/40 group-hover:text-[#E8A020] group-hover:opacity-100"
+                          }`}
+                        />
+                      </button>
+                    );
+                  })}
+
+                  {/* Secondary Links: About Us & Contact */}
+                  <div className="border-t border-[#E8A020]/20 pt-3 mt-1 flex flex-col gap-1.5">
+                    <Link
+                      to="/about"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="group flex items-center justify-between py-2 px-3 rounded-lg text-sm text-[#FFF8F0] hover:text-[#E8A020] hover:bg-white/5 font-medium tracking-wider transition-all"
                     >
-                      <span className={activeFilter === link.id ? "text-primary" : ""}>
-                        {link.label}
-                      </span>
-                      <ArrowRight size={16} className="opacity-40" />
-                    </button>
-                  ))}
-                  
-                  <Link
-                    to="/about"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between py-2 text-sm text-text-light"
-                  >
-                    About Us
-                    <ArrowRight size={16} className="opacity-40" />
-                  </Link>
+                      <span>About Us</span>
+                      <ArrowRight size={16} className="text-[#FFF8F0]/40 group-hover:text-[#E8A020] group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    </Link>
 
-                  <Link
-                    to="/contact"
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between py-2 text-sm text-text-light"
-                  >
-                    Contact
-                    <ArrowRight size={16} className="opacity-40" />
-                  </Link>
+                    <Link
+                      to="/contact"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="group flex items-center justify-between py-2 px-3 rounded-lg text-sm text-[#FFF8F0] hover:text-[#E8A020] hover:bg-white/5 font-medium tracking-wider transition-all"
+                    >
+                      <span>Contact</span>
+                      <ArrowRight size={16} className="text-[#FFF8F0]/40 group-hover:text-[#E8A020] group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                    </Link>
+                  </div>
 
-                  <div className="border-t border-border pt-4 mt-2 space-y-4">
-                    {!isAuthenticated ? null : role === "admin" ? (
+                  {/* Auth / Account Actions */}
+                  <div className="border-t border-[#E8A020]/20 pt-4 mt-2 space-y-3">
+                    {!isAuthenticated ? (
+                      <Link
+                        to="/login"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block text-center py-2.5 rounded-lg font-bold text-xs uppercase tracking-widest text-[#1C0A00] transition-opacity hover:opacity-90 shadow-md"
+                        style={{ background: "#E8A020" }}
+                      >
+                        Sign In / Register
+                      </Link>
+                    ) : role === "admin" ? (
                       <>
                         <Link
                           to="/admin/dashboard"
                           onClick={() => setMobileMenuOpen(false)}
-                          className="block text-center py-2.5 rounded-xl bg-[#556B2F] text-white"
+                          className="block text-center py-2.5 rounded-lg bg-[#556B2F] text-white text-xs font-bold uppercase tracking-wider hover:brightness-110"
                         >
                           Admin Dashboard
                         </Link>
@@ -268,7 +308,7 @@ export default function Navbar() {
                             setMobileMenuOpen(false);
                             handleLogout();
                           }}
-                          className="w-full text-center py-2.5 text-[#6D6D6D] border border-white/10 rounded-xl cursor-pointer"
+                          className="w-full text-center py-2.5 text-[#FFF8F0]/70 hover:text-red-400 border border-white/15 rounded-lg text-xs font-semibold uppercase tracking-wider cursor-pointer transition-colors"
                         >
                           Logout
                         </button>
@@ -278,23 +318,25 @@ export default function Navbar() {
                         <Link
                           to="/profile"
                           onClick={() => setMobileMenuOpen(false)}
-                          className="block text-center py-2 text-sm text-text-light"
+                          className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-[#FFF8F0] hover:text-[#E8A020] hover:bg-white/5 transition-all"
                         >
-                          My Profile
+                          <span>My Profile</span>
+                          <User size={16} className="text-[#E8A020]" />
                         </Link>
                         <Link
                           to="/orders"
                           onClick={() => setMobileMenuOpen(false)}
-                          className="block text-center py-2 text-sm text-text-light"
+                          className="flex items-center justify-between py-2 px-3 rounded-lg text-sm text-[#FFF8F0] hover:text-[#E8A020] hover:bg-white/5 transition-all"
                         >
-                          My Orders
+                          <span>My Orders</span>
+                          <ShoppingBag size={16} className="text-[#E8A020]" />
                         </Link>
                         <button
                           onClick={() => {
                             setMobileMenuOpen(false);
                             handleLogout();
                           }}
-                          className="w-full text-center py-2.5 rounded-xl border border-red-200 text-red-700 bg-red-50 cursor-pointer"
+                          className="w-full text-center py-2.5 rounded-lg border border-red-500/30 text-red-300 hover:bg-red-500/15 text-xs font-semibold uppercase tracking-wider cursor-pointer transition-colors"
                         >
                           Logout
                         </button>
@@ -304,8 +346,14 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div className="border-t border-border pt-6 text-[10px] text-text-muted tracking-widest uppercase">
-                &copy; 2026 THUKIL. All rights reserved.
+              {/* Footer Copyright */}
+              <div className="border-t border-[#E8A020]/20 pt-4 flex flex-col gap-1">
+                <div className="font-tamil text-xs text-[#E8A020] tracking-wider">
+                  துகில் • பாரம்பரிய உடை
+                </div>
+                <div className="text-[10px] text-[#FFF8F0]/60 tracking-widest uppercase">
+                  &copy; 2026 THUKIL. All rights reserved.
+                </div>
               </div>
             </motion.div>
           </>

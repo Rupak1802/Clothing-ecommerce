@@ -37,7 +37,7 @@ export default function AdminLayout() {
   return (
     <div className="min-h-screen bg-bg-dark flex text-text-light antialiased">
       {/* Desktop Sidebar */}
-      <aside className="hidden md:flex flex-col w-64 bg-primary text-[var(--color-bg-dark)] border-r border-border/20">
+      <aside className="hidden md:flex flex-col w-64 bg-[#1C0A00] text-white border-r border-white/10">
         <div className="h-20 flex items-center justify-center border-b border-border/30 px-6">
           <span className="font-display text-2xl font-extrabold tracking-widest text-[var(--color-bg-dark)]">
             THUKIL <span className="text-[#7A8F52] text-sm tracking-normal">admin</span>
@@ -84,7 +84,7 @@ export default function AdminLayout() {
       {/* Mobile Drawer (Overlay) */}
       <div className={`fixed inset-0 z-50 md:hidden transition-opacity duration-300 ${sidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}>
         <div className="absolute inset-0 bg-black/40" onClick={() => setSidebarOpen(false)} />
-        <aside className={`absolute top-0 bottom-0 left-0 w-64 bg-primary text-[var(--color-bg-dark)] flex flex-col transition-transform duration-300 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
+        <aside className={`absolute top-0 bottom-0 left-0 w-64 bg-[#1C0A00] text-white flex flex-col transition-transform duration-300 transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
           <div className="h-20 flex items-center justify-between px-6 border-b border-border/30">
             <span className="font-display text-2xl font-extrabold tracking-widest text-[var(--color-bg-dark)]">
               THUKIL <span className="text-[#7A8F52] text-sm tracking-normal">admin</span>

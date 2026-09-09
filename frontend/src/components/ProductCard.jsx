@@ -51,7 +51,7 @@ export default function ProductCard({
         <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
           {product.badge && (
             <span
-              className={`rounded-full px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-bg-dark shadow-sm ${
+              className={`rounded-full px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-white shadow-sm ${
                 product.badge === "SALE" ? "bg-primary" : "bg-secondary"
               }`}
             >
@@ -59,7 +59,7 @@ export default function ProductCard({
             </span>
           )}
           {discountPercent && (
-            <span className="font-accent rounded-full bg-bg-tertiary border border-primary text-primary px-2.5 py-0.5 text-xs font-bold leading-none shadow-sm rotate-[-3deg]">
+            <span className="font-accent rounded-full bg-white/95 border border-primary/30 text-primary px-2.5 py-0.5 text-xs font-bold leading-none shadow-sm rotate-[-3deg]">
               -{discountPercent}%
             </span>
           )}
@@ -102,7 +102,7 @@ export default function ProductCard({
             }}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="flex w-full items-center justify-center gap-2 rounded-lg bg-secondary py-2.5 text-xs font-semibold uppercase tracking-widest text-bg-dark shadow-md hover:bg-primary hover:text-bg-dark transition-colors cursor-pointer"
+            className="flex w-full items-center justify-center gap-2 rounded-lg bg-secondary py-2.5 text-xs font-semibold uppercase tracking-widest text-white shadow-md hover:bg-primary hover:text-white transition-colors cursor-pointer"
           >
             <ShoppingBag size={14} />
             Quick Add
@@ -114,7 +114,7 @@ export default function ProductCard({
       <div className="mt-3 block sm:hidden">
         <button
           onClick={() => onAddToCart(product)}
-          className="flex w-full items-center justify-center gap-2 rounded-lg bg-secondary py-2 text-xs font-semibold uppercase tracking-widest text-bg-dark hover:bg-primary transition-colors"
+          className="flex w-full items-center justify-center gap-2 rounded-lg bg-secondary py-2 text-xs font-semibold uppercase tracking-widest text-white hover:bg-primary transition-colors"
         >
           <ShoppingBag size={13} />
           Add to Cart

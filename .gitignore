@@ -18,4 +18,3 @@ frontend/.env
 Thumbs.db
 .gemini/
 .agents/
-.git/

@@ -94,7 +94,7 @@ export default function Newsletter() {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         disabled={status === "loading"}
-                        className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-xs font-semibold uppercase tracking-widest text-bg-dark hover:bg-primary/90 transition-colors cursor-pointer disabled:opacity-55"
+                        className="flex items-center justify-center gap-2 rounded-xl bg-[#1C0A00] px-6 py-3.5 text-xs font-semibold uppercase tracking-widest text-[#EFE5D8] hover:bg-black transition-colors cursor-pointer disabled:opacity-55 shadow-md"
                       >
                         {status === "loading" ? "Subscribing..." : "Subscribe"}
                         <ArrowRight size={14} />

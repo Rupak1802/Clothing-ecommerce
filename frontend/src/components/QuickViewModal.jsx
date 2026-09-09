@@ -110,7 +110,7 @@ export default function QuickViewModal({
                       {product.category}
                     </span>
                     {product.isNew && (
-                      <span className="rounded-full bg-primary px-3 py-0.5 text-[9px] font-bold tracking-wider text-bg-dark">
+                      <span className="rounded-full bg-primary px-3 py-0.5 text-[9px] font-bold tracking-wider text-white">
                         NEW ARRIVAL
                       </span>
                     )}
@@ -253,7 +253,7 @@ export default function QuickViewModal({
                     {/* Add to Cart Button */}
                     <button
                       onClick={handleAddToCart}
-                      className="flex-1 flex h-12 items-center justify-center gap-2 rounded-xl bg-primary text-xs font-semibold uppercase tracking-widest text-bg-dark shadow-md hover:bg-primary/90 transition-colors cursor-pointer"
+                      className="flex-1 flex h-12 items-center justify-center gap-2 rounded-xl bg-primary text-xs font-semibold uppercase tracking-widest text-white shadow-md hover:bg-primary/90 transition-colors cursor-pointer"
                     >
                       <ShoppingBag size={15} />
                       Add to Cart

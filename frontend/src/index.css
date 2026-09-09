@@ -13,7 +13,7 @@
   --color-bg-tertiary: #E5E5E5;
   
   /* Premium Accents */
-  --color-primary: #FFD100; /* Yellow accent like MYDESIGNATION header in image */
+  --color-primary: #C1440E; /* Terracotta luxury accent */
   --color-secondary: #B8925A;
   --color-accent-dark: #FFFFFF;
   
@@ -21,6 +21,7 @@
   --color-text-primary: #111111;
   --color-text-secondary: #444444;
   --color-text-muted: #666666;
+  --color-text-light: #FFF8F0;
   --color-border: #E5E1D8;
   --color-border-light: #F2EFE9;
   

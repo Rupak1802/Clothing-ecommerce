@@ -404,57 +404,101 @@ export default function ThukLandingHero({ onExploreClick }) {
         <div className="flex flex-col items-center justify-center max-w-5xl mx-auto gap-12">
           {/* Stamp selector at the top */}
           <div className="flex flex-col items-center gap-6 z-10 w-full">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16">
-              {/* Men's category stamp */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 100, damping: 15 }}
-              >
-                <CategoryStamp 
-                  type="male" 
-                  isOpen={maleStampOpen} 
-                  onClick={() => { 
-                    setMaleStampOpen(p => !p); 
-                    setFemaleStampOpen(false); 
-                  }} 
-                />
-              </motion.div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-16 w-full">
+              {/* Men's category stamp wrapper */}
+              <div className="flex flex-col items-center w-full sm:w-auto">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 100, damping: 15 }}
+                >
+                  <CategoryStamp 
+                    type="male" 
+                    isOpen={maleStampOpen} 
+                    onClick={() => { 
+                      setMaleStampOpen(p => !p); 
+                      setFemaleStampOpen(false); 
+                    }} 
+                  />
+                </motion.div>
 
-              {/* Women's category stamp */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.1 }}
-              >
-                <CategoryStamp 
-                  type="female" 
-                  isOpen={femaleStampOpen} 
-                  onClick={() => { 
-                    setFemaleStampOpen(p => !p); 
-                    setMaleStampOpen(false); 
-                  }} 
-                />
-              </motion.div>
+                {/* Mobile-only inline accordion directly under Men */}
+                <div className="sm:hidden w-full">
+                  <AnimatePresence>
+                    {maleStampOpen && (
+                      <motion.div 
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                        className="flex flex-col items-center gap-4 mt-6 overflow-hidden w-full"
+                      >
+                        {CATEGORY_OPTIONS.map((opt, i) => (
+                          <CategoryOptionStamp key={`mobile-men-${opt.id}`} opt={opt} delay={i * 0.08} onClick={handleCategoryClick} />
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+
+              {/* Women's category stamp wrapper */}
+              <div className="flex flex-col items-center w-full sm:w-auto">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ type: "spring", stiffness: 100, damping: 15, delay: 0.1 }}
+                >
+                  <CategoryStamp 
+                    type="female" 
+                    isOpen={femaleStampOpen} 
+                    onClick={() => { 
+                      setFemaleStampOpen(p => !p); 
+                      setMaleStampOpen(false); 
+                    }} 
+                  />
+                </motion.div>
+
+                {/* Mobile-only inline accordion directly under Women */}
+                <div className="sm:hidden w-full">
+                  <AnimatePresence>
+                    {femaleStampOpen && (
+                      <motion.div 
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.35, ease: "easeInOut" }}
+                        className="flex flex-col items-center gap-4 mt-6 overflow-hidden w-full"
+                      >
+                        {CATEGORY_OPTIONS.map((opt, i) => (
+                          <CategoryOptionStamp key={`mobile-women-${opt.id}`} opt={opt} delay={i * 0.08} onClick={handleCategoryClick} />
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
             </div>
 
-            {/* Expanded options */}
-            <AnimatePresence>
-              {(maleStampOpen || femaleStampOpen) && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="flex flex-wrap justify-center gap-6 mt-2 mb-4"
-                >
-                  {CATEGORY_OPTIONS.map((opt, i) => (
-                    <CategoryOptionStamp key={opt.id} opt={opt} delay={i * 0.08} onClick={handleCategoryClick} />
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {/* Desktop Expanded options (preserves existing desktop behavior) */}
+            <div className="hidden sm:block">
+              <AnimatePresence>
+                {(maleStampOpen || femaleStampOpen) && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="flex flex-wrap justify-center gap-6 mt-2 mb-4"
+                  >
+                    {CATEGORY_OPTIONS.map((opt, i) => (
+                      <CategoryOptionStamp key={`desktop-${opt.id}`} opt={opt} delay={i * 0.08} onClick={handleCategoryClick} />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             <AnimatePresence>
               {!maleStampOpen && !femaleStampOpen && (

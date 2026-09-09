@@ -49,7 +49,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-primary flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 text-[var(--color-bg-dark)]">
+    <div className="min-h-screen bg-[#1C0A00] flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:px-8 text-[#EFE5D8]">
       {/* Return button */}
       <div className="absolute top-6 left-6">
         <Link
